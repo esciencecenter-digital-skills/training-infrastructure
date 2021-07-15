@@ -1,11 +1,11 @@
 #devtools::install_github("hrbrmstr/nominatim")
 library(rio)
 library(tidyverse)
-library(nominatim)
-library(lubridate)
+library(nominatim) #for open street maps coordinates
+
 ds_xlsx <- import("/Users/liekedeboer/Netherlands eScience Center/Instructors - Documents/General/Digital Skills Workshops 2021.xlsx")
 
-dat_struct <- ds_xlsx %>% 
+dat_struct <- ds_xlsx %>% #read in excel file above
   drop_na(title) %>% 
   select(startdate, enddate, starttime, endtime, title, slug,
          lead_instructor, supporting_instructor1, supporting_instructor2,
@@ -13,7 +13,7 @@ dat_struct <- ds_xlsx %>%
          carpentry, curriculum, flavor, host,
          venue, address, country,
          eventbrite, repository) %>% 
-  mutate(startdate = as.POSIXlt(startdate, tz="Europe/Amsterdam"),
+  mutate(startdate = as.POSIXlt(startdate, tz="Europe/Amsterdam"), #convert to our timezone so CET or CEST is displayed in humandate
          enddate = as.POSIXlt(enddate, tz="Europe/Amsterdam"), 
          humandate = ifelse(months(dat_struct$startdate)==months(dat_struct$enddate), #this includes the month for end date only when workshop go over month switch
                             paste0(format(dat_struct$startdate, format="%B %d -"), 
@@ -29,11 +29,11 @@ dat_struct <- ds_xlsx %>%
   
 
 
-venue, address, country, latitude, longitude, 
-humandate, humantime, 
+#venue, address, country, latitude, longitude, (include lat/long in df creation)
+#humandate, humantime, (done)
 
-startdate, enddate, 
-instructor, helper, 
-carpentry, curriculum, 
-title, slug, flavor
+#startdate, enddate, (done)
+#instructor, helper, (concatanate)
+#carpentry, curriculum, (done)
+#title, slug, flavor (done)
 
