@@ -28,7 +28,7 @@ data_file <- dat_struct %>%
          instructor, helper,
          carpentry, curriculum, title, slug, flavor)
 
-for (i in 1:length(viable_slugs)) {
+for (i in 1:length(viable_slugs)) { # for each viable slug, create a file called data.csv, within the folder it belongs. 
   csv_info <- data_file[i,]
   filename <- paste0(exec_dir, "/", viable_slugs[i], "/data.csv")
   write_csv(csv_info, filename)
