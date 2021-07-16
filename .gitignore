@@ -81,3 +81,4 @@ Thumbs.db
 .gitsecret/keys/random_seed
 !*.secret
 tokens.txt
+data.csv
