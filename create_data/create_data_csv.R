@@ -2,7 +2,7 @@
 library(rio)
 library(tidyverse)
 library(nominatim) #for open street maps coordinates
-source("get_future_workshops.R")
+source("create_data/get_future_workshops.R")
 
 ds_xlsx <- import("/Users/liekedeboer/Netherlands eScience Center/Instructors - Documents/General/Digital Skills Workshops 2021.xlsx")
 ds_xlsx<-ds_xlsx[ds_xlsx$startdate >= Sys.time(), ] # only read workshop dates after today
