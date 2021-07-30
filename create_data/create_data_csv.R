@@ -58,9 +58,9 @@ result = tryCatch({
                   dest = paste0(slug, "/", slug, "-communication_doc.docx"))
   drv$upload_file(src = paste0(slug, "/", slug, "-debriefing_doc.docx"), 
                   dest = paste0(slug, "/", slug, "-debriefing_doc.docx"))
+  save_post_sharepoint(slug, instructors, helpers, coordinator = c("Mateusz Kuzak", "Lieke de Boer"))
 }, finally = {
   #instr_team$create_channel(slug)
 })
 
-save_post_sharepoint(slug, instructors, helpers, coordinator = c("Mateusz Kuzak", "Lieke de Boer"))
 
