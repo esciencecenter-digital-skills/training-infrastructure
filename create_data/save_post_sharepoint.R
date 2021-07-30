@@ -25,7 +25,7 @@ save_sharepoint <- function(slug, instructors, helpers, coordinator = "Lieke") {
   workshop_channel<-instr_team$get_channel(slug)
   
   workshop_channel$send_message(body = "Hi all, @Lieke de Boer, this is a test message that you can all safely ignore", 
-                                mentions = Mateusz, content_type = 'html')
+                                mentions = coordinator, content_type = 'html')
   
   instr_site <-get_sharepoint_site(site_url="https://nlesc.sharepoint.com/sites/instructors")
   drv <- instr_site$get_drive()
