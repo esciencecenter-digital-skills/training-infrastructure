@@ -23,6 +23,7 @@ setwd(exec_dir)
 source("get_future_workshops.R")
 source("save_post_sharepoint.R")
 source("save_viable_data.R")
+source("create_files.R")
 
 setwd('..')
 
@@ -33,28 +34,33 @@ setwd(exec_dir)
 
 instr_site <- get_sharepoint_site(site_url="https://nlesc.sharepoint.com/sites/instructors")
 drv        <- instr_site$get_drive()
-ds_xlsx    <- drv$download_file("General/Digital Skills Workshops 2021.xlsx", overwrite = T)
+ds_xlsx    <- drv$download_file("General/Digital Skills Workshops 2021.xlsx", overwrite = T) #get the latest version of the excel sheet and overwrite the previous download
 ds_xlsx    <- import("Digital Skills Workshops 2021.xlsx")
 ds_xlsx    <- ds_xlsx[ds_xlsx$startdate >= Sys.time(), ] # only read workshop dates after today
-dat_struct <- get_future_workshops(ds_xlsx)
+dat_struct <- get_future_workshops(ds_xlsx) # extracts relevant information for GH page from spreadsheet
+
 save_viable_data(dat_struct) #only saves a data file in its folder if the slug is longer than 10 characters
 
 ready_future <- na.omit(dat_struct$slug[dat_struct$ready=="yes"])
 slug <- ready_future[1]
+
+instr_team <- get_team("Instructors")
 
 result = tryCatch({
   instr_team$get_channel(slug)
 }, error = function(e) {
   print(paste0("trying to retrieve channel '", slug, "' threw this ", e, " creating channel."))
   instr_team$create_channel(slug)
+  create_files(slug)
+  drv$upload_file(src = paste0(slug, "/", slug, "-planning_doc.docx"), 
+                  dest = paste0(slug, "/", slug, "-planning_doc.docx"))
+  drv$upload_file(src = paste0(slug, "/", slug, "-communication_doc.docx"), 
+                  dest = paste0(slug, "/", slug, "-communication_doc.docx"))
+  drv$upload_file(src = paste0(slug, "/", slug, "-debriefing_doc.docx"), 
+                  dest = paste0(slug, "/", slug, "-debriefing_doc.docx"))
 }, finally = {
   #instr_team$create_channel(slug)
 })
 
-
-
-
-
 save_post_sharepoint(slug, instructors, helpers, coordinator = c("Mateusz Kuzak", "Lieke de Boer"))
-
 
