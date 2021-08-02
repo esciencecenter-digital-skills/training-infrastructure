@@ -53,6 +53,9 @@ for (i in ready_future) {
     instr_team$get_channel(slug)
   }, error = function(e) {
     print(paste0("trying to retrieve channel '", slug, "' threw this ", e, " creating channel."))
+    drv$download_file("document_templates/communication_doc.docx", dest="templates/communication_doc.docx", overwrite=T) #get the latest templates (overwrite current)
+    drv$download_file("document_templates/debriefing_doc.docx", dest="templates/debriefing_doc.docx.docx", overwrite=T)
+    drv$download_file("document_templates/planning_doc.docx", dest="templates/planning_doc.docx", overwrite=T)
     instr_team$create_channel(slug)
     create_files(ws_dat)
     drv$upload_file(src = paste0(slug, "/", slug, "-planning_doc.docx"), 
