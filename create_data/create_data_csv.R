@@ -2,8 +2,8 @@
 #Script by Lieke de Boer, July 2021
 # Takes the digital skills workshops excel sheet and creates a datafile for the corresponding GH repo. Initially saves this locally. 
 # Checks if a workshop is ready to be uploaded (based on "yes" in ready column) and if so
-#creates a Microsoft Teams channel with the same name as a workshop's slug, 
-#posts a message in the Microsoft Teams channel tagging instructors and helpers
+# creates a Microsoft Teams channel with the same name as a workshop's slug, 
+# posts a message in the Microsoft Teams channel tagging instructors and helpers
 # ------------------------------------------
 # To Do:
 # - make sure that template documents are also uploaded (debriefing, communication, planning)
@@ -16,6 +16,7 @@ library(rio)
 library(tidyverse)
 library(nominatim) #for open street maps coordinates
 library(Microsoft365R)
+library(officer)
 
 exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
 setwd(exec_dir)
@@ -42,25 +43,31 @@ dat_struct <- get_future_workshops(ds_xlsx) # extracts relevant information for 
 save_viable_data(dat_struct) #only saves a data file in its folder if the slug is longer than 10 characters
 
 ready_future <- na.omit(dat_struct$slug[dat_struct$ready=="yes"])
-slug <- ready_future[1]
 
 instr_team <- get_team("Instructors")
 
-result = tryCatch({
-  instr_team$get_channel(slug)
-}, error = function(e) {
-  print(paste0("trying to retrieve channel '", slug, "' threw this ", e, " creating channel."))
-  instr_team$create_channel(slug)
-  create_files(slug)
-  drv$upload_file(src = paste0(slug, "/", slug, "-planning_doc.docx"), 
-                  dest = paste0(slug, "/", slug, "-planning_doc.docx"))
-  drv$upload_file(src = paste0(slug, "/", slug, "-communication_doc.docx"), 
-                  dest = paste0(slug, "/", slug, "-communication_doc.docx"))
-  drv$upload_file(src = paste0(slug, "/", slug, "-debriefing_doc.docx"), 
-                  dest = paste0(slug, "/", slug, "-debriefing_doc.docx"))
-  save_post_sharepoint(slug, instructors, helpers, coordinator = c("Mateusz Kuzak", "Lieke de Boer"))
-}, finally = {
-  #instr_team$create_channel(slug)
-})
+for (i in ready_future) {
+  slug <- ready_future[i]
+  ws_dat <- dat_struct[dat_struct$slug==slug,]
+  result = tryCatch({
+    instr_team$get_channel(slug)
+  }, error = function(e) {
+    print(paste0("trying to retrieve channel '", slug, "' threw this ", e, " creating channel."))
+    instr_team$create_channel(slug)
+    create_files(ws_dat)
+    drv$upload_file(src = paste0(slug, "/", slug, "-planning_doc.docx"), 
+                    dest = paste0(slug, "/", slug, "-planning_doc.docx"))
+    drv$upload_file(src = paste0(slug, "/", slug, "-communication_doc.docx"), 
+                    dest = paste0(slug, "/", slug, "-communication_doc.docx"))
+    drv$upload_file(src = paste0(slug, "/", slug, "-debriefing_doc.docx"), 
+                    dest = paste0(slug, "/", slug, "-debriefing_doc.docx"))
+    save_post_sharepoint(slug, instructors, helpers, coordinator = c("Mateusz Kuzak", "Lieke de Boer"))
+  }, finally = {
+    #instr_team$create_channel(slug)
+  })
+  
+  
+}
+
 
 
