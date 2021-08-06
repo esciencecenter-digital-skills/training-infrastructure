@@ -82,3 +82,4 @@ Thumbs.db
 !*.secret
 tokens.txt
 data.csv
+*.docx
