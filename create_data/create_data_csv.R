@@ -60,13 +60,13 @@ for (i in ready_future) {
     ws_dat$newch <- instr_team$get_channel(slug)$get_folder()$properties$webUrl #sharepoint URL
 
     create_files(ws_dat)
-    drv$upload_file(src = paste0(slug, "/", slug, "-planning_doc.docx"), 
+    drv$upload_file(src = paste0("files/", slug, "/", slug, "-planning_doc.docx"), 
                     dest = paste0(slug, "/", slug, "-planning_doc.docx"))
-    drv$upload_file(src = paste0(slug, "/", slug, "-communication_doc.docx"), 
+    drv$upload_file(src = paste0("files/", slug, "/", slug, "-communication_doc.docx"), 
                     dest = paste0(slug, "/", slug, "-communication_doc.docx"))
-    drv$upload_file(src = paste0(slug, "/", slug, "-debriefing_doc.docx"), 
+    drv$upload_file(src = paste0("files/", slug, "/", slug, "-debriefing_doc.docx"), 
                     dest = paste0(slug, "/", slug, "-debriefing_doc.docx"))
-    save_post_sharepoint(slug, instructors, helpers, coordinator = c("Mateusz Kuzak", "Lieke de Boer"))
+    save_post_sharepoint(ws_dat)
   }, finally = {
     #instr_team$create_channel(slug)
   })

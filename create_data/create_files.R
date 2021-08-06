@@ -42,22 +42,17 @@ render_plan = function(plan_doc_info) {
                     output_file = paste0(ws_dat$slug, '/', ws_dat$slug, "-planning_doc.docx"))
 }
 
+debrief_doc_info <- list(YYYYMMDD=as.character(ws_dat$startdate),
+                      set_title = paste(ws_dat$slug, "debriefing document"),
+                      show_text=TRUE)
 
+render_debrief = function(debrief_doc_info) {
+  rmarkdown::render("files/debriefing_doc.Rmd", params = debrief_doc_info,
+                    output_file = paste0(ws_dat$slug, '/', ws_dat$slug, "-debriefing_doc.docx"))
+}
 
-
+render_comm(comm_doc_info)
+render_debrief(debrief_doc_info)
 render_plan(plan_doc_info)
-
-#debrief_doc <- read_docx(path = "templates/debriefing_doc.docx") %>% 
- # body_replace_all_text("[slug]", ws_dat$slug, fixed=T)
-
-#plan_doc <- read_docx(path="templates/planning_doc.docx") %>% 
- # body_replace_all_text("YYYY-MM-DD", as.character(ws_dat$startdate), fixed=T) %>%
-#  body_replace_all_text("[workshop]", ws_dat$title, fixed=T) %>% 
- # slip_in_text("Sharepoint Folder", hyperlink = paste0("https://nlesc.sharepoint.com/sites/instructors/Shared Documents/", slug), pos = "before") 
-  
-  
-#print(comm_doc, target = paste0(ws_dat$slug, "/", ws_dat$slug, "communication_doc.docx"))
-#print(debrief_doc, target = paste0(ws_dat$slug, "/", ws_dat$slug, "debriefing_doc.docx"))
-#print(plan_doc, target = paste0(ws_dat$slug, "/", ws_dat$slug, "planning_doc.docx"))
 
 }
