@@ -23,11 +23,29 @@ comm_doc_info <- list(YYYYMMDD=as.character(ws_dat$startdate),
                       show_text=TRUE)
 
 render_comm = function(comm_doc_info) {
-  rmarkdown::render("templates/communication_doc.Rmd", params = comm_doc_info,
+  rmarkdown::render("files/communication_doc.Rmd", params = comm_doc_info,
                     output_file = paste0(ws_dat$slug, '/', ws_dat$slug, "-communication_doc.docx"))
 }
 
-render_comm(comm_doc_info)
+plan_doc_info <- list(YYYYMMDD=as.character(ws_dat$startdate),
+                      sharepoint=paste0("[Sharepoint](", ws_dat$newch,")"),
+                      workshop_website=paste0("[workshop website](","https://esciencecenter-digital-skills.github.io/", slug, ")"),
+                      registration_page = paste0("[registration page](","https://www.eventbrite.co.uk/e/", ws_dat$eventbrite, ")"),
+                      set_title = paste(ws_dat$slug, "planning document"),
+                      lead_instructor = ws_dat$lead_instructor,
+                      instructor = ws_dat$instructor,
+                      helper = ws_dat$helper,
+                      show_text=TRUE)
+
+render_plan = function(plan_doc_info) {
+  rmarkdown::render("files/planning_doc.Rmd", params = plan_doc_info,
+                    output_file = paste0(ws_dat$slug, '/', ws_dat$slug, "-planning_doc.docx"))
+}
+
+
+
+
+render_plan(plan_doc_info)
 
 #debrief_doc <- read_docx(path = "templates/debriefing_doc.docx") %>% 
  # body_replace_all_text("[slug]", ws_dat$slug, fixed=T)

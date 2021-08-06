@@ -1,4 +1,3 @@
-
 save_sharepoint <- function(slug, instructors, helpers, coordinator = "Lieke") {
   #' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
   #' Input: 
@@ -29,7 +28,7 @@ save_sharepoint <- function(slug, instructors, helpers, coordinator = "Lieke") {
   
   instr_site <-get_sharepoint_site(site_url="https://nlesc.sharepoint.com/sites/instructors")
   drv <- instr_site$get_drive()
-  drv$upload_file(src=paste0(slug, "/data.csv"), dest=paste0(slug, "/data.csv"))
+  drv$upload_file(src=paste0("files/", slug, "/data.csv"), dest=paste0(slug, "/data.csv"))
   
 
   
