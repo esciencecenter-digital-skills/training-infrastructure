@@ -23,7 +23,6 @@ source("save_post_sharepoint.R")
 source("save_viable_data.R")
 source("create_files.R")
 
-
 exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
 setwd(exec_dir)
 
