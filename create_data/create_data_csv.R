@@ -18,20 +18,17 @@ library(nominatim) #for open street maps coordinates
 library(Microsoft365R)
 library(officer)
 
-exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
-setwd(exec_dir)
-
 source("get_future_workshops.R")
 source("save_post_sharepoint.R")
 source("save_viable_data.R")
 source("create_files.R")
 
-setwd('..')
+
+exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
+setwd(exec_dir)
 
 tokens     <- read.delim("tokens.txt", header=F)
 token      <- str_split(tokens$V1, pattern=" ")[[1]][2]
-
-setwd(exec_dir)
 
 instr_site <- get_sharepoint_site(site_url="https://nlesc.sharepoint.com/sites/instructors")
 drv        <- instr_site$get_drive()
