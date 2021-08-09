@@ -1,9 +1,10 @@
 #-------------------------------------------
-#Script by Lieke de Boer, July 2021
+# Script by Lieke de Boer, July 2021
 # Takes the digital skills workshops excel sheet and creates a datafile for the corresponding GH repo. Initially saves this locally. 
 # Checks if a workshop is ready to be uploaded (based on "yes" in ready column) and if so
 # creates a Microsoft Teams channel with the same name as a workshop's slug, 
-# posts a message in the Microsoft Teams channel tagging instructors and helpers
+# posts a message in the Microsoft Teams channel tagging instructors and helpers.
+# Creates planning, communication and debriefing documents (.docx) from Rmd templates.
 # ------------------------------------------
 # To Do:
 # - make sure that template documents are also uploaded (debriefing, communication, planning)
@@ -48,10 +49,8 @@ for (i in ready_future) {
   result = tryCatch({
     instr_team$get_channel(slug)
   }, error = function(e) {
+    
     print(paste0("trying to retrieve channel '", slug, "' threw this ", e, " creating channel."))
-    #drv$download_file("document_templates/communication_doc.docx", dest="templates/communication_doc.docx", overwrite=T) #get the latest templates (overwrite current)
-    #drv$download_file("document_templates/debriefing_doc.docx", dest="templates/debriefing_doc.docx.docx", overwrite=T)
-    #drv$download_file("document_templates/planning_doc.docx", dest="templates/planning_doc.docx", overwrite=T)
     instr_team$create_channel(slug)
     ws_dat$newch <- instr_team$get_channel(slug)$get_folder()$properties$webUrl #sharepoint URL
 

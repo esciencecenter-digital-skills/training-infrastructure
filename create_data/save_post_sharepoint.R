@@ -7,9 +7,6 @@ save_sharepoint <- function(ws_dat) {
   #'         A dataframe that should be saved as data.csv in the workshop folder in SharePoin
   library(Microsoft365R)
   
-  exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
-  setwd(exec_dir)
-  
   site <- list_teams()
   Mateusz <- instr_team$get_member("Mateusz Kuzak")  
   Lieke <- instr_team$get_member("Lieke de Boer")
@@ -34,11 +31,3 @@ save_sharepoint <- function(ws_dat) {
   drv$upload_file(src=paste0("files/", slug, "/data.csv"), dest=paste0(slug, "/data.csv"))
   
 }
-
-#drv$list_files()
-#cc<-bb$get_lists()
-#dd<-cc[[18]]$list_items()
-
-
-#cc<-get_business_onedrive("nlesc/sites/instructors")
-
