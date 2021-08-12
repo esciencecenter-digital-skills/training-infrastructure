@@ -18,10 +18,10 @@ get_future_workshops <- function(excelfile) {
            enddate = as.POSIXlt(enddate, tz="Europe/Amsterdam",format="%Y-%m-%d"), 
            humandate = ifelse(months(startdate)==months(enddate), #this includes the month for end date only when workshop go over month switch
                               paste0(format(startdate, format="%B %d -"), 
-                                     format(enddate, format=" %d, %Y, %Z")), 
+                                     format(enddate, format=" %d, %Y")), 
                               paste0(format(startdate, format="%B %d -"), 
-                                     format(enddate, format=" %B %d, %Y, %Z"))),
-           humantime = paste0(starttime, " - ", endtime),
+                                     format(enddate, format=" %B %d, %Y"))),
+           humantime = paste0(starttime, " - ", endtime, "-", format(enddate, format=" %Z")),
            instructor = paste(lead_instructor, supporting_instructor1, supporting_instructor2, sep = ", "),
            instructor = gsub(", NA", "", instructor),
            helper = paste(helper1, helper2, helper3, sep=", "),

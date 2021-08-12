@@ -16,7 +16,7 @@ save_viable_data <- function(dat_struct) {
            startdate, enddate,
            instructor, helper,
            carpentry, curriculum, title, slug, flavor,
-           eventbrite, ready)
+           eventbrite)
   
   for (i in 1:length(viable_slugs)) { # for each viable slug, create a file called data.csv, within the folder it belongs. 
     csv_info <- data_file[i,]
