@@ -1,22 +1,31 @@
 ---
 title: "comm_doc"
-output: word_document
+output:
+  word_document: default
+  pdf_document: default
 params:
   YYYYMMDD: YYYY-MM-DD
-  workshop: [workshop]
-  location: [location]
-  time: [time]
-  date: [date]
-  workshop_website: [workshop website]
-  workshop_website_url: [workshop website url]
-  month: [month]
-  day_of_workshop: [day of workshop]
-  start_time: [start time]
-  registration_page: [registration page]
-  registration_page_url: [registration page url]
-  set_title: "Communication doc"
+  workshop: workshop
+  location: location
+  venue: venue
+  time: time
+  date: "date"
+  workshop_website: workshop website
+  workshop_website_url: workshop website url
+  month: month
+  day_of_workshop: day of workshop
+  start_time: start time
+  registration_page: registration page
+  registration_page_url: registration page url
+  setup_instructions: setup instructions link
+  synopsis: Evenbrite 140 characters
+  description: Eventbrite longer description
+  syllabus: syllabus
+  who: audience
+  advertisement: advertisement
+  set_title: Communication doc
   file: data.csv
-  show_text: TRUE
+  show_text: yes
 ---
 
 ---
@@ -33,23 +42,26 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Description  
 #### Title: `r params$workshop`  
-`r params$date`, `r params$location`  
+`r params$date`, `r params$venue`  
 
 
 Eventbrite short description (140 characters)  
-*short description*  
+`r params$synopsis`
   
 Eventbrite long description (around 150 words)  
-*long description*  
-*syllabus*  
+`r params$description`
+
+## Syllabus
+`r params$syllabus`
+
+The workshop is open and free to all researchers in the Netherlands. The workshop is based on the teaching style of the Carpentries, and learners will follow along while the instructors write the code on screen. More information can be found on the `r params$workshop_website`.  
   
-The workshop is based on the teaching style of the Carpentries, and learners will follow along while the instructors write the code on screen. More information can be found on the `r params$workshop_website`.  
-  
-**Who**: [target audience], [prerequisites].  
+**Who**: `r params$who`  
   
 Emails short description:  
-[two sentences] for in the advertisement emails
-  
+
+`r params$advertisement`
+
 ------  
 
 ### Internal workshop announcement email  
@@ -57,20 +69,24 @@ Emails short description:
 
 Hello,  
 
-The Netherlands eScience Center is organizing an online workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
-
-The registration is now open to our partners and collaborators. They can use the code "eScience2021" to unlock the “eScience Center Partners” ticket when registering. 
+The Netherlands eScience Center is organising an online workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
 
 **`r params$workshop`**  
 `r params$date`  
 `r params$time`, `r params$location`  
 `r params$registration_page` [1]  
 
-[two sentences]
+`r params$advertisement`
 
 More information about this event can be found on the `r params$workshop_website` [2]. 
 
-Who: [target audience]. [prerequisites].  
+Who: `r params$who`
+  
+
+On behalf of the eScience Center Training Team,
+
+Sacha van Breugel
+
   
 Links  
 [1] `r params$registration_page_url`  
@@ -83,18 +99,22 @@ Links
 
 Hello,  
 
-The Netherlands eScience Center is organizing an online workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
+The Netherlands eScience Center is organising an online workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
 
 **`r params$workshop`**  
 `r params$date`  
 `r params$time`, `r params$location`  
 `r params$registration_page` [1]  
 
-[two sentences]
+`r params$advertisement`
 
 More information about this event can be found on the `r params$workshop_website` [2]. 
 
-Who: [target audience]. [prerequisites].  
+Who: `r params$who`
+
+On behalf of the eScience Center Training Team,
+
+Sacha van Breugel
   
   
 Links  
@@ -114,7 +134,7 @@ A few notes:
 
 Be sure to complete this (pre-workshop survey)[pre-workshop survey] [1] by midday tomorrow. We use this to calibrate the pace of the workshop and, together with a post-workshop survey, to assess how it went.
 
-Make sure you have the necessary software installed on your laptop by following the [setup instructions] ([`r paste0(params$workshop_website_url, '/#setup')`]) [2]. If you have any trouble, send us an email.
+Make sure you have the necessary software installed on your laptop by following the `r params$setup_instructions ` [2]. If you have any trouble, send us an email.
 
 On the workshop days (`r params$date`), please join the call 15 minutes earlier (`r params$start_time`) if possible, to say hello to the instructors and fellow learners and to check if your audio and video setup works correctly. That will allow us to start teaching on time.
 
@@ -130,7 +150,7 @@ Looking forward to seeing you soon!
 
 On behalf of the eScience Center Training Team,
 
-Mateusz Kuzak & Lieke de Boer
+Sacha van Breugel
 
 
 Links  
@@ -149,13 +169,13 @@ Hello,
 
 This is just a reminder for the [workshop title] workshop on `r params$date`.
 
-If you won’t be able to attend, please cancel your registration (by following instructions here [1])  so that we can offer your seat to someone on the waiting list.
+If you won’t be able to attend, please cancel your registration (by following instructions [here](https://www.eventbrite.com/support/articles/en_US/How_To/how-to-cancel-your-free-registration) [1])  so that we can offer your seat to someone on the waiting list.
 
 Looking forward to seeing you on `r params$day_of_workshop`!
 
 On behalf of the eScience Center Training Team,
 
-Mateusz Kuzak & Lieke de Boer
+Sacha van Breugel
 
 Links  
 [1] https://www.eventbrite.com/support/articles/en_US/How_To/how-to-cancel-your-free-registration  
@@ -171,20 +191,20 @@ If you haven’t already, please be sure to complete our (post-workshop survey)[
   
 You will shortly be able to find all the notebooks and collaborative documents from the workshop in the files directory of the workshop repository.  
   
-If you have any other feedback about the workshop, or would like to get involved in organizing workshops, please contact the eScience Center training team at training@esciencecenter.nl [2].  
+If you have any other feedback about the workshop, or would like to get involved in organising workshops, please contact the eScience Center training team at training@esciencecenter.nl.  
   
-You can also follow us on Twitter (https://twitter.com/esciencecenter). We are continuously organizing training events. You can find the list of upcoming events on the Center’s training website[https://escience-digital-skills.github.io] [3].  
+You can also follow us on [Twitter](https://twitter.com/esciencecenter) [2]. We are continuously organising training events. You can find the list of upcoming events on the Center’s [website](https://www.esciencecenter.nl/digital-skills/) [3].  
   
-We would also like to encourage you to subscribe to our email updates [4] and select an Invitation for Workshops option to get invited to training and related events organized by the Netherlands eScience Center.
+We would also like to encourage you to subscribe to our [email updates](https://esciencecenter.us8.list-manage.com/subscribe/post?u=a0a563ca342f1949246a9f92f&id=31bfc2303d) [4] and select an Invitation for Workshops option to get invited to training and related events organised by the Netherlands eScience Center.
 
-On behalf of the workshop organization team,
+On behalf of the eScience Center Training Team,
 
-Mateusz Kuzak & Lieke de Boer  
-  
+Sacha van Breugel
+
 Links  
 [1] [post-workshop survey link]  
 [2] https://twitter.com/esciencecenter  
-[3] https://escience-digital-skills.github.io/  
+[3] https://www.esciencecenter.nl/digital-skills/ 
 [4] https://esciencecenter.us8.list-manage.com/subscribe/post?u=a0a563ca342f1949246a9f92f&id=31bfc2303d  
 
 

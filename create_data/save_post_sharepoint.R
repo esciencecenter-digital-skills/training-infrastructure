@@ -22,7 +22,7 @@ save_sharepoint <- function(ws_dat) {
   instr_team<-get_team("Instructors")
   workshop_channel<-instr_team$get_channel(slug)
   
-  workshop_channel$send_message(body = "Hello all, this is a test message that you can all safely ignore", 
+  workshop_channel$send_message(body = paste("Hello all, this is the channel for", slug), 
                                 mentions = c(Lead_instructor, Supp_instr1, Supp_instr2, Helper1, Helper2, Helper3, Mateusz, Lieke), 
                                 content_type = 'html')
   
