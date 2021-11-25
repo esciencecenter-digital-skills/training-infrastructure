@@ -5,8 +5,6 @@ create_files <- function(ws_dat, meta_fld) {
   #'         
   #' Ouput:
   #'         no output, just saving files within the project directory. 
-
-  
     
 comm_doc_info <- list(YYYYMMDD              = as.character(ws_dat$startdate),
                       workshop              = ws_dat$title,

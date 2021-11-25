@@ -20,14 +20,14 @@ library(Microsoft365R)
 library(officer)
 library(RCurl)
 
+exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
+setwd(exec_dir)
+
 source("get_future_workshops.R")
 source("save_post_sharepoint.R")
 source("save_viable_data.R")
 source("create_files.R")
 source("get_meta_fld.R")
-
-exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
-setwd(exec_dir)
 
 tokens     <- read.delim("tokens.txt", header=F)
 token      <- str_split(tokens$V1, pattern=" ")[[1]][2]
@@ -45,10 +45,11 @@ ready_future <- na.omit(dat_struct$slug[dat_struct$ready=="yes"])
 
 instr_team <- get_team("Instructors")
 
-for (i in ready_future) {
+for (i in 1:length(ready_future)) {
   slug <- ready_future[i]
   ws_dat <- dat_struct[dat_struct$slug==slug,]
   meta_fld <- get_meta_fld(slug)
+  
   result = tryCatch({
     instr_team$get_channel(slug)
   }, error = function(e) {
