@@ -1,8 +1,8 @@
 #-------------------------------------------
 # Script by Lieke de Boer, July 2021
-# Takes the digital skills workshops excel sheet and creates a datafile for the corresponding GH repo. Initially saves this locally. 
+# Takes the digital skills workshops excel sheet and creates a datafile for the corresponding GH repo. Initially saves this locally.
 # Checks if a workshop is ready to be uploaded (based on "yes" in ready column) and if so
-# creates a Microsoft Teams channel with the same name as a workshop's slug, 
+# creates a Microsoft Teams channel with the same name as a workshop's slug,
 # posts a message in the Microsoft Teams channel tagging instructors and helpers.
 # Creates planning, communication and debriefing documents (.docx) from Rmd templates.
 # ------------------------------------------
@@ -12,22 +12,10 @@
 # - investigate possibility of downloading content for communication
 #-------------------------------------------
 
-#devtools::install_github("hrbrmstr/nominatim")
-library(rio)
-library(tidyverse)
-library(nominatim) #for open street maps coordinates
-library(Microsoft365R)
-library(officer)
-library(RCurl)
+library(traininginfrastructure)
 
 exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
 setwd(exec_dir)
-
-source("get_future_workshops.R")
-source("save_post_sharepoint.R")
-source("save_viable_data.R")
-source("create_files.R")
-source("get_meta_fld.R")
 
 tokens     <- read.delim("tokens.txt", header=F)
 token      <- str_split(tokens$V1, pattern=" ")[[1]][2]
@@ -49,37 +37,37 @@ for (i in 1:length(ready_future)) {
   slug <- ready_future[i]
   ws_dat <- dat_struct[dat_struct$slug==slug,]
   meta_fld <- get_meta_fld(slug)
-  
+
   result = tryCatch({
     instr_team$get_channel(slug)
   }, error = function(e) {
     create_files(ws_dat, meta_fld)
-    
+
     print(paste0("trying to retrieve channel '", slug, "' threw this ", e, " creating channel."))
     instr_team$create_channel(slug)
     ws_dat$newch <- instr_team$get_channel(slug)$get_folder()$properties$webUrl #sharepoint URL
 
     if (drv$get_item(paste0(slug, "/", slug, "-planning_doc.docx"))$type!="drive item") {
-      drv$upload_file(src = paste0("files/", slug, "/", slug, "-planning_doc.docx"), 
+      drv$upload_file(src = paste0("files/", slug, "/", slug, "-planning_doc.docx"),
                     dest = paste0(slug, "/", slug, "-planning_doc.docx"))
     }
-    
+
     if (drv$get_item(paste0(slug, "/", slug, "-communication_doc.html"))$type!="drive item") {
-      drv$upload_file(src = paste0("files/", slug, "/", slug, "-communication_doc.docx"), 
+      drv$upload_file(src = paste0("files/", slug, "/", slug, "-communication_doc.docx"),
                       dest = paste0(slug, "/", slug, "-communication_doc.docx"))
     }
-    
+
     if (drv$get_item(paste0(slug, "/", slug, "-debriefing_doc.docx"))$type!="drive item") {
-      drv$upload_file(src = paste0("files/", slug, "/", slug, "-debriefing_doc.docx"), 
+      drv$upload_file(src = paste0("files/", slug, "/", slug, "-debriefing_doc.docx"),
                       dest = paste0(slug, "/", slug, "-debriefing_doc.docx"))
-      
+
     }
     save_post_sharepoint(ws_dat)
   }, finally = {
     #instr_team$create_channel(slug)
   })
-  
-  
+
+
 }
 
 
