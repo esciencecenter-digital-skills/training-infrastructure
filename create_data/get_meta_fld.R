@@ -1,12 +1,13 @@
+#' Get meta folder
+#' 
 #' Take the slug and return the corresponding URL where the meta files live for the workshop in question
-#' Input: 
-#'         slug: workshop slug
-#'         
-#' Ouput:
-#'         a variable meta_fld that has the URL to the meta folder in it 
-
+#'
+#' @param slug workshop slug
+#'
+#' @return a variable meta_fld that has the URL to the meta folder in it
+#' @export
+#'
 get_meta_fld <- function(slug) {
-  
   parallel_python_meta  <- "https://raw.githubusercontent.com/carpentries-incubator/lesson-parallel-python/gh-pages/_meta/"
   deep_learning_meta    <- "https://raw.githubusercontent.com/carpentries-incubator/deep-learning-intro/gh-pages/_meta/"
   containers_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/docker-introduction/gh-pages/_meta/"
