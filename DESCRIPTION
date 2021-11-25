@@ -1,0 +1,20 @@
+Package: traininginfrastructure
+Title: Automates the generation of our workshop's trainings
+Version: 0.0.0.9000
+Authors@R: 
+    c(
+      person(given = "Lieke",
+           family = "de Boer",
+           role = c("aut", "cre"),
+           email = "l.deboer@esciencecenter.nl"),
+      person(given = "Pablo",
+           family = "Rodríguez-Sánchez",
+           role = c("aut"),
+           email = "p.rodriguez-sanchez@esciencecenter.nl")
+      )
+Description: Each of our workshops requires some documents to work with. This package automates the generation of those documents.
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
