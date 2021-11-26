@@ -28,4 +28,5 @@ Imports:
     tidyverse,
     rmarkdown,
     knitr,
-    nominatim
+    nominatim,
+    stringr
