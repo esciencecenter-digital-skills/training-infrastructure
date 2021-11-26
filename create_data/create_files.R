@@ -1,11 +1,15 @@
+#' Create files
+#' 
+#' Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
+#'
+#' @param ws_dat information about the workshop to be inserted into the different documents
+#' @param meta_fld 
+#'
+#' @return no output, just saving files within the project directory
+#' @export
+#'
 create_files <- function(ws_dat, meta_fld) {
-  #' Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
-  #' Input: 
-  #'         ws_dat: information about the workshop to be inserted into the different documents
-  #'         
-  #' Ouput:
-  #'         no output, just saving files within the project directory. 
-    
+
 comm_doc_info <- list(YYYYMMDD              = as.character(ws_dat$startdate),
                       workshop              = ws_dat$title,
                       location              = ws_dat$address,

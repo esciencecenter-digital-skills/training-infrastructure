@@ -1,10 +1,13 @@
+#' Save to Sharepoint
+#'
+#' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
+#' 
+#' @param ws_dat a dataframe created based on the digital skills programme excel file
+#'
+#' @return a dataframe that should be saved as data.csv in the workshop folder in SharePoint
+#' @export
+#'
 save_sharepoint <- function(ws_dat) {
-  #' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
-  #' Input: 
-  #'         excelfile: a df created based on the digital skills programme excel file
-  #'         
-  #' Ouput:
-  #'         A dataframe that should be saved as data.csv in the workshop folder in SharePoin
   library(Microsoft365R)
   
   site <- list_teams()
