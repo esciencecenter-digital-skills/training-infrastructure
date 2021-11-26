@@ -99,10 +99,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### Discussion Points & Notes 
 
-* Select the Lead Instructor  
+* Confirm the Lead Instructor (chairs the meeting)
+* Assign note taker (one of the helpers)
 * Select curriculum  
 * Assign teaching  
 * Assign helpers’ roles (designated survivor, Zoom Host, Note taker)  
 * Assign Tasks in Planner, set deadlines. 
+* Decide on setup sessions
+* Additional pre-workshop survey questions needed?
 
 
