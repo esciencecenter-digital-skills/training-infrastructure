@@ -9,7 +9,7 @@ create_files(ws_dat, meta_fld)
 \arguments{
 \item{ws_dat}{information about the workshop to be inserted into the different documents}
 
-\item{meta_fld}{}
+\item{meta_fld}{the URL of the meta folder}
 }
 \value{
 no output, just saving files within the project directory
