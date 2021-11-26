@@ -13,12 +13,16 @@
 #-------------------------------------------
 
 library(traininginfrastructure)
+library(Microsoft365R)
+library(tidyverse)
+library(rio)
+library(nominatim)
 
 exec_dir <- dirname(rstudioapi::getSourceEditorContext()$path) #the dir this script is in
 setwd(exec_dir)
 
 tokens     <- read.delim("tokens.txt", header=F)
-token      <- str_split(tokens$V1, pattern=" ")[[1]][2]
+token      <- stringr::str_split(tokens$V1, pattern=" ")[[1]][2]
 
 instr_site <- get_sharepoint_site(site_url="https://nlesc.sharepoint.com/sites/instructors")
 drv        <- instr_site$get_drive()
