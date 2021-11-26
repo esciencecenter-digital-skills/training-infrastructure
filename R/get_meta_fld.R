@@ -18,7 +18,7 @@ get_meta_fld <- function(slug) {
   deep_learning_meta    <- "https://raw.githubusercontent.com/carpentries-incubator/deep-learning-intro/gh-pages/_meta/" #TODO: implement this
   # TODO: consider storing this as a table. Slugs in one column, URLs in the other
 
-  if (str_detect(slug, "ds-parallel")) {
+  if (str_detect(slug, "ds-parallel")) { #TODO: consider using slug == "ds-parallel" and dropping stringi::str_detect dependence
     meta_fld <- parallel_python_meta
   }
   else if (str_detect(slug, "ds-dl-intro")) {
@@ -41,6 +41,5 @@ get_meta_fld <- function(slug) {
   }
 
   return(meta_fld)
-
 
 }

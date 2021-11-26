@@ -27,7 +27,7 @@ token      <- stringr::str_split(tokens$V1, pattern=" ")[[1]][2]
 instr_site <- get_sharepoint_site(site_url="https://nlesc.sharepoint.com/sites/instructors")
 drv        <- instr_site$get_drive()
 ds_xlsx    <- drv$download_file("General/Digital Skills Workshops 2021.xlsx", overwrite = T) #get the latest version of the excel sheet and overwrite the previous download
-ds_xlsx    <- import("Digital Skills Workshops 2021.xlsx")
+ds_xlsx    <- import("Digital Skills Workshops 2021.xlsx") #TODO: save using a portable filename. Consider adding to .gitignore
 ds_xlsx    <- ds_xlsx[ds_xlsx$startdate >= Sys.time(), ] # only read workshop dates after today
 dat_struct <- get_future_workshops(ds_xlsx) # extracts relevant information for GH page from spreadsheet
 

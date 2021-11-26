@@ -33,8 +33,8 @@ get_future_workshops <- function(excelfile) {
            instructor = gsub(", NA", "", instructor),
            helper = paste(helper1, helper2, helper3, sep=", "),
            helper = gsub(", NA", "", helper),
-           latitude = ifelse(address=="online",NA, osm_search(address, key=token)$lat),
-           longitude = ifelse(address=="online",NA, osm_search(address, key=token)$lon)
+           latitude = ifelse(address=="online",NA, osm_search(address, key=token)$lat), #TODO: pass Open street maps token...
+           longitude = ifelse(address=="online",NA, osm_search(address, key=token)$lon) #... as a variable
     )
   return(dat_struct)
 }

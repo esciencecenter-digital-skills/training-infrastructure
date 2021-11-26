@@ -19,8 +19,8 @@ comm_doc_info <- list(YYYYMMDD              = as.character(ws_dat$startdate),
                       venue                 = ws_dat$venue,
                       time                  = paste(ws_dat$starttime, "-", ws_dat$endtime, as.character(strftime(ws_dat$startdate, format="%Z"))),
                       date                  = paste0(strftime(ws_dat$startdate, format="%a %b %d"), " - ", strftime(ws_dat$enddate, format="%a %b %d")),
-                      workshop_website      = paste0("[workshop website](","https://esciencecenter-digital-skills.github.io/", slug, ")"),
-                      workshop_website_url  = paste0("https://esciencecenter-digital-skills.github.io/", slug),
+                      workshop_website      = paste0("[workshop website](","https://esciencecenter-digital-skills.github.io/", slug, ")"), #TODO: Should this not ...
+                      workshop_website_url  = paste0("https://esciencecenter-digital-skills.github.io/", slug), # ... be ws_dat$slug instead of slug (happens again below)
                       month                 = strftime(ws_dat$startdate, format="%B"),
                       day_of_workshop       = strftime(ws_dat$startdate, format="%A, %b %d"),
                       start_time            = as.character(strftime(strptime(ws_dat$starttime, format = "%H:%M") -
