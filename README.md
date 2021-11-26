@@ -1,3 +1,5 @@
+[![R-CMD-check](https://github.com/esciencecenter-digital-skills/training-infrastructure/workflows/R-CMD-check/badge.svg)](https://github.com/esciencecenter-digital-skills/training-infrastructure/actions)
+
 # Traininginfrastructure
 
 ## Description
