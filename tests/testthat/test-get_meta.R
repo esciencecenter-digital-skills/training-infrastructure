@@ -15,4 +15,6 @@ test_that("get_meta_fld", {
   expect_equal(get_meta_fld("dc-socsci-python"),
                             "https://raw.githubusercontent.com/esciencecenter-digital-skills/carpentries_metadata/main/dc-socsci-python/")
 
+  expect_error(get_meta_fld("wrong-slug"))
+
 })

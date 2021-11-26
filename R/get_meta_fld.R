@@ -35,6 +35,9 @@ get_meta_fld <- function(slug) {
   }
   else if (str_detect(slug, "dc-socsci-python")) {
     meta_fld <- dc_python_socsci_meta
+  } else {
+    errMsg <- sprintf("The slug %s is not linked to any URL. Perhaps you mispelled it?", slug)
+    stop(errMsg)
   }
 
   return(meta_fld)
