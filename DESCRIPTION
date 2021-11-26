@@ -25,11 +25,17 @@ Imports:
     RCurl,
     rio,
     rstudioapi,
-    tidyverse,
     rmarkdown,
     knitr,
-    nominatim,
-    stringr
+    ggplot2,
+    tibble,
+    tidyr,
+    readr,
+    purrr,
+    dplyr,
+    stringr,
+    forcats,
+    nominatim
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
