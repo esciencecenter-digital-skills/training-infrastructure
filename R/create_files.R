@@ -6,6 +6,8 @@
 #' @param meta_fld the URL of the meta folder
 #'
 #' @return no output, just saving files within the project directory
+#'
+#' @import RCurl
 #' @export
 #'
 create_files <- function(ws_dat, meta_fld) {
