@@ -5,23 +5,28 @@
 #' @param excelfile A dataframe created based on the digital skills programme excel file
 #'
 #' @return A dataframe that should be saved as data.csv in the workshop folder in SharePoint
+#'
+#' @importFrom tidyr drop_na
+#' @importFrom dplyr mutate select
+#' @importFrom nominatim osm_search
+#' @importFrom purrr `%>%`
 #' @export
 #'
 get_future_workshops <- function(excelfile) {
   dat_struct <- excelfile %>% #read in excel file above
-    drop_na(title) %>% 
+    drop_na(title) %>%
     select(startdate, enddate, starttime, endtime, title, slug,
            lead_instructor, supporting_instructor1, supporting_instructor2,
            helper1, helper2, helper3,
            carpentry, curriculum, flavor, host,
            venue, address, country,
-           eventbrite, repository, ready) %>% 
+           eventbrite, repository, ready) %>%
     mutate(startdate = as.POSIXlt(startdate, tz="Europe/Amsterdam", format="%Y-%m-%d"), #convert to our timezone so CET or CEST is displayed in humandate
-           enddate = as.POSIXlt(enddate, tz="Europe/Amsterdam",format="%Y-%m-%d"), 
+           enddate = as.POSIXlt(enddate, tz="Europe/Amsterdam",format="%Y-%m-%d"),
            humandate = ifelse(months(startdate)==months(enddate), #this includes the month for end date only when workshop go over month switch
-                              paste0(format(startdate, format="%B %d -"), 
-                                     format(enddate, format=" %d, %Y")), 
-                              paste0(format(startdate, format="%B %d -"), 
+                              paste0(format(startdate, format="%B %d -"),
+                                     format(enddate, format=" %d, %Y")),
+                              paste0(format(startdate, format="%B %d -"),
                                      format(enddate, format=" %B %d, %Y"))),
            humantime = paste0(starttime, " - ", endtime, format(enddate, format=" %Z")),
            instructor = paste(lead_instructor, supporting_instructor1, supporting_instructor2, sep = ", "),

@@ -21,20 +21,13 @@ RoxygenNote: 7.1.1
 Remotes: hrbrmstr/nominatim@5c2baa9
 Imports: 
     Microsoft365R,
-    officer,
     RCurl,
-    rio,
-    rstudioapi,
-    rmarkdown,
-    knitr,
-    ggplot2,
-    tibble,
     tidyr,
     readr,
     purrr,
     dplyr,
     stringr,
-    forcats,
+    rmarkdown,
     nominatim
 Suggests: 
     testthat (>= 3.0.0)

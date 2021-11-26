@@ -6,7 +6,7 @@
 #'
 #' @return a dataframe that should be saved as data.csv in the workshop folder in SharePoint
 #'
-#' @import Microsoft365R
+#' @importFrom Microsoft365R get_sharepoint_site get_team list_teams
 #' @export
 #'
 save_sharepoint <- function(ws_dat) {
