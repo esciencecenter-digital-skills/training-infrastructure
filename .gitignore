@@ -83,3 +83,4 @@ Thumbs.db
 tokens.txt
 data.csv
 *.docx
+.Rproj.user

@@ -1,10 +1,14 @@
+#' Save viable data
+#' 
+#' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
+#'
+#' @param dat_struct a dataframe created based on the digital skills programme excel file
+#'
+#' @return data.csv files saved in folders with the slug name
+#' @export
+#'
+#' @examples
 save_viable_data <- function(dat_struct) {
-  #' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
-  #' Input: 
-  #'         dat_struct: a df created based on the digital skills programme excel file
-  #'         
-  #' Ouput:
-  #'         data.csv files saved in folders with the slug name
   
   viable_slugs <- dat_struct$slug[nchar(dat_struct$slug)>10] #only bother with slugs longer than 10 characters
   workshop_dirs <- file.path(paste0(exec_dir, '/files'), viable_slugs) # create filepath from current directory + slug
