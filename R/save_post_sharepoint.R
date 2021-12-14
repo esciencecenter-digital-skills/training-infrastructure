@@ -24,7 +24,7 @@ save_sharepoint <- function(ws_dat) {
   Helper3 = tryCatch({instr_team$get_member(ws_dat$helper3)}, error = function(e) NULL)
 
   instr_team<-get_team("Instructors")
-  workshop_channel<-instr_team$get_channel(slug)
+  workshop_channel<-instr_team$get_channel(ws_dat$slug)
 
   workshop_channel$send_message(body = paste("Hello all, this is the channel for", slug),
                                 mentions = c(Lead_instructor, Supp_instr1, Supp_instr2, Helper1, Helper2, Helper3, Mateusz, Lieke),
@@ -32,6 +32,6 @@ save_sharepoint <- function(ws_dat) {
 
   instr_site <-get_sharepoint_site(site_url="https://nlesc.sharepoint.com/sites/instructors")
   drv <- instr_site$get_drive()
-  drv$upload_file(src=paste0("files/", slug, "/data.csv"), dest=paste0(slug, "/data.csv"))
+  drv$upload_file(src=paste0("files/", ws_dat$slug, "/data.csv"), dest=paste0(ws_dat$slug, "/data.csv"))
 
 }
