@@ -19,14 +19,14 @@ comm_doc_info <- list(YYYYMMDD              = as.character(ws_dat$startdate),
                       venue                 = ws_dat$venue,
                       time                  = paste(ws_dat$starttime, "-", ws_dat$endtime, as.character(strftime(ws_dat$startdate, format="%Z"))),
                       date                  = paste0(strftime(ws_dat$startdate, format="%a %b %d"), " - ", strftime(ws_dat$enddate, format="%a %b %d")),
-                      workshop_website      = paste0("[workshop website](","https://esciencecenter-digital-skills.github.io/", slug, ")"), #TODO: Should this not ...
-                      workshop_website_url  = paste0("https://esciencecenter-digital-skills.github.io/", slug), # ... be ws_dat$slug instead of slug (happens again below)
+                      workshop_website      = paste0("[workshop website](","https://esciencecenter-digital-skills.github.io/", ws_dat$slug, ")"),
+                      workshop_website_url  = paste0("https://esciencecenter-digital-skills.github.io/", ws_dat$slug),
                       month                 = strftime(ws_dat$startdate, format="%B"),
                       day_of_workshop       = strftime(ws_dat$startdate, format="%A, %b %d"),
                       start_time            = as.character(strftime(strptime(ws_dat$starttime, format = "%H:%M") -
                                                                 as.difftime(15, units="mins"), format="%H:%M")), #encourage 15 minutes before start showup.
                       registration_page     = paste0("[registration page](","https://www.eventbrite.co.uk/e/", ws_dat$eventbrite, ")"),
-                      setup_instructions    = paste0("[setup instructions](","https://esciencecenter-digital-skills.github.io/", slug, "/#setup" ,")"),
+                      setup_instructions    = paste0("[setup instructions](","https://esciencecenter-digital-skills.github.io/", ws_dat$slug, "/#setup" ,")"),
                       registration_page_url = paste0("https://www.eventbrite.co.uk/e/", ws_dat$eventbrite),
                       description           = getURL(paste0(meta_fld, "description.md"), .encoding = "UTF-8"),
                       who                   = getURL(paste0(meta_fld, "who.md"), .encoding = "UTF-8"),
