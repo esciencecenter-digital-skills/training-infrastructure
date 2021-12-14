@@ -14,7 +14,8 @@
 #' @examples
 save_viable_data <- function(dat_struct) {
 
-  viable_slugs <- dat_struct$slug[nchar(dat_struct$slug)>10] #only bother with slugs longer than 10 characters
+  viable_slugs  <- dat_struct[!is.na(dat_struct$slug), ]
+  viable_slugs <- viable_slugs$slug #only bother with slugs longer than 10 characters
   workshop_dirs <- file.path(paste0(exec_dir, '/files'), viable_slugs) # create filepath from current directory + slug
   sapply(workshop_dirs, dir.create) # create those directories
 
