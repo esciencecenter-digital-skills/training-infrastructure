@@ -84,3 +84,4 @@ tokens.txt
 data.csv
 *.docx
 .Rproj.user
+*.xlsx
