@@ -12,10 +12,14 @@
 get_meta_fld <- function(slug) {
   parallel_python_meta  <- "https://raw.githubusercontent.com/carpentries-incubator/lesson-parallel-python/gh-pages/_meta/"
   containers_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/docker-introduction/gh-pages/_meta/"
-  rpackaging_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/lesson-R-packaging/gh-pages/_meta/"
-  gpu_meta              <- "https://raw.githubusercontent.com/carpentries-incubator/lesson-gpu-programming/gh-pages/_meta/"
-  dc_python_socsci_meta <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/carpentries_metadata/main/dc-socsci-python/"
-  deep_learning_meta    <- "https://raw.githubusercontent.com/carpentries-incubator/deep-learning-intro/gh-pages/_meta/" #TODO: implement this
+  rpackaging_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-rpackaging/"
+  gpu_meta              <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-gpu/"
+  dc_python_socsci_meta <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/dc-socsci-python/"
+  deep_learning_meta    <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-dl-intro/"
+  coderefine_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-cr/" #TODO: implement this
+  astronomy_meta        <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/dc-astronomy/"
+
+
   # TODO: consider storing this as a table. Slugs in one column, URLs in the other
 
   if (str_detect(slug, "ds-parallel")) { #TODO: consider using slug == "ds-parallel" and dropping stringi::str_detect dependence
@@ -33,9 +37,16 @@ get_meta_fld <- function(slug) {
   else if (str_detect(slug, "ds-gpu")) {
     meta_fld <- gpu_meta
   }
+  else if (str_detect(slug, "ds-cr")) {
+    meta_fld <- coderefine_meta
+  }
   else if (str_detect(slug, "dc-socsci-python")) {
     meta_fld <- dc_python_socsci_meta
-  } else {
+  }
+  else if (str_detect(slug, "dc-astronomy")) {
+    meta_fld <- astronomy_meta
+  }
+  else {
     errMsg <- sprintf("The slug %s is not linked to any URL. Perhaps you mispelled it?", slug)
     stop(errMsg)
   }

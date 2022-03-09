@@ -33,7 +33,12 @@ comm_doc_info <- list(YYYYMMDD              = as.character(ws_dat$startdate),
                       syllabus              = getURL(paste0(meta_fld, "syllabus.md"), .encoding = "UTF-8"),
                       synopsis              = getURL(paste0(meta_fld, "synopsis.md"), .encoding = "UTF-8"),
                       advertisement         = getURL(paste0(meta_fld, "advertisement.md"),.encoding = "UTF-8"),
+                      setup                 = getURL(paste0(meta_fld, "setup.md"), .encoding = "UTF-8"),
+                      lesson_url_ref        = paste0("[here](", getURL(paste0(meta_fld, "lesson-url.md"), .encoding = "UTF-8"), ")"),
+                      lesson_url            = getURL(paste0(meta_fld, "lesson-url.md"), .encoding = "UTF-8"),
                       set_title             = paste(ws_dat$slug, "communication document"),
+                      repo                  = paste0("https://github.com/esciencecenter-digital-skills/", ws_dat$slug),
+                      repo_ref              = paste0("[workshop repository](","https://github.com/esciencecenter-digital-skills/", ws_dat$slug, "/files" ,")"),
                       show_text             = TRUE)
 
 render_comm = function(comm_doc_info) {

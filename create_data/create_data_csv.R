@@ -38,7 +38,7 @@ instr_team <- get_team("Instructors")
 
 for (i in 1:length(ready_future)) {
   slug <- ready_future[i]
-  ws_dat <- dat_struct[dat_struct$slug==slug,]
+  ws_dat <- dat_struct[(dat_struct$slug==slug),]
   meta_fld <- get_meta_fld(slug)
 
   result = tryCatch({
@@ -55,7 +55,7 @@ for (i in 1:length(ready_future)) {
                     dest = paste0(slug, "/", slug, "-planning_doc.docx"))
     }
 
-    if (drv$get_item(paste0(slug, "/", slug, "-communication_doc.html"))$type!="drive item") {
+    if (drv$get_item(paste0(slug, "/", slug, "-communication_doc.docs"))$type!="drive item") {
       drv$upload_file(src = paste0("files/", slug, "/", slug, "-communication_doc.docx"),
                       dest = paste0(slug, "/", slug, "-communication_doc.docx"))
     }
