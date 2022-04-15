@@ -34,10 +34,6 @@ params:
   show_text: yes
 ---
 
-
-
-- eventbrite: photographs, lunch, dietary requirements, drinks
-
 ---
 title: `r params$set_title`
 ---
@@ -54,12 +50,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ### Title: `r params$workshop`  
 `r params$date`, `r params$venue`, on location in person
 
-**Please note that this workshop will take place in person, unless new COVID-19 restrictions are put in place.** The venue for this workshop is located at `r params$location``
-
 ### Eventbrite short description (140 characters)  
 `r params$synopsis`
   
 ### Eventbrite long description (around 150 words)  
+**This workshop will be delivered in person, unless new COVID-19 restrictions are put in place.** The workshop will take place at `r params$location`. 
+
 `r params$description`
 
 The workshop is based on the teaching style of the Carpentries, and learners will follow along while the instructors write the code on screen. More information can be found on the `r params$workshop_website`.  
@@ -67,7 +63,7 @@ The workshop is based on the teaching style of the Carpentries, and learners wil
 ### Audience: 
 The workshop is open and free to all researchers in the Netherlands. The workshop is aimed at PhD candidates and other researchers or research software engineers.  
 
-### Prerequisite knowledge: 
+### Prerequisites: 
 `r params$who`
 
 ### Requirements: 
@@ -83,9 +79,9 @@ The workshop is open and free to all researchers in the Netherlands. The worksho
 
 Hello,  
 
-The Netherlands eScience Center is organizing an online workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
+The Netherlands eScience Center is organizing a workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
 
-**Please note that this workshop will take place in person, unless new COVID-19 restrictions are put in place.** The venue for this workshop is located at `r params$location`.
+**This workshop will be delivered in person, unless new COVID-19 restrictions are put in place.** The workshop will take place at `r params$location`. 
 
 **`r params$workshop`**  
 `r params$date`  
@@ -115,9 +111,9 @@ Links
 
 Hello,  
 
-The Netherlands eScience Center is organizing an online workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
+The Netherlands eScience Center is organizing a workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
 
-**Please note that this workshop will take place in person, unless new COVID-19 restrictions are put in place.** The venue for this workshop is located at `r params$location`.
+**This workshop will be delivered in person, unless new COVID-19 restrictions are put in place.** The workshop will take place at `r params$location`. 
 
 **`r params$workshop`**  
 `r params$date`  
@@ -176,8 +172,8 @@ Sacha van Breugel
 Links  
 [1] [pre-workshop survey link]  
 [2] `r paste0(params$workshop_website_url, '/#setup')`  
-[3] directions
-[4] https://www.eventbrite.com/support/articles/en_US/How_To/how-to-cancel-your-free-registration  
+[3] directions 
+[4] https://www.eventbrite.com/support/articles/en_US/How_To/how-to-cancel-your-free-registration   
 [5] `r params$workshop_website_url`  
 
 `* In case restrictions that make in-person workshops impossible are put in place due to COVID-19, this workshop will be moved online. The schedule for the online workshop will be different from the in-person workshop. 
@@ -227,7 +223,7 @@ Sacha van Breugel
 Links  
 [1] [post-workshop survey link]  
 [2] `r paste0(params$repo, "files")` 
-[3] `r params$lesson_url` 
+[3] `r params$lesson_url`  
 [4] https://twitter.com/esciencecenter   
 [5] https://www.esciencecenter.nl/digital-skills/  
 [6] https://esciencecenter.us8.list-manage.com/subscribe/post?u=a0a563ca342f1949246a9f92f&id=31bfc2303d 

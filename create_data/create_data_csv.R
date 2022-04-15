@@ -41,31 +41,27 @@ for (i in 1:length(ready_future)) {
   ws_dat <- dat_struct[(dat_struct$slug==slug),]
   meta_fld <- get_meta_fld(slug)
 
-  result = tryCatch({
-    instr_team$get_channel(slug)
-    ws_dat$newch <- instr_team$get_channel(slug)$get_folder()$properties$webUrl #sharepoint URL
+  instr_team$create_channel(slug)
 
-    if (drv$get_item(paste0(slug, "/", slug, "-planning_doc.docx"))$type!="drive item") {
-      drv$upload_file(src = paste0("files/", slug, "/", slug, "-planning_doc.docx"),
-                      dest = paste0(slug, "/", slug, "-planning_doc.docx"))
-    }
+  ws_dat$newch <- instr_team$get_channel(slug)$get_folder()$properties$webUrl #sharepoint URL
+  create_files(ws_dat, meta_fld)
 
-    if (drv$get_item(paste0(slug, "/", slug, "-debriefing_doc.docx"))$type!="drive item") {
-      drv$upload_file(src = paste0("files/", slug, "/", slug, "-debriefing_doc.docx"),
-                      dest = paste0(slug, "/", slug, "-debriefing_doc.docx"))
+  if (drv$get_item(paste0(slug, "/", slug, "-communication_doc.docx"))$type!="drive item") {
+    drv$upload_file(src = paste0("files/", slug, "/", slug, "-communication_doc.docx"),
+                    dest = paste0(slug, "/", slug, "-communication_doc.docx"))
   }
-    save_post_sharepoint(ws_dat)
-  }, error = function(e) {
-    create_files(ws_dat, meta_fld)
 
-    print(paste0("trying to retrieve channel '", slug, "' threw this ", e, " Did you create the channel?."))
+  if (drv$get_item(paste0(slug, "/", slug, "-planning_doc.docx"))$type!="drive item") {
+    drv$upload_file(src = paste0("files/", slug, "/", slug, "-planning_doc.docx"),
+                    dest = paste0(slug, "/", slug, "-planning_doc.docx"))
+  }
 
-  }, finally = {
-    #instr_team$create_channel(slug)
-  })
-
-
+  if (drv$get_item(paste0(slug, "/", slug, "-debriefing_doc.docx"))$type!="drive item") {
+    drv$upload_file(src = paste0("files/", slug, "/", slug, "-debriefing_doc.docx"),
+                    dest = paste0(slug, "/", slug, "-debriefing_doc.docx"))
+  }
+  save_post_sharepoint(ws_dat)
 }
-
+#instr_team$create_channel(slug))
 
 

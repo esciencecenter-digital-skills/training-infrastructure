@@ -1,4 +1,4 @@
-#' Create files
+#' fill comms doc
 #'
 #' Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
 #'
@@ -14,20 +14,20 @@
 #'
 fill_comms_doc <- function(comms_doc_info, meta_fld) {
 
-comm_doc_info <- list(YYYYMMDD              = as.character(ws_dat$startdate),
-                      workshop              = ws_dat$title,
-                      location              = ws_dat$address,
-                      venue                 = ws_dat$venue,
-                      time                  = paste(ws_dat$starttime, "-", ws_dat$endtime, as.character(strftime(ws_dat$startdate, format="%Z"))),
-                      date                  = paste0(strftime(ws_dat$startdate, format="%a %b %d"), " - ", strftime(ws_dat$enddate, format="%a %b %d")),
-                      workshop_website      = paste0("[workshop website](","https://esciencecenter-digital-skills.github.io/", ws_dat$slug, ")"),
-                      workshop_website_url  = paste0("https://esciencecenter-digital-skills.github.io/", ws_dat$slug),
-                      month                 = strftime(ws_dat$startdate, format="%B"),
-                      day_of_workshop       = strftime(ws_dat$startdate, format="%A, %b %d"),
-                      start_time            = as.character(strftime(strptime(ws_dat$starttime, format = "%H:%M") -
+comm_doc_info <- list(YYYYMMDD              = as.character(comms_doc_info$startdate),
+                      workshop              = getURL(paste0(meta_fld, "title.md"), .encoding = "UTF-8"),
+                      location              = comms_doc_info$address,
+                      venue                 = comms_doc_info$venue,
+                      time                  = paste(comms_doc_info$starttime, "-", comms_doc_info$endtime, as.character(strftime(comms_doc_info$startdate, format="%Z"))),
+                      date                  = paste0(strftime(comms_doc_info$startdate, format="%A, %e %b"), " - ", strftime(comms_doc_info$enddate, format=" %A, %e %b")),
+                      workshop_website      = paste0("[workshop website](","https://esciencecenter-digital-skills.github.io/", comms_doc_info$slug, ")"),
+                      workshop_website_url  = paste0("https://esciencecenter-digital-skills.github.io/", comms_doc_info$slug),
+                      month                 = strftime(comms_doc_info$startdate, format="%B"),
+                      day_of_workshop       = strftime(comms_doc_info$startdate, format="%A, %e %b"),
+                      start_time            = as.character(strftime(strptime(comms_doc_info$starttime, format = "%H:%M") -
                                                                 as.difftime(15, units="mins"), format="%H:%M")), #encourage 15 minutes before start showup.
-                      registration_page     = paste0("[registration page](","https://www.eventbrite.co.uk/e/", ws_dat$eventbrite, ")"),
-                      setup_instructions    = paste0("[setup instructions](","https://esciencecenter-digital-skills.github.io/", ws_dat$slug, "/#setup" ,")"),
+                      registration_page     = paste0("[registration page](","https://www.eventbrite.co.uk/e/", comms_doc_info$eventbrite, ")"),
+                      setup_instructions    = paste0("[setup instructions](","https://esciencecenter-digital-skills.github.io/", comms_doc_info$slug, "/#setup" ,")"),
                       description           = getURL(paste0(meta_fld, "description.md"), .encoding = "UTF-8"),
                       who                   = getURL(paste0(meta_fld, "who.md"), .encoding = "UTF-8"),
                       syllabus              = getURL(paste0(meta_fld, "syllabus.md"), .encoding = "UTF-8"),
@@ -36,15 +36,15 @@ comm_doc_info <- list(YYYYMMDD              = as.character(ws_dat$startdate),
                       setup                 = getURL(paste0(meta_fld, "setup.md"), .encoding = "UTF-8"),
                       lesson_url_ref        = paste0("[here](", getURL(paste0(meta_fld, "lesson-url.md"), .encoding = "UTF-8"), ")"),
                       lesson_url            = getURL(paste0(meta_fld, "lesson-url.md"), .encoding = "UTF-8"),
-                      set_title             = paste(ws_dat$slug, "communication document"),
-                      repo                  = paste0("https://github.com/esciencecenter-digital-skills/", ws_dat$slug),
-                      repo_ref              = paste0("[workshop repository](","https://github.com/esciencecenter-digital-skills/", ws_dat$slug, "/files" ,")"),
+                      set_title             = paste(comms_doc_info$slug, "communication document"),
+                      repo                  = paste0("https://github.com/esciencecenter-digital-skills/", comms_doc_info$slug),
+                      repo_ref              = paste0("[workshop repository](","https://github.com/esciencecenter-digital-skills/", comms_doc_info$slug, "/files" ,")"),
                       show_text             = TRUE)
 
-if (str_detect(ws_dat$address, "online")) {
+if (str_detect(comms_doc_info$address, "online")) {
   comm_doc_template = "files/communication_doc_online.Rmd"}
 else {
-  warning(paste0(ws_dat$slug, ": address field is not set to *online*, assuming in-person workshop"))
+  warning(paste0(comms_doc_info$slug, ": address field is not set to *online*, assuming in-person workshop"))
   comm_doc_template = "files/communication_doc_irl.Rmd"
 }
 
@@ -52,7 +52,7 @@ render_comm = function(comm_doc_info) {
   render(
     comm_doc_template,
     params = comm_doc_info,
-    output_file = paste0(ws_dat$slug, '/', ws_dat$slug, "-communication_doc.docx")
+    output_file = paste0(comms_doc_info$slug, '/', comms_doc_info$slug, "-communication_doc.docx")
   )
 }
 
