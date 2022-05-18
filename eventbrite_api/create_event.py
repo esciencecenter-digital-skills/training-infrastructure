@@ -38,7 +38,7 @@ def cli():
 
     # Send the request
     request = requests.post(f'https://www.eventbriteapi.com/v3/events/{args.event_id}/', data=event_data_json, headers=headers)
-    print(request)
+    print("Refresh the event page on eventbrite!")
 
 if __name__ == "__main__":
     cli()
