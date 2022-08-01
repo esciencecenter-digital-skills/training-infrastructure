@@ -61,7 +61,7 @@ knitr::opts_chunk$set(echo = TRUE)
 The workshop is based on the teaching style of the Carpentries, and learners will follow along while the instructors write the code on screen. More information can be found on the `r params$workshop_website`.  
   
 ### Audience: 
-The workshop is open and free to all researchers in the Netherlands. The workshop is aimed at PhD candidates and other researchers or research software engineers.  
+The workshop is open and free to all researchers in the Netherlands at PhD candidate level and higher. We do not accept registrations by Master students. The workshop is aimed at PhD candidates and other researchers or research software engineers.  
 
 ### Prerequisites: 
 `r params$who`
@@ -79,7 +79,7 @@ The workshop is open and free to all researchers in the Netherlands. The worksho
 
 Hello,  
 
-The Netherlands eScience Center is organizing a workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
+The Netherlands eScience Center is organizing a workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands at PhD candidate level and higher. We do not accept registrations by Master students.
 
 **This workshop will be delivered in person, unless new COVID-19 restrictions are put in place.** The workshop will take place at `r params$location`. 
 
@@ -111,7 +111,7 @@ Links
 
 Hello,  
 
-The Netherlands eScience Center is organizing a workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands. 
+The Netherlands eScience Center is organizing a workshop in `r params$month`. The topic is “`r params$workshop`”. The workshop is open and free to all researchers in the Netherlands at PhD candidate level and higher. We do not accept registrations by Master students. 
 
 **This workshop will be delivered in person, unless new COVID-19 restrictions are put in place.** The workshop will take place at `r params$location`. 
 
@@ -214,7 +214,7 @@ If you have any other feedback about the workshop, or would like to get involved
   
 You can also follow us on [Twitter](https://twitter.com/esciencecenter) [4]. We are continuously organising training events. You can find the list of upcoming events on the Center’s [website](https://www.esciencecenter.nl/digital-skills/) [5].  
   
-We would also like to encourage you to subscribe to our [email updates](https://esciencecenter.us8.list-manage.com/subscribe/post?u=a0a563ca342f1949246a9f92f&id=31bfc2303d) [6] and select an Invitation for Workshops option to get invited to training and related events organised by the Netherlands eScience Center.
+We would also like to encourage you to subscribe to our [email updates](http://eepurl.com/dtjzwP) [6] and select an Invitation for Workshops option to get invited to training and related events organised by the Netherlands eScience Center.
 
 On behalf of the eScience Center Training Team,
 
@@ -226,6 +226,6 @@ Links
 [3] `r params$lesson_url`  
 [4] https://twitter.com/esciencecenter   
 [5] https://www.esciencecenter.nl/digital-skills/  
-[6] https://esciencecenter.us8.list-manage.com/subscribe/post?u=a0a563ca342f1949246a9f92f&id=31bfc2303d 
+[6] http://eepurl.com/dtjzwP
 
 

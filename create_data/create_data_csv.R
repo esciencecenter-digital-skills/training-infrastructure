@@ -38,7 +38,7 @@ instr_team <- get_team("Instructors")
 
 for (i in 1:length(ready_future)) {
   slug <- ready_future[i]
-  ws_dat <- dat_struct[(dat_struct$slug==slug),]
+  ws_dat <- dat_struct[which(dat_struct$slug==slug),]
   meta_fld <- get_meta_fld(slug)
 
   instr_team$create_channel(slug)
