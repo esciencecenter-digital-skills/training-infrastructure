@@ -9,7 +9,7 @@
 #' @importFrom Microsoft365R get_sharepoint_site get_team list_teams
 #' @export
 #'
-save_sharepoint <- function(ws_dat) {
+save_post_sharepoint <- function(ws_dat) {
 
   site <- list_teams()
   Mateusz <- instr_team$get_member("Mateusz Kuzak")
