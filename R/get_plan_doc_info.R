@@ -3,13 +3,12 @@
 #' Get the specific information for the upcoming workshop so it can be used in the planning doc
 #'
 #' @param ws_dat information about the workshop to be inserted into the planning document
-#' @param meta_fld the URL of the meta folder
 #'
 #' @return planning doc information to be used in rendering the doc
 #'
 #' @export
 #'
-get_plan_doc_info <- function(ws_dat, meta_fld) {
+get_plan_doc_info <- function(ws_dat) {
 
   plan_doc_info <- list(
     YYYYMMDD = as.character(ws_dat$startdate),
