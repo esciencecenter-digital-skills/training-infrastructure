@@ -1,18 +1,15 @@
-#' Create files
+#' Get planning doc info
 #'
-#' Take the template Rmd planning doc and save it as a docx with specific information for the
-#' upcoming workshop
+#' Get the specific information for the upcoming workshop so it can be used in the planning doc
 #'
 #' @param ws_dat information about the workshop to be inserted into the planning document
 #' @param meta_fld the URL of the meta folder
 #'
-#' @return no output, just saving files within the project directory
+#' @return planning doc information to be used in rendering the doc
 #'
-#' @importFrom RCurl getURL
-#' @importFrom rmarkdown render
 #' @export
 #'
-fill_planning_doc <- function(ws_dat, meta_fld) {
+get_plan_doc_info <- function(ws_dat, meta_fld) {
 
   plan_doc_info <- list(
     YYYYMMDD = as.character(ws_dat$startdate),
@@ -35,4 +32,5 @@ fill_planning_doc <- function(ws_dat, meta_fld) {
     helper = ws_dat$helper,
     show_text = TRUE
   )
+  return(plan_doc_info)
   }
