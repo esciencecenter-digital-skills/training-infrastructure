@@ -26,6 +26,7 @@ Imports:
     readr,
     purrr,
     dplyr,
+    rio,
     stringr,
     rmarkdown,
     nominatim
