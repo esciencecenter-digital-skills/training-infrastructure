@@ -4,7 +4,7 @@
 #'
 #' @param plan_doc_info information about the workshop to be inserted into the planning document
 #'
-#' @return planning doc information to be used in rendering the doc
+#' @return no output, just save the doc
 #'
 #' @importFrom RCurl getURL
 #' @importFrom rmarkdown render
