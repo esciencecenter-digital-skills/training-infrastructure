@@ -6,14 +6,10 @@
 #'
 #' @return no output, just save the doc
 #'
-#' @importFrom RCurl getURL
-#' @importFrom rmarkdown render
-#' @importFrom training-infrastructure get_plan_doc_info
-#'
 #' @export
 
 render_plan <- function(plan_doc_info) {
-  render(
+  rmarkdown::render(
     "files/planning_doc.Rmd",
     params = plan_doc_info,
     output_file = paste0(plan_doc_info$slug, '/', plan_doc_info$slug, "-planning_doc.docx")
