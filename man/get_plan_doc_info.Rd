@@ -7,12 +7,12 @@
 get_plan_doc_info(ws_dat)
 }
 \arguments{
-\item{ws_dat}{information read from Holy Excel sheet: dataframe with
+\item{ws_dat}{workshop data: information read from Holy Excel sheet: dataframe with
 information about the workshop - used to set up the planning document}
 }
 \value{
 planning doc information to be used in rendering the doc
 }
 \description{
-Get the specific information for the upcoming workshop so it can be used in the planning doc
+Get specific information for a workshop needed to set up the planning document.
 }
