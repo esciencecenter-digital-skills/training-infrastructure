@@ -1,4 +1,4 @@
-#' fill comms doc
+#' Get information for communications document
 #'
 #' Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
 #'
