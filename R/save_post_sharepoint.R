@@ -15,7 +15,6 @@ save_post_sharepoint <- function(ws_dat) {
   Mateusz <- instr_team$get_member("Mateusz Kuzak")
   Lieke <- instr_team$get_member("Lieke de Boer")
 
-
   Lead_instructor = tryCatch({instr_team$get_member(ws_dat$lead_instructor)}, error = function(e) NULL)
   Supp_instr1 = tryCatch({instr_team$get_member(ws_dat$supporting_instructor1)}, error = function(e) NULL)
   Supp_instr2 = tryCatch({instr_team$get_member(ws_dat$supporting_instructor2)}, error = function(e) NULL)
