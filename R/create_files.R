@@ -1,4 +1,4 @@
-#' #' Create files
+#' Create files
 #'
 #' Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
 #'
