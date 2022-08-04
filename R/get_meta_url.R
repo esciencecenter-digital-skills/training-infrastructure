@@ -4,7 +4,7 @@
 #'
 #' @param slug workshop slug
 #'
-#' @return a variable meta_url that has the URL to the meta folder in it
+#' @return url to the folder containing workshop metadata
 #'
 #'
 get_meta_url <- function(slug) {
