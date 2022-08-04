@@ -1,6 +1,6 @@
 #' Get debriefing doc info
 #'
-#' Get the specific information for the upcoming workshop so it can be used in the debriefing doc
+#' Get specific information for a workshop needed to set up the debriefing document.
 #'
 #' @param ws_dat information about the workshop to be inserted into the debriefing document
 #'
