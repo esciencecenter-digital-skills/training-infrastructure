@@ -2,13 +2,13 @@
 #'
 #' Take the markdown file and render a word planning doc to be used in workshops
 #'
-#' @param debrief_doc_info information about the workshop to be inserted into the debriefing document
+#' @param info information about the workshop to be inserted into the debriefing document
 #'
 #' @return no output, just save the doc
 #'
 #' @export
 
-render_debrief_doc = function(debrief_doc_info) {
+render_debrief_doc = function(info) {
   rmarkdown::render(
     "files/debriefing_doc.Rmd",
     params = debrief_doc_info,

@@ -2,13 +2,13 @@
 #'
 #' Take the markdown file and render a word planning doc to be used in workshops
 #'
-#' @param plan_doc_info information about the workshop to be inserted into the planning document
+#' @param info information about the workshop used to set up the planning document
 #'
 #' @return no output, just save the doc
 #'
 #' @export
 
-render_plan <- function(plan_doc_info) {
+render_plan <- function(info) {
   rmarkdown::render(
     "files/planning_doc.Rmd",
     params = plan_doc_info,
