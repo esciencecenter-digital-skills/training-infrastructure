@@ -7,7 +7,6 @@
 #'
 #' @return no output, just saving files within the project directory
 #'
-#' @importFrom rmarkdown render
 #' @export
 #'
 create_files <- function(ws_dat, meta_fld) {
