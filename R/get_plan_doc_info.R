@@ -12,8 +12,8 @@
 get_plan_doc_info <- function(ws_dat) {
 
   plan_doc_info <- list(
-    YYYYMMDD = as.character(ws_dat$startdate),
-    sharepoint = paste0("[Sharepoint](", ws_dat$newch, ")"),
+    YYYYMMDD = as.character(info$startdate),
+    sharepoint = paste0("[Sharepoint](", info$newch, ")"),
     workshop_website = paste0(
       "[workshop website](",
       "https://esciencecenter-digital-skills.github.io/",
@@ -23,13 +23,13 @@ get_plan_doc_info <- function(ws_dat) {
     registration_page = paste0(
       "[registration page](",
       "https://www.eventbrite.co.uk/e/",
-      ws_dat$eventbrite,
+      info$eventbrite,
       ")"
     ),
-    set_title = paste(ws_dat$slug, "planning document"),
-    lead_instructor = ws_dat$lead_instructor,
-    instructor = ws_dat$instructor,
-    helper = ws_dat$helper,
+    set_title = paste(info$slug, "planning document"),
+    lead_instructor = info$lead_instructor,
+    instructor = info$instructor,
+    helper = info$helper,
     show_text = TRUE
   )
   return(plan_doc_info)
