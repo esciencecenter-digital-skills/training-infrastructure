@@ -2,7 +2,8 @@
 #'
 #' Get specific information for a workshop needed to set up the debriefing document.
 #'
-#' @param ws_dat information about the workshop to be inserted into the debriefing document
+#' @param ws_dat information read from Holy Excel sheet: dataframe with
+#' information about the workshop - used to set up the debriefing document
 #'
 #' @return debrief doc information to be used in rendering the doc
 #'
