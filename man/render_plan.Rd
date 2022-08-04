@@ -4,10 +4,10 @@
 \alias{render_plan}
 \title{Render planning doc}
 \usage{
-render_plan(plan_doc_info)
+render_plan(info)
 }
 \arguments{
-\item{plan_doc_info}{information about the workshop to be inserted into the planning document}
+\item{info}{information about the workshop used to set up the planning document}
 }
 \value{
 no output, just save the doc

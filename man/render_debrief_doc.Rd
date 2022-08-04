@@ -4,10 +4,10 @@
 \alias{render_debrief_doc}
 \title{Render debriefing doc}
 \usage{
-render_debrief_doc(debrief_doc_info)
+render_debrief_doc(info)
 }
 \arguments{
-\item{debrief_doc_info}{information about the workshop to be inserted into the debriefing document}
+\item{info}{information about the workshop to be inserted into the debriefing document}
 }
 \value{
 no output, just save the doc
