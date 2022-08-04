@@ -1,3 +1,6 @@
+#' @import Microsoft365R
+NULL
+
 #' Read a file from the SharePoint drive into R
 #'
 #' This function combines the `Microsoft365R::get_sharepoint_site()` function
