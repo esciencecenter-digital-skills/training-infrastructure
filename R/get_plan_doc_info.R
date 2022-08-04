@@ -1,6 +1,8 @@
 #' Get information for planning document
 #'
 #' Get specific information for a workshop needed to set up the planning document.
+#' Input to this function should include: startdate, enddate, title, address, venue, starttime, endtime, slug.
+#' This information is taken from the Holy Excel Sheet
 #'
 #' @param ws_dat workshop data: information read from Holy Excel sheet: dataframe with
 #' information about the workshop - used to set up the planning document
