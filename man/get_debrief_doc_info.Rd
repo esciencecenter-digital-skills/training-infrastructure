@@ -4,16 +4,15 @@
 \alias{get_debrief_doc_info}
 \title{Get debriefing doc info}
 \usage{
-get_debrief_doc_info(ws_dat, meta_fld)
+get_debrief_doc_info(ws_dat)
 }
 \arguments{
-\item{ws_dat}{information about the workshop to be inserted into the debriefing document}
-
-\item{meta_fld}{the URL of the meta folder}
+\item{ws_dat}{information read from Holy Excel sheet: dataframe with
+information about the workshop - used to set up the debriefing document}
 }
 \value{
 debrief doc information to be used in rendering the doc
 }
 \description{
-Get the specific information for the upcoming workshop so it can be used in the debriefing doc
+Get specific information for a workshop needed to set up the debriefing document.
 }
