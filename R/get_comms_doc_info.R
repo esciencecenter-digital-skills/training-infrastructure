@@ -11,7 +11,9 @@
 #'
 #' @export
 #'
-get_comms_doc_info <- function(info, meta_url) {
+get_comms_doc_info <- function(info) {
+
+  meta_url = get_meta_url(info$slug)
 
   comm_doc_info <- list(YYYYMMDD              = as.character(info$startdate),
                         workshop              = RCurl::getURL(paste0(meta_url, "title.md"), .encoding = "UTF-8"),
