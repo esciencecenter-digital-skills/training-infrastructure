@@ -11,7 +11,7 @@
 #'
 #' @export
 #'
-get_plan_doc_info <- function(ws_dat) {
+get_plan_doc_info <- function(info) {
 
   plan_doc_info <- list(
     YYYYMMDD = as.character(info$startdate),
