@@ -4,10 +4,16 @@
 \alias{render_debrief_doc}
 \title{Render debriefing doc}
 \usage{
-render_debrief_doc(info)
+render_debrief_doc(
+  info,
+ 
+    template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+)
 }
 \arguments{
 \item{info}{information about the workshop to be inserted into the debriefing document}
+
+\item{template_url}{the place where the template for the document is saved in Rmd format}
 }
 \value{
 no output, just save the doc

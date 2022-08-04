@@ -4,10 +4,16 @@
 \alias{render_plan}
 \title{Render planning doc}
 \usage{
-render_plan(info)
+render_plan(
+  info,
+ 
+    template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+)
 }
 \arguments{
 \item{info}{information about the workshop used to set up the planning document}
+
+\item{template_url}{the place where the template for the document is saved in Rmd format}
 }
 \value{
 no output, just save the doc

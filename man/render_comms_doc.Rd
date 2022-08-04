@@ -5,18 +5,25 @@
 \title{Render communications doc
 Checks if the upcoming workshop is online or in person. Takes the appropriate template Rmd document from the template
 repository. Renders a filled in document with specific information for the workshop.
-Rendered docs will be saved in html and docx formats (default). Files will be saved in "files" directory of
-working directory, within a directory that has the same name as the slug of the workshop.}
+Rendered docs will be saved in html and docx formats (default). Files will be saved in the working directory.}
 \usage{
-render_comms_doc(info, outformat = "")
+render_comms_doc(
+  info,
+  outformat = "",
+ 
+    template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+)
 }
 \arguments{
+\item{info}{a dataframe with information about the upcoming workshop}
+
 \item{outformat}{if left empty, both html and docx are printed. otherwise, choose one with "html", or "docx".}
+
+\item{template_url}{the place where the template for the communication document is saved in Rmd format}
 }
 \description{
 Render communications doc
 Checks if the upcoming workshop is online or in person. Takes the appropriate template Rmd document from the template
 repository. Renders a filled in document with specific information for the workshop.
-Rendered docs will be saved in html and docx formats (default). Files will be saved in "files" directory of
-working directory, within a directory that has the same name as the slug of the workshop.
+Rendered docs will be saved in html and docx formats (default). Files will be saved in the working directory.
 }
