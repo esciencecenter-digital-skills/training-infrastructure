@@ -22,6 +22,7 @@ Remotes: hrbrmstr/nominatim@5c2baa9
 Imports: 
     Microsoft365R,
     RCurl,
+    rlang,
     tidyr,
     readr,
     purrr,
