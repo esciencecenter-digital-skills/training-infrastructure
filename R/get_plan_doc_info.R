@@ -2,7 +2,7 @@
 #'
 #' Get specific information for a workshop needed to set up the planning document.
 #'
-#' @param ws_dat information read from Holy Excel sheet: dataframe with
+#' @param ws_dat workshop data: information read from Holy Excel sheet: dataframe with
 #' information about the workshop - used to set up the planning document
 #'
 #' @return planning doc information to be used in rendering the doc

@@ -11,7 +11,7 @@
 render_debrief_doc = function(info) {
   rmarkdown::render(
     "files/debriefing_doc.Rmd",
-    params = debrief_doc_info,
-    output_file = paste0(ws_dat$slug, '/', ws_dat$slug, "-debriefing_doc.docx")
+    params = info,
+    output_file = paste0(info$slug, '/', info$slug, "-debriefing_doc.docx")
   )
 }

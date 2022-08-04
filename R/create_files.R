@@ -2,7 +2,7 @@
 #'
 #' Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
 #'
-#' @param ws_dat information about the workshop to be inserted into the different documents
+#' @param ws_dat workshop data: information about the workshop to be inserted into the different documents
 #' @param meta_fld the URL of the meta folder
 #'
 #' @return no output, just saving files within the project directory
