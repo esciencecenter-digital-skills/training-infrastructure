@@ -17,7 +17,7 @@ read_from_drive <- function(path = "General/Digital Skills Workshops 2022.xlsx",
                             drive = "https://nlesc.sharepoint.com/sites/instructors"){
 
   rlang::check_installed("Microsoft365R")
-  attach(Microsoft365R)
+  require(Microsoft365R)
 
   #TODO validate path and drive arguments
   # e.g. path needs to have an extension
