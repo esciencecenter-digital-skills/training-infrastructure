@@ -1,4 +1,4 @@
-#' Get planning doc info
+#' Get information for planning document
 #'
 #' Get specific information for a workshop needed to set up the planning document.
 #'
