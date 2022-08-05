@@ -12,7 +12,7 @@ create_ws_channel(instr_team, info)
 \item{info}{information about the workshop taken from the holy excel sheet}
 }
 \description{
-Takes information about the workshop. Checks if a channel for a workshop slug exists.
+Takes information about the workshop. Checks if a channel for a workshop slug already exists.
 Creates a channel if it does not exist yet. Throws an error if channels cannot be retrieved.
-(within the current workflow, this will most likely be the "Instructors" channel)
+(within the current workflow, this will most likely be from the "Instructors" channel)
 }
