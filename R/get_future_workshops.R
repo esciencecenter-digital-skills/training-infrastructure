@@ -39,16 +39,19 @@ get_future_workshops <- function(df, future = "today", include_location = F, tok
   df <- tidyr::drop_na(df, title)
   df <- df[columns_needed]
 
-  # only pick future workshops, if requested
-  if(future){
-    df[convert_to_date(df$startdate) >= Sys.time(), ]
-  }
-
   # define dates and times in human readable formats
   df <- dplyr::mutate(df,
+                      startdate = convert_to_date(startdate),
+                      enddate = convert_to_date(enddate),
                       humandate = human_date(startdate,enddate),
                       humantime = human_time(starttime,endtime,enddate)
   )
+
+  # only pick future workshops, if requested
+  if(future != "none"){
+    date <- ifelse(future == "today", Sys.Date(), convert_to_date(future))
+    df <- dplyr::filter(df, startdate >= date)
+  }
 
   # format helpers and instructors
   df <- dplyr::mutate(df,
@@ -71,8 +74,6 @@ convert_to_date <- function(date){
 }
 
 human_date <- function(startdate,enddate){
-  startdate <- convert_to_date(startdate)
-  enddate <- convert_to_date(enddate)
   ifelse(months(startdate)==months(enddate), #this includes the month for end date only when workshop go over month switch
          paste0(format(startdate, format="%B %d -"),
                 format(enddate, format=" %d, %Y")),
@@ -81,7 +82,6 @@ human_date <- function(startdate,enddate){
 }
 
 human_time <- function(starttime, endtime, enddate){
-  enddate <- convert_to_date(enddate)
   paste0(starttime, " - ", endtime, format(enddate, format=" %Z"))
 }
 
