@@ -1,4 +1,4 @@
-#' Get future workshops
+#' TESTING VERSION Get future workshops
 #'
 #' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
 #'
