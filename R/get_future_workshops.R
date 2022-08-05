@@ -5,12 +5,14 @@
 #' as input for websites and other communication material. It also drops empty lines.
 #'
 #' @param df A dataframe based on the digital skills programme excel file
-#' @param future A boolean (True/False) that indicates whether only future workshops should be returned
+#' @param future A string formatted as "YYYY-MM-DD", or "today", or "none". Only workshops after this date will be returned.
+#' @param include_location A boolean (TRUE/FALSE) indicating whether locations need to be processed. If `TRUE`, an OSM token needs to be passed.
+#' @param token an object containing the content of the git secret token (read with `read.delim("tokens.txt", header=F)`)
 #'
 #' @return a checked and formatted dataframe
 #'
 #' @export
-get_future_workshops <- function(df, future = T, include_location = F, token = "") {
+get_future_workshops <- function(df, future = "today", include_location = F, token = "") {
   # verify that token is present
   if(include_location & token == ""){
     stop("When physical locations are needed, an OSM token needs to be passed.")
@@ -63,7 +65,6 @@ get_future_workshops <- function(df, future = T, include_location = F, token = "
   }
   return(df)
 }
-
 
 convert_to_date <- function(date){
   as.POSIXlt(date, tz="Europe/Amsterdam", format="%Y-%m-%d")
