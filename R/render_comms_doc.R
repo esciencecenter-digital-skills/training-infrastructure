@@ -13,7 +13,7 @@
 render_comms_doc = function(info, outformat = "", template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
 
   # check if workshop is online or in person, choose template accordingly
-  if (str_detect(info$address, "online")) {
+  if (stringr::str_detect(info$address, "online")) {
     doctype = "communication_doc_online.Rmd"}
   else {
     warning(paste0(info$slug, ": address field is not set to *online*, assuming in-person workshop"))
