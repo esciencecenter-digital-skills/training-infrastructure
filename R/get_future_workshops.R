@@ -41,8 +41,8 @@ get_future_workshops <- function(df, future = T) {
 
   # format helpers and instructors
   df <- dplyr::mutate(df,
-                      instructor = list_people(c(lead_instructor, supporting_instructor1, supporting_instructor2)),
-                      helper = list_people(c(helper1, helper2, helper3))
+                      instructor = list_people(lead_instructor, supporting_instructor1, supporting_instructor2),
+                      helper = list_people(helper1, helper2, helper3)
   )
   return(df)
 }
@@ -67,7 +67,8 @@ human_time <- function(starttime, endtime, enddate){
   paste0(starttime, " - ", endtime, format(enddate, format=" %Z"))
 }
 
-list_people <- function(people){
-  listed_people <- paste(people, collapse = ", ")
-  gsub(", NA", "", listed_people)
+list_people <- function(p1,p2,p3){
+  listed_people <- paste(p1,p2,p3, sep = ", ")
+  listed_people <- gsub(", NA", "", listed_people)
+  gsub("NA", "", listed_people)
 }
