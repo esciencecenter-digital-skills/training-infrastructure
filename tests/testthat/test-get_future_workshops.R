@@ -6,8 +6,11 @@ test_that("Workshop sheet is parsed correctly", {
 })
 
 
-test_that("Future workshops are selected", {
+test_that("Date selections are made using future argument", {
   load(file = "holytest.rda")
-  holytest <- get_future_workshops(holytest, future="2021-03-30")
+  holytest <- get_future_workshops(holytest, future="2021-03-10")
   expect_equal(dim(holytest), c(2,26))
+
+  holytest <- get_future_workshops(holytest, future="today")
+  expect_equal(dim(holytest), c(0,26))
 })
