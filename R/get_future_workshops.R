@@ -10,7 +10,13 @@
 #' @return a checked and formatted dataframe
 #'
 #' @export
-get_future_workshops <- function(df, future = T) {
+get_future_workshops <- function(df, future = T, include_location = F, token = "") {
+  # verify that token is present
+  if(include_location & token == ""){
+    stop("When physical locations are needed, an OSM token needs to be passed.")
+    # TODO add information about how to add this token.
+  }
+
   # verify that data contains the correct columns
   columns_needed <- c("startdate", "enddate", "starttime", "endtime",
                       "title", "slug",
@@ -30,8 +36,11 @@ get_future_workshops <- function(df, future = T) {
 
   df <- tidyr::drop_na(df, title)
   df <- df[columns_needed]
+
   # only pick future workshops, if requested
-  if(future){df[convert_to_date(df$startdate) >= Sys.time(), ]}
+  if(future){
+    df[convert_to_date(df$startdate) >= Sys.time(), ]
+  }
 
   # define dates and times in human readable formats
   df <- dplyr::mutate(df,
@@ -44,6 +53,14 @@ get_future_workshops <- function(df, future = T) {
                       instructor = list_people(lead_instructor, supporting_instructor1, supporting_instructor2),
                       helper = list_people(helper1, helper2, helper3)
   )
+
+  # include location search only if requested explicitly
+  if(include_location){
+    df <- dplyr::mutate(df,
+                        latitude = ifelse(address=="online",NA, nominatim::osm_search(address, key=token)$lat),
+                        longitude = ifelse(address=="online",NA, nominatim::osm_search(address, key=token)$lon)
+    )
+  }
   return(df)
 }
 
