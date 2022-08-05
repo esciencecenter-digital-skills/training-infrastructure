@@ -1,4 +1,5 @@
 #' Render communications doc
+#' 
 #' Checks if the upcoming workshop is online or in person. Takes the appropriate template Rmd document from the template
 #' repository. Renders a filled in document with specific information for the workshop.
 #' Rendered docs will be saved in html and docx formats (default). Files will be saved in the working directory.
