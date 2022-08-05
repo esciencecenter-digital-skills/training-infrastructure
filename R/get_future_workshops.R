@@ -1,40 +1,73 @@
 #' Get future workshops
 #'
-#' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
+#' Take information from the master spreadsheet with all future workshops, and generate the relevant information for GitHub pages.
+#' This function checks whether necessary columns are present, and generates formatted columns that can be used
+#' as input for websites and other communication material. It also drops empty lines.
 #'
-#' @param excelfile A dataframe created based on the digital skills programme excel file
+#' @param df A dataframe based on the digital skills programme excel file
+#' @param future A boolean (True/False) that indicates whether only future workshops should be returned
 #'
-#' @return A dataframe that should be saved as data.csv in the workshop folder in SharePoint
+#' @return a checked and formatted dataframe
 #'
-#' @importFrom tidyr drop_na
-#' @importFrom dplyr mutate select
-#' @importFrom nominatim osm_search
-#' @importFrom purrr `%>%`
 #' @export
-#'
-get_future_workshops <- function(excelfile) {
-  dat_struct <- excelfile %>% #read in excel file above
-    drop_na(title) %>%
-    select(startdate, enddate, starttime, endtime, title, slug,
-           lead_instructor, supporting_instructor1, supporting_instructor2,
-           helper1, helper2, helper3,
-           carpentry, curriculum, flavor, host,
-           venue, address, country,
-           eventbrite, repository, ready) %>%
-    mutate(startdate = as.POSIXlt(startdate, tz="Europe/Amsterdam", format="%Y-%m-%d"), #convert to our timezone so CET or CEST is displayed in humandate
-           enddate = as.POSIXlt(enddate, tz="Europe/Amsterdam",format="%Y-%m-%d"),
-           humandate = ifelse(months(startdate)==months(enddate), #this includes the month for end date only when workshop go over month switch
-                              paste0(format(startdate, format="%B %d -"),
-                                     format(enddate, format=" %d, %Y")),
-                              paste0(format(startdate, format="%B %d -"),
-                                     format(enddate, format=" %B %d, %Y"))),
-           humantime = paste0(starttime, " - ", endtime, format(enddate, format=" %Z")),
-           instructor = paste(lead_instructor, supporting_instructor1, supporting_instructor2, sep = ", "),
-           instructor = gsub(", NA", "", instructor),
-           helper = paste(helper1, helper2, helper3, sep=", "),
-           helper = gsub(", NA", "", helper),
-           latitude = ifelse(address=="online",NA, osm_search(address, key=token)$lat), #TODO: pass Open street maps token...
-           longitude = ifelse(address=="online",NA, osm_search(address, key=token)$lon) #... as a variable
-    )
-  return(dat_struct)
+get_future_workshops <- function(df, future = T) {
+  # verify that data contains the correct columns
+  columns_needed <- c("startdate", "enddate", "starttime", "endtime",
+                      "title", "slug",
+                      "lead_instructor", "supporting_instructor1", "supporting_instructor2",
+                      "helper1", "helper2", "helper3",
+                      "carpentry", "curriculum", "flavor", "host",
+                      "venue", "address", "country",
+                      "eventbrite", "repository", "ready")
+
+  for(c in columns_needed){
+    if(!c %in% names(df)){
+      e <- paste("Column", c, "is not present in the data.\
+                 Please verify whether the data is complete, and column names are correct.")
+      stop(e)
+    }
+  }
+
+  df <- tidyr::drop_na(df, title)
+  df <- df[columns_needed]
+  # only pick future workshops, if requested
+  if(future){df[convert_to_date(df$startdate) >= Sys.time(), ]}
+
+  # define dates and times in human readable formats
+  df <- dplyr::mutate(df,
+                      humandate = human_date(startdate,enddate),
+                      humantime = human_time(starttime,endtime,enddate)
+  )
+
+  # format helpers and instructors
+  df <- dplyr::mutate(df,
+                      instructor = list_people(c(lead_instructor, supporting_instructor1, supporting_instructor2)),
+                      helper = list_people(c(helper1, helper2, helper3))
+  )
+  return(df)
+}
+
+
+convert_to_date <- function(date){
+  as.POSIXlt(date, tz="Europe/Amsterdam", format="%Y-%m-%d")
+}
+
+human_date <- function(startdate,enddate){
+  startdate <- convert_to_date(startdate)
+  enddate <- convert_to_date(enddate)
+  ifelse(months(startdate)==months(enddate), #this includes the month for end date only when workshop go over month switch
+         paste0(format(startdate, format="%B %d -"),
+                format(enddate, format=" %d, %Y")),
+         paste0(format(startdate, format="%B %d -"),
+                format(enddate, format=" %B %d, %Y")))
+}
+
+human_time <- function(starttime, endtime, enddate){
+  enddate <- convert_to_date(enddate)
+  paste0(starttime, " - ", endtime, format(enddate, format=" %Z"))
+}
+
+list_people <- function(people){
+  listed_people <- paste(people, collapse = ", ")
+  gsub(", NA", "", listed_people)
 }
