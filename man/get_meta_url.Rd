@@ -10,7 +10,7 @@ get_meta_url(slug)
 \item{slug}{workshop slug}
 }
 \value{
-a variable meta_url that has the URL to the meta folder in it
+url to the folder containing workshop metadata
 }
 \description{
 Take the slug and return the corresponding URL where the meta files live for the workshop in question

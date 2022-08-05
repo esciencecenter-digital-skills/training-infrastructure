@@ -15,4 +15,5 @@ debrief doc information to be used in rendering the doc
 }
 \description{
 Get specific information for a workshop needed to set up the debriefing document.
+The input data is read from Holy Excel sheet.
 }

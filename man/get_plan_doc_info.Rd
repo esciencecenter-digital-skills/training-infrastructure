@@ -2,9 +2,9 @@
 % Please edit documentation in R/get_plan_doc_info.R
 \name{get_plan_doc_info}
 \alias{get_plan_doc_info}
-\title{Get planning doc info}
+\title{Get information for planning document}
 \usage{
-get_plan_doc_info(ws_dat)
+get_plan_doc_info(info)
 }
 \arguments{
 \item{ws_dat}{workshop data: information read from Holy Excel sheet: dataframe with
@@ -15,4 +15,6 @@ planning doc information to be used in rendering the doc
 }
 \description{
 Get specific information for a workshop needed to set up the planning document.
+Input to this function should include: startdate, enddate, title, address, venue, starttime, endtime, slug.
+This information is taken from the Holy Excel Sheet
 }

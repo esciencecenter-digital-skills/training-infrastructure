@@ -10,7 +10,6 @@
 #' @importFrom dplyr select
 #' @importFrom purrr `%>%`
 #' @export
-#'
 save_viable_data <- function(dat_struct) {
 
   viable_slugs  <- dat_struct[!is.na(dat_struct$slug), ]

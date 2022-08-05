@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_comms_doc_info.R
 \name{get_comms_doc_info}
 \alias{get_comms_doc_info}
-\title{fill comms doc}
+\title{Get information for communications document}
 \usage{
 get_comms_doc_info(info)
 }
