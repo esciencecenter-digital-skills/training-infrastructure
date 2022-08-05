@@ -2,10 +2,7 @@
 % Please edit documentation in R/render_comms_doc.R
 \name{render_comms_doc}
 \alias{render_comms_doc}
-\title{Render communications doc
-Checks if the upcoming workshop is online or in person. Takes the appropriate template Rmd document from the template
-repository. Renders a filled in document with specific information for the workshop.
-Rendered docs will be saved in html and docx formats (default). Files will be saved in the working directory.}
+\title{Render communications doc}
 \usage{
 render_comms_doc(
   info,
@@ -22,7 +19,6 @@ render_comms_doc(
 \item{template_url}{the place where the template for the communication document is saved in Rmd format}
 }
 \description{
-Render communications doc
 Checks if the upcoming workshop is online or in person. Takes the appropriate template Rmd document from the template
 repository. Renders a filled in document with specific information for the workshop.
 Rendered docs will be saved in html and docx formats (default). Files will be saved in the working directory.
