@@ -1,6 +1,6 @@
 #' TESTING VERSION Get future workshops
 #'
-#' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
+#' TESTTEST Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
 #'
 #' @param excelfile A dataframe created based on the digital skills programme excel file
 #'
@@ -33,8 +33,8 @@ get_future_workshops <- function(excelfile) {
            instructor = gsub(", NA", "", instructor),
            helper = paste(helper1, helper2, helper3, sep=", "),
            helper = gsub(", NA", "", helper),
-           latitude = ifelse(address=="online",NA, nominatim::osm_search(address, key=token)$lat), #TODO: pass Open street maps token...
-           longitude = ifelse(address=="online",NA, nominatim::osm_search(address, key=token)$lon) #... as a variable
+           latitude = ifelse(address=="online", NA, nominatim::osm_search(address, key=token)$lat), #TODO: pass Open street maps token...
+           longitude = ifelse(address=="online", NA, nominatim::osm_search(address, key=token)$lon) #... as a variable
     )
   return(dat_struct)
 }

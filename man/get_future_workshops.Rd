@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_future_workshops.R
 \name{get_future_workshops}
 \alias{get_future_workshops}
-\title{Get future workshops}
+\title{TESTING VERSION Get future workshops}
 \usage{
 get_future_workshops(excelfile)
 }
@@ -13,5 +13,5 @@ get_future_workshops(excelfile)
 A dataframe that should be saved as data.csv in the workshop folder in SharePoint
 }
 \description{
-Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
+TESTTEST Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
 }
