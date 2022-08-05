@@ -4,7 +4,7 @@
 \alias{get_future_workshops}
 \title{Get future workshops}
 \usage{
-get_future_workshops(df, future = T)
+get_future_workshops(df, future = T, include_location = F, token = "")
 }
 \arguments{
 \item{df}{A dataframe based on the digital skills programme excel file}
