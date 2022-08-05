@@ -64,6 +64,7 @@ human_date <- function(startdate,enddate){
 
 human_time <- function(starttime, endtime, enddate){
   enddate <- convert_to_date(enddate)
+  if(is.na(enddate)){return(NA)}
   paste0(starttime, " - ", endtime, format(enddate, format=" %Z"))
 }
 
