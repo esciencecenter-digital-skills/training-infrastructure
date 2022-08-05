@@ -16,8 +16,6 @@
 read_from_drive <- function(path = "General/Digital Skills Workshops 2022.xlsx",
                             drive = "https://nlesc.sharepoint.com/sites/instructors"){
 
-  require(Microsoft365R)
-
   #TODO validate path and drive arguments
   # e.g. path needs to have an extension
   # drive needs to be sharepoint site and include https://
