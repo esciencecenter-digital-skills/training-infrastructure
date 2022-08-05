@@ -4,14 +4,18 @@
 \alias{get_future_workshops}
 \title{Get future workshops}
 \usage{
-get_future_workshops(excelfile)
+get_future_workshops(df, future = T)
 }
 \arguments{
-\item{excelfile}{A dataframe created based on the digital skills programme excel file}
+\item{df}{A dataframe based on the digital skills programme excel file}
+
+\item{future}{A boolean (True/False) that indicates whether only future workshops should be returned}
 }
 \value{
-A dataframe that should be saved as data.csv in the workshop folder in SharePoint
+a checked and formatted dataframe
 }
 \description{
-Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
+Take information from the master spreadsheet with all future workshops, and generate the relevant information for GitHub pages.
+This function checks whether necessary columns are present, and generates formatted columns that can be used
+as input for websites and other communication material. It also drops empty lines.
 }
