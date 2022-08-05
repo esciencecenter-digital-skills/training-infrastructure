@@ -13,7 +13,7 @@
 #' @export
 #'
 get_future_workshops <- function(excelfile) {
-  dat_struct <- excelfile %>% #read in excel file above
+  dat_struct <- excelfile %>%
     drop_na(title) %>%
     select(startdate, enddate, starttime, endtime, title, slug,
            lead_instructor, supporting_instructor1, supporting_instructor2,
@@ -33,8 +33,8 @@ get_future_workshops <- function(excelfile) {
            instructor = gsub(", NA", "", instructor),
            helper = paste(helper1, helper2, helper3, sep=", "),
            helper = gsub(", NA", "", helper),
-           latitude = ifelse(address=="online",NA, osm_search(address, key=token)$lat), #TODO: pass Open street maps token...
-           longitude = ifelse(address=="online",NA, osm_search(address, key=token)$lon) #... as a variable
+           latitude = ifelse(address=="online",NA, nominatim::osm_search(address, key=token)$lat), #TODO: pass Open street maps token...
+           longitude = ifelse(address=="online",NA, nominatim::osm_search(address, key=token)$lon) #... as a variable
     )
   return(dat_struct)
 }
