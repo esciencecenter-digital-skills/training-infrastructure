@@ -13,6 +13,8 @@
 #'
 #' @export
 get_future_workshops <- function(df, future = "today", include_location = F, token = "") {
+  #TODO verify input for future parameter
+
   # verify that token is present
   if(include_location & token == ""){
     stop("When physical locations are needed, an OSM token needs to be passed.")
@@ -49,7 +51,13 @@ get_future_workshops <- function(df, future = "today", include_location = F, tok
 
   # only pick future workshops, if requested
   if(future != "none"){
-    date <- ifelse(future == "today", Sys.Date(), convert_to_date(future))
+    # the following is hacky. I do not know why this is necessary, but it works.
+    if(future == "today"){
+      date <- as.character(lubridate::today(tzone="Europe/Amsterdam"))
+      date <- convert_to_date(date)
+    } else{
+      date <- convert_to_date(future)
+    }
     df <- dplyr::filter(df, startdate >= date)
   }
 
@@ -70,7 +78,7 @@ get_future_workshops <- function(df, future = "today", include_location = F, tok
 }
 
 convert_to_date <- function(date){
-  as.POSIXlt(date, tz="Europe/Amsterdam", format="%Y-%m-%d")
+  lubridate::ymd(date, tz="Europe/Amsterdam")
 }
 
 human_date <- function(startdate,enddate){
@@ -90,3 +98,4 @@ list_people <- function(p1,p2,p3){
   listed_people <- gsub(", NA", "", listed_people)
   gsub("NA", "", listed_people)
 }
+
