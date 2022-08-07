@@ -6,20 +6,12 @@
 #'
 #' @param df A dataframe based on the digital skills programme excel file
 #' @param future A string formatted as "YYYY-MM-DD", or "today", or "none". Only workshops after this date will be returned.
-#' @param include_location A boolean (TRUE/FALSE) indicating whether locations need to be processed. If `TRUE`, an OSM token needs to be passed.
-#' @param token an object containing the content of the git secret token (read with `read.delim("tokens.txt", header=F)`)
 #'
 #' @return a checked and formatted dataframe
 #'
 #' @export
-get_future_workshops <- function(df, future = "today", include_location = F, token = "") {
+get_future_workshops <- function(df, future = "today") {
   #TODO verify input for future parameter
-
-  # verify that token is present
-  if(include_location & token == ""){
-    stop("When physical locations are needed, an OSM token needs to be passed.")
-    # TODO add information about how to add this token.
-  }
 
   # verify that data contains the correct columns
   columns_needed <- c("startdate", "enddate", "starttime", "endtime",
@@ -67,13 +59,11 @@ get_future_workshops <- function(df, future = "today", include_location = F, tok
                       helper = list_people(helper1, helper2, helper3)
   )
 
-  # include location search only if requested explicitly
-  if(include_location){
-    df <- dplyr::mutate(df,
+  # add latitude/longitude
+  df <- dplyr::mutate(df,
                         latitude = ifelse(address=="online",NA, nominatimlite::geo_lite(address)$lat),
                         longitude = ifelse(address=="online",NA, nominatimlite::geo_lite(address)$lon)
-    )
-  }
+  )
   return(df)
 }
 

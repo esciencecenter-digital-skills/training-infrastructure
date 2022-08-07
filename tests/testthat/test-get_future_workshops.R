@@ -4,30 +4,26 @@ test_that("Workshop sheet is parsed correctly", {
   expect_equal(dim(holytest), c(20,26))
   expect_true("Holiday and conflicts"%in%names(holytest))
   # process and check
-  holytest <- get_future_workshops(holytest)
-  expect_equal(dim(holytest), c(1,26))
-  expect_equal(c("Holiday and conflicts","humandate","helper")%in%names(holytest), c(FALSE,TRUE,TRUE))
-  expect_false(is.na(holytest$instructor))
-  expect_equal(holytest[1,"humandate"], "October 22 - March 24, 2075")
-})
-
-test_that("Token is needed to inquire location", {
-  expect_error(get_future_workshops(holytest, include_location = T))
+  holyselect <- get_future_workshops(holytest)
+  expect_equal(dim(holyselect), c(1,28))
+  expect_equal(c("Holiday and conflicts","humandate","helper")%in%names(holyselect), c(FALSE,TRUE,TRUE))
+  expect_false(is.na(holyselect$instructor))
+  expect_equal(holyselect[1,"humandate"], "October 22 - March 24, 2075")
 })
 
 test_that("Date selections are made using future argument", {
   load(file = "holytest.rda")
-  holytest <- get_future_workshops(holytest, future="2021-03-10")
-  expect_equal(dim(holytest), c(3,26))
-
-  holytest <- get_future_workshops(holytest, future="today")
-  expect_equal(dim(holytest), c(1,26))
+  holyselect <- get_future_workshops(holytest, future="2021-03-10")
+  expect_equal(dim(holyselect), c(3,28))
+  holyselect<- get_future_workshops(holytest, future="today")
+  expect_equal(dim(holyselect), c(1,28))
+  holyselect <- get_future_workshops(holytest, future="none")
+  expect_equal(dim(holyselect), c(4,28))
 })
 
 test_that("Locations are found with Open Street Map", {
   load(file = "holytest.rda")
-  holytest <- get_future_workshops(holytest, future="none", include_location = T, token = "not necessary")
-  expect_equal(holytest$latitude[3], 52.3566292)
-  expect_equal(holytest$longitude[3], 4.9568662)
-
+  holyselect <- get_future_workshops(holytest, future="none")
+  expect_equal(holyselect$latitude[3], 52.3566292)
+  expect_equal(holyselect$longitude[3], 4.9568662)
 })

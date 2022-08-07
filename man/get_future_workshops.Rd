@@ -4,16 +4,12 @@
 \alias{get_future_workshops}
 \title{Get future workshops}
 \usage{
-get_future_workshops(df, future = "today", include_location = F, token = "")
+get_future_workshops(df, future = "today")
 }
 \arguments{
 \item{df}{A dataframe based on the digital skills programme excel file}
 
 \item{future}{A string formatted as "YYYY-MM-DD", or "today", or "none". Only workshops after this date will be returned.}
-
-\item{include_location}{A boolean (TRUE/FALSE) indicating whether locations need to be processed. If \code{TRUE}, an OSM token needs to be passed.}
-
-\item{token}{an object containing the content of the git secret token (read with \code{read.delim("tokens.txt", header=F)})}
 }
 \value{
 a checked and formatted dataframe
