@@ -30,7 +30,8 @@ Imports:
     rio,
     stringr,
     rmarkdown,
-    nominatim
+    nominatim,
+    nominatimlite
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

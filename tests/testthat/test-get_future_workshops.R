@@ -4,7 +4,6 @@ test_that("Workshop sheet is parsed correctly", {
   expect_equal(dim(holytest), c(20,26))
   expect_true("Holiday and conflicts"%in%names(holytest))
   # process and check
-  # check that names have content after processing
   holytest <- get_future_workshops(holytest)
   expect_equal(dim(holytest), c(1,26))
   expect_equal(c("Holiday and conflicts","humandate","helper")%in%names(holytest), c(FALSE,TRUE,TRUE))
@@ -23,4 +22,12 @@ test_that("Date selections are made using future argument", {
 
   holytest <- get_future_workshops(holytest, future="today")
   expect_equal(dim(holytest), c(1,26))
+})
+
+test_that("Locations are found with Open Street Map", {
+  load(file = "holytest.rda")
+  holytest <- get_future_workshops(holytest, future="none", include_location = T, token = "not necessary")
+  expect_equal(holytest$latitude[3], 52.3566292)
+  expect_equal(holytest$longitude[3], 4.9568662)
+
 })

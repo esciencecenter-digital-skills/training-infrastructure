@@ -70,8 +70,8 @@ get_future_workshops <- function(df, future = "today", include_location = F, tok
   # include location search only if requested explicitly
   if(include_location){
     df <- dplyr::mutate(df,
-                        latitude = ifelse(address=="online",NA, nominatim::osm_search(address, key=token)$lat),
-                        longitude = ifelse(address=="online",NA, nominatim::osm_search(address, key=token)$lon)
+                        latitude = ifelse(address=="online",NA, nominatimlite::geo_lite(address)$lat),
+                        longitude = ifelse(address=="online",NA, nominatimlite::geo_lite(address)$lon)
     )
   }
   return(df)
@@ -98,4 +98,3 @@ list_people <- function(p1,p2,p3){
   listed_people <- gsub(", NA", "", listed_people)
   gsub("NA", "", listed_people)
 }
-
