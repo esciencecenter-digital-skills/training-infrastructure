@@ -1,5 +1,5 @@
 #' Render communications doc
-#' 
+#'
 #' Checks if the upcoming workshop is online or in person. Takes the appropriate template Rmd document from the template
 #' repository. Renders a filled in document with specific information for the workshop.
 #' Rendered docs will be saved in html and docx formats (default). Files will be saved in the working directory.
@@ -14,7 +14,7 @@
 render_comms_doc = function(info, outformat = "", template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
 
   # check if workshop is online or in person, choose template accordingly
-  if (stringr::str_detect(info$address, "online")) {
+  if (stringr::str_detect(info$location, "online")) {
     doctype = "communication_doc_online.Rmd"}
   else {
     warning(paste0(info$slug, ": address field is not set to *online*, assuming in-person workshop"))
