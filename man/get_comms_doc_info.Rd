@@ -17,5 +17,7 @@ Taken from Holy Excel Sheet}
 a list of workshop information, formatted correctly so that the communication document will render properly
 }
 \description{
-Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
+Get specific information for a single workshop, represented as one line in the df_struct variable.
+This represents information about one workshop. The information that is returned is needed
+to set up the communication document, and is taken from the meta folder.
 }

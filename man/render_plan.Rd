@@ -19,5 +19,5 @@ render_plan(
 no output, just save the doc
 }
 \description{
-Take the markdown file and render a word planning doc to be used in workshops
+Take the markdown file and render a word planning doc for one workshop.
 }

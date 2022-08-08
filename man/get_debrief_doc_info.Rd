@@ -14,6 +14,7 @@ information about the workshop - used to set up the debriefing document}
 debrief doc information to be used in rendering the doc
 }
 \description{
-Get specific information for a workshop needed to set up the debriefing document.
-The input data is read from Holy Excel sheet.
+Get specific information for a single workshop, represented as one line in the df_struct variable.
+This represents information about one workshop. The information that is returned in a format that
+can be input to is to set up the debriefing document with \code{render_debrief_doc.R}.
 }

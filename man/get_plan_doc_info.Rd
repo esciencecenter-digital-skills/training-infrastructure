@@ -14,7 +14,10 @@ information about the workshop - used to set up the planning document}
 planning doc information to be used in rendering the doc
 }
 \description{
-Get specific information for a workshop needed to set up the planning document.
-Input to this function should include: startdate, enddate, title, address, venue, starttime, endtime, slug.
+Get specific information for a single workshop, represented as one line in the df_struct variable.
+This represents information about one workshop. The information that is returned in a format that
+can be input to is to set up the planning document with \code{render_planning_doc.R}.
+Input to this function should include: startdate, enddate, title, address, venue, starttime, endtime,
+slug for a single workshop.
 This information is taken from the Holy Excel Sheet
 }
