@@ -4,10 +4,10 @@
 \alias{get_debrief_doc_info}
 \title{Get debriefing doc info}
 \usage{
-get_debrief_doc_info(ws_dat)
+get_debrief_doc_info(info)
 }
 \arguments{
-\item{ws_dat}{information read from Holy Excel sheet: dataframe with
+\item{info}{information read from Holy Excel sheet: dataframe with
 information about the workshop - used to set up the debriefing document}
 }
 \value{
