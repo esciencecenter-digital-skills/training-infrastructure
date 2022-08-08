@@ -35,7 +35,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
     )
   }
 
-  else if (str_detect(outformat, "docx"))  {
+  else if (stringr::str_detect(outformat, "docx"))  {
     rmarkdown::render(
       paste0(info$slug, doctype),
       params = info,
