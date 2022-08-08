@@ -19,7 +19,7 @@ get_plan_doc_info <- function(info) {
     workshop_website = paste0(
       "[workshop website](",
       "https://esciencecenter-digital-skills.github.io/",
-      slug,
+      info$slug,
       ")"
     ),
     registration_page = paste0(
