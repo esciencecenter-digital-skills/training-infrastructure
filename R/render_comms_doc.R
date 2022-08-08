@@ -21,9 +21,10 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
     doctype = "communication_doc_irl.Rmd"
   }
 
-  comms_templ <- paste0(template_url, doctype, "_doc.Rmd") # URL to the Rmd template
+  comms_templ <- paste0(template_url, doctype) # URL to the Rmd template
   # download the correct template and give it the name of the slug plus the template name
-  download.file(comms_templ, paste0(info$slug, doctype))
+
+  download.file(comms_templ, paste0(info$slug, "-", doctype))
 
   # update the downloaded Rmd file and knit to the desired file format, html, docx or both (this can probably be optimized (: )
   if (stringr::str_detect(outformat = "html")) {
