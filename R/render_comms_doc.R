@@ -27,7 +27,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
   download.file(comms_templ, paste0(info$slug, "-", doctype))
 
   # update the downloaded Rmd file and knit to the desired file format, html, docx or both (this can probably be optimized (: )
-  if (stringr::str_detect(outformat = "html")) {
+  if (stringr::str_detect(outformat, "html")) {
     rmarkdown::render(
       paste0(info$slug, doctype),
       params = info,
@@ -35,7 +35,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
     )
   }
 
-  else if (str_detect(outformat = "docx"))  {
+  else if (str_detect(outformat, "docx"))  {
     rmarkdown::render(
       paste0(info$slug, doctype),
       params = info,
