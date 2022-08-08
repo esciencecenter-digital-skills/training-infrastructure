@@ -12,8 +12,8 @@
 #'
 get_debrief_doc_info <- function(info) {
   debrief_doc_info <- list(
-    YYYYMMDD = as.character(ws_dat$startdate),
-    set_title = paste(ws_dat$slug, "debriefing document"),
+    YYYYMMDD = as.character(info$startdate),
+    set_title = paste(info$slug, "debriefing document"),
     show_text = TRUE
   )
   return(debrief_doc_info)
