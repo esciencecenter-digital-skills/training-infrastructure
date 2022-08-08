@@ -9,7 +9,7 @@
 #'
 #' @export
 
-render_plan <- function(info, template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
+render_planning_doc <- function(info, template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
 
   doctype = "planning"
 
