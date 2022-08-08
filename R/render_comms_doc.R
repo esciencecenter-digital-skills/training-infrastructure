@@ -45,13 +45,13 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
 
   else {
     rmarkdown::render(
-      paste0(info$slug, doctype),
+      paste0(info$slug, "-", doctype),
       params = info,
       output_file = paste0(info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
     )
 
     rmarkdown::render(
-      paste0(info$slug, doctype),
+      paste0(info$slug, "-", doctype),
       params = info,
       output_file = paste0(info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
     )
