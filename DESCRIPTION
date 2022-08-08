@@ -18,17 +18,20 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-Remotes: hrbrmstr/nominatim@5c2baa9
 Imports: 
-    Microsoft365R,
+    Microsoft365R (>= 2.3.4),
     RCurl,
+    lubridate,
     tidyr,
     readr,
     purrr,
     dplyr,
+    rio,
     stringr,
     rmarkdown,
-    nominatim
+    nominatimlite
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Depends: 
+    R (>= 3.5.0)
