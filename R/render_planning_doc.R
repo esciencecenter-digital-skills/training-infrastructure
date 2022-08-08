@@ -1,6 +1,6 @@
 #' Render planning doc
 #'
-#' Take the markdown file and render a word planning doc to be used in workshops
+#' Take the markdown file and render a word planning doc for one workshop.
 #'
 #' @param info information about the workshop used to set up the planning document
 #' @param template_url the place where the template for the document is saved in Rmd format

@@ -1,6 +1,8 @@
 #' Get information for communications document
 #'
-#' Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
+#' Get specific information for a single workshop, represented as one line in the df_struct variable.
+#' This represents information about one workshop. The information that is returned is needed
+#' to set up the communication document, and is taken from the meta folder.
 #'
 #' @param info information about the workshop to be inserted into the different documents
 #' should include: startdate, enddate, title, address, venue, starttime, endtime, slug.
