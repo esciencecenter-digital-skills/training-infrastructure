@@ -5,7 +5,6 @@
 #' @param info information about the workshop to be inserted into the debriefing document
 #' @param template_url the place where the template for the document is saved in Rmd format
 #'
-#'
 #' @export
 
 render_debrief_doc = function(info, template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {

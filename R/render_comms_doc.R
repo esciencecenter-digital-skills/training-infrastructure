@@ -9,7 +9,6 @@
 #' @param template_url the place where the template for the communication document is saved in Rmd format
 #'
 #' @export
-#'
 
 render_comms_doc = function(info, outformat = "", template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
 

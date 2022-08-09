@@ -5,8 +5,6 @@
 #' @param info information about the workshop used to set up the planning document
 #' @param template_url the place where the template for the document is saved in Rmd format
 #'
-#' @return no output, just save the doc
-#'
 #' @export
 
 render_planning_doc <- function(info, template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {

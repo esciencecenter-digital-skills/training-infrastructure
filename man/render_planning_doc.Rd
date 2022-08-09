@@ -15,9 +15,6 @@ render_planning_doc(
 
 \item{template_url}{the place where the template for the document is saved in Rmd format}
 }
-\value{
-no output, just save the doc
-}
 \description{
 Take the markdown file and render a word planning doc for one workshop.
 }
