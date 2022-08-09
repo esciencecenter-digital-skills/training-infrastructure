@@ -7,7 +7,6 @@
 #' @param info information about the workshop to be inserted into the different documents
 #' should include: startdate, enddate, title, address, venue, starttime, endtime, slug.
 #' Taken from Holy Excel Sheet
-#' @param meta_url the URL of the meta folder
 #'
 #' @return a list of workshop information, formatted correctly so that the communication document will render properly
 #'

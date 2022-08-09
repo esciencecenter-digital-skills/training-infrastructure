@@ -10,8 +10,6 @@ get_comms_doc_info(info)
 \item{info}{information about the workshop to be inserted into the different documents
 should include: startdate, enddate, title, address, venue, starttime, endtime, slug.
 Taken from Holy Excel Sheet}
-
-\item{meta_url}{the URL of the meta folder}
 }
 \value{
 a list of workshop information, formatted correctly so that the communication document will render properly
