@@ -12,9 +12,9 @@
 create_files <- function(ws_dat, meta_fld) {
 
   debrief_doc_info <- get_debrief_doc_info(wsdat)
-  plan_doc_info <- get_plan_doc_info(wsdat)
+  planning_doc_info <- get_planning_doc_info(wsdat)
 
   render_debrief_doc(debrief_doc_info)
-  render_plan_doc(plan_doc_info)
+  render_planning_doc(planning_doc_info)
 
 }
