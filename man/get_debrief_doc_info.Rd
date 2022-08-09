@@ -7,8 +7,8 @@
 get_debrief_doc_info(info)
 }
 \arguments{
-\item{info}{information read from Holy Excel sheet: dataframe with
-information about the workshop - used to set up the debriefing document}
+\item{info}{named vector with information about the workshop to be inserted into the different documents
+should include: startdate, slug.}
 }
 \value{
 debrief doc information to be used in rendering the doc

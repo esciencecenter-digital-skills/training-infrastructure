@@ -7,15 +7,14 @@
 get_comms_doc_info(info)
 }
 \arguments{
-\item{info}{information about the workshop to be inserted into the different documents
-should include: startdate, enddate, title, address, venue, starttime, endtime, slug.
-Taken from Holy Excel Sheet}
+\item{info}{named vector with information about the workshop to be inserted into the different documents
+should include: startdate, enddate, title, address, venue, starttime, endtime, slug.}
 }
 \value{
 a list of workshop information, formatted correctly so that the communication document will render properly
 }
 \description{
-Get specific information for a single workshop, represented as one line in the df_struct variable.
+Get specific information for a single workshop, represented as one line in the processed Holy Excel Sheet.
 This represents information about one workshop. The information that is returned is needed
 to set up the communication document, and is taken from the meta folder.
 }

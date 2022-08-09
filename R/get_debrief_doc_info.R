@@ -4,8 +4,8 @@
 #' This represents information about one workshop. The information that is returned in a format that
 #' can be input to is to set up the debriefing document with `render_debrief_doc.R`.
 #'
-#' @param info information read from Holy Excel sheet: dataframe with
-#' information about the workshop - used to set up the debriefing document
+#' @param info named vector with information about the workshop to be inserted into the different documents
+#' should include: startdate, slug.
 #'
 #' @return debrief doc information to be used in rendering the doc
 #'
