@@ -7,7 +7,7 @@ Eventbrite website. You can either copy an event or update it.
 
 The python script `event_cli.py` uses built-in libraries like `requests` and
 `json`. However, the event data are stored in the file `event_data.yml` that is
-in `yml` format. This format is chosen as it is more user friendly than `json`.
+in `yml` format. This format is chosen as it is more user-friendly than `json`.
 To load a `event_data.yml`, the package `ruamel.yaml` is needed. To install it,
 in a terminal:
 
@@ -31,9 +31,14 @@ python event_cli.py --event_id id --token token --copy
 python event_cli.py --event_id id --token token --update
 ```
 
-### to first copy and then update event
+### to first copy an event and then update it
 
 ```sh
 python event_cli.py --event_id id --token token --copy --update
 ```
 
+### to get information of the event
+
+```sh
+python event_cli.py --event_id id --token token --copy --update --data
+```
