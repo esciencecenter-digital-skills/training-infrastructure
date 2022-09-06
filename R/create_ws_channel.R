@@ -12,7 +12,7 @@
 
 create_ws_channel <- function(instr_team, info) {
   channelexist <- try(instr_team$get_channel(info$slug), silent=T)
-  if (class(channelexist) == "try-error" && channelexist[1] == "Error : Invalid channel name\n") {
+  if (class(channelexist) == "try-error" && channelexist[1] == "Error : Invalid channel name\n") {  #if 404, the folder does not exist, create it
     instr_team$create_channel(info$slug)
     print(paste("Channel", as.character(info$slug), "created"))
   }
