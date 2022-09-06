@@ -14,13 +14,13 @@ create_sharepoint_folder <- function(drv, info) {
   sharepointexist <- try(drv$get_item(info$slug), silent=T) # try to retrieve sharepoint site for slug and save error if it did not work
   #drv$get_item(slug)$type
 
-  if (class(sharepointexist) == "try-error" && str_detect(sharepointexist[1],"404")) { #if 404, the folder does not exist, make it
+  if ("try-error" %in% class(sharepointexist) == "try-error" && stringr::str_detect(sharepointexist[1],"404")) { #if 404, the folder does not exist, make it
     drv$create_folder(info$slug)
     print(paste("Sharepoint folder", as.character(info$slug), "created"))
   }
-  else if (class(channelexist) == "try-error") { # another error probably means the login didn't work
+  else if ("try-error" %in% class(sharepointexist)) { # another error probably means the login didn't work
     warning("retrieving Sharepoint folders failed, please check your M365 login")
-  } # if no error, no action is needed
+  } # if no error, no action is needed.
 
 
 }
