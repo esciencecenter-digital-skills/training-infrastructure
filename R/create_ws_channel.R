@@ -18,7 +18,7 @@ create_ws_channel <- function(instr_team, info) {
     warning(message)
   }
   else if (class(channelexist) == "try-error") {
-    message <- "retrieving teams channels failed, please check your Sharepoint login"
+    message <- "retrieving teams channels failed, please check your M365 login"
     warning(message)
   } # if retrieving the channel does not fail, no action is required.
 }
