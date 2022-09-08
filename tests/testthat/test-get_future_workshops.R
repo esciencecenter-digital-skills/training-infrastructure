@@ -27,7 +27,3 @@ test_that("Locations are found with Open Street Map", {
   expect_equal(round(holyselect$latitude[3], 1), 52.4)
   expect_equal(round(holyselect$longitude[3], 1), 5.0)
 })
-
-test_that("1 equals 2", {
-  expect_equal(1,2)
-})
