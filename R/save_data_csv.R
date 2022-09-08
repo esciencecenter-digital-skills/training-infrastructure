@@ -23,8 +23,7 @@ save_data_csv <- function(dat_struct) {
            humandate, humantime,
            startdate, enddate,
            instructor, helper,
-           carpentry, curriculum, title, slug, flavor,
-           eventbrite)
+           carpentry, curriculum, title, slug, flavor)
 
   for (i in 1:length(viable_slugs)) { # for each viable slug, create a file called data.csv, within the folder it belongs.
     csv_info <- data_file[i,]
