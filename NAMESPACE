@@ -2,6 +2,7 @@
 
 export(create_data_file)
 export(create_files)
+export(create_local_folders)
 export(get_comms_doc_info)
 export(get_debrief_doc_info)
 export(get_future_workshops)

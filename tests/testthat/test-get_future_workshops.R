@@ -24,6 +24,6 @@ test_that("Date selections are made using future argument", {
 test_that("Locations are found with Open Street Map", {
   load(file = "holytest.rda")
   holyselect <- get_future_workshops(holytest, future="none")
-  expect_equal(holyselect$latitude[3], 52.3566292)
-  expect_equal(holyselect$longitude[3], 4.9568662)
+  expect_equal(round(holyselect$latitude[3], 52.4))
+  expect_equal(round(holyselect$longitude[3], 5.0))
 })

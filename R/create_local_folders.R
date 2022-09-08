@@ -4,6 +4,7 @@
 #'
 #' @param dat_struct a dataframe created based on the digital skills programme excel file
 #'
+#' @export
 #'
 create_local_folders <- function(dat_struct) {
 
