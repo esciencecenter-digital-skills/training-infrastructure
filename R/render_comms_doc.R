@@ -25,13 +25,13 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
   doc_loc <- paste0("files/", info$slug, "/")
   doc_name <- paste0(info$slug, "_", doctype, "_doc")
 
-  comms_templ <- paste0(template_url, doctype, "_doc.Rmd") # URL to the Rmd template
-  download.file(comms_templ, paste0(doc_loc, doc_name, "_doc.Rmd"))
+  comms_templ <- paste0(template_url, doctype, ".Rmd") # URL to the Rmd template
+  download.file(comms_templ, paste0(doc_loc, doc_name, ".Rmd"))
 
   # update the downloaded Rmd file and knit to the desired file format, html, docx or both (this can probably be optimized (: )
   if (stringr::str_detect(outformat, "html")) {
     rmarkdown::render(
-      paste0(doc_loc, "_doc.Rmd"),
+      paste0(doc_loc, ".Rmd"),
       params = info,
       output_format = "html_document",
       output_dir = doc_loc,
@@ -41,7 +41,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
 
   else if (stringr::str_detect(outformat, "docx"))  {
     rmarkdown::render(
-      paste0(doc_loc, "_doc.Rmd"),
+      paste0(doc_loc, ".Rmd"),
       params = info,
       output_format = "word_document",
       output_dir = doc_loc,
@@ -51,7 +51,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
 
   else {
     rmarkdown::render(
-      paste0(doc_loc, "_doc.Rmd"),
+      paste0(doc_loc, ".Rmd"),
       params = info,
       output_format = "html_document",
       output_dir = doc_loc,
@@ -59,7 +59,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
     )
 
     rmarkdown::render(
-      paste0(doc_loc, "_doc.Rmd"),
+      paste0(doc_loc, ".Rmd"),
       params = info,
       output_format = "word_document",
       output_dir = doc_loc,
