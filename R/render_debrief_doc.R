@@ -11,16 +11,18 @@ render_debrief_doc = function(info, template_url = "https://raw.githubuserconten
 
   doctype = "debriefing"
 
-  doc_loc <- paste0("files/", info$slug, "/", info$slug, "_", doctype)
+  doc_loc <- paste0("files/", info$slug, "/")
+  doc_name <- paste0(info$slug, "_", doctype, "_doc")
 
   debrief_templ <- paste0(template_url, doctype, "_doc.Rmd") # URL to the Rmd template
-  download.file(debrief_templ, paste0(doc_loc, "_doc.Rmd")) # download and save in current WD (for now)
+  download.file(debrief_templ, paste0(doc_loc, doc_name, "_doc.Rmd")) # download and save in current WD (for now)
 
   # update the downloaded Rmd file and knit to the desired file format
   rmarkdown::render(
-    paste0(doc_loc, "_doc.Rmd"),
-    params = info,
-    output_file = paste0(doc_loc, "_doc.docx") # render, save in current WD (for now) with proper name
+    paste0(doc_loc, doc_name, ".Rmd"),
+    params = debrief_doc_info,
+    output_dir = doc_loc,
+    output_file = paste0(doc_name, ".docx") # render, save in current WD (for now) with proper name
   )
 
 }
