@@ -19,7 +19,7 @@ render_planning_doc <- function(info, template_url = "https://raw.githubusercont
 
   # update the downloaded Rmd file and knit to the desired file format
   rmarkdown::render(
-    paste0(doc_loc, ".Rmd"),
+    paste0(doc_loc, doc_name, ".Rmd"),
     params = info,
     output_dir = doc_loc,
     output_file = paste0(doc_name, ".docx") # render, save in current WD (for now) with proper name  )
