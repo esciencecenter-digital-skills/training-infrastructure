@@ -25,7 +25,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
   doc_loc <- paste0("files/", info$slug, "/")
   doc_name <- paste0(info$slug, "_", doctype, "_doc")
 
-  comms_templ <- paste0(template_url, doctype, ".Rmd") # URL to the Rmd template
+  comms_templ <- paste0(template_url, doctype, "_doc.Rmd") # URL to the Rmd template
   download.file(comms_templ, paste0(doc_loc, doc_name, ".Rmd"))
 
   # update the downloaded Rmd file and knit to the desired file format, html, docx or both (this can probably be optimized (: )
