@@ -23,7 +23,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
   comms_templ <- paste0(template_url, doctype) # URL to the Rmd template
   # download the correct template and give it the name of the slug plus the template name
 
-  download.file(comms_templ, paste0("/files/", info$slug, "-", doctype))
+  download.file(comms_templ, paste0("files/", info$slug, "-", doctype))
 
   # update the downloaded Rmd file and knit to the desired file format, html, docx or both (this can probably be optimized (: )
   if (stringr::str_detect(outformat, "html")) {
@@ -40,7 +40,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
       paste0(info$slug, doctype),
       params = info,
       output_format = "word_document",
-      output_file = paste0("/files/", info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
+      output_file = paste0("files/", info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
     )
   }
 
@@ -49,14 +49,14 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
       paste0(info$slug, "-", doctype),
       params = info,
       output_format = "html_document",
-      output_file = paste0("/files/", info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
+      output_file = paste0("files/", info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
     )
 
     rmarkdown::render(
       paste0(info$slug, "-", doctype),
       params = info,
       output_format = "word_document",
-      output_file = paste0("/files/", info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
+      output_file = paste0("files/", info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
     )
   }
 }
