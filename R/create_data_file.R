@@ -10,19 +10,17 @@
 #' @importFrom dplyr select
 #' @importFrom purrr `%>%`
 #' @export
-create_data_file <- function(dat_struct) {
+create_data_file <- function(info) {
 
-  data_file <- dat_struct %>%
+  data_file <- info %>%
     dplyr::select(venue, address, country, latitude, longitude,
-           humandate, humantime,
-           startdate, enddate,
-           instructor, helper,
-           carpentry, curriculum, title, slug, flavor)
+                  humandate, humantime,
+                  startdate, enddate,
+                  instructor, helper,
+                  carpentry, curriculum, title, slug, flavor)
 
-  for (i in 1:length(viable_slugs)) { # for each viable slug, create a file called data.csv, within the folder it belongs.
-    csv_info <- data_file[i,]
-    filename <- paste0("/files/", viable_slugs[i], "/data.csv")
-    readr::write_csv(csv_info, filename)
-  }
+  csv_info <- data_file
+  filename <- paste0("files/", info$slug, "/data.csv")
+  readr::write_csv(csv_info, filename)
 
 }
