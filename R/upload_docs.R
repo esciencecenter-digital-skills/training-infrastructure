@@ -23,7 +23,7 @@ upload_docs <- function(instr_team, info, comms = TRUE, planning = TRUE, debrief
   else {
 
     #ws_dat$newch <- instr_team$get_channel(info$slug)$get_folder()$properties$webUrl #sharepoint URL
-    if (comms = TRUE) {
+    if (comms == TRUE) {
 
       if (drv$get_item(paste0(info$slug, "/", info$slug, "-debriefing_doc.docx"))$type=="drive item") {
         overwrite_comms <- askYesNo("You will overwrite the old debriefing doc file. Do you want to continue?", default = TRUE)}
@@ -34,7 +34,7 @@ upload_docs <- function(instr_team, info, comms = TRUE, planning = TRUE, debrief
       }
     }
 
-    if (planning = TRUE) {
+    if (planning == TRUE) {
 
       if (drv$get_item(paste0(info$slug, "/", info$slug, "-planning_doc.docx"))$type=="drive item") {
         overwrite_plan <- askYesNo("You will overwrite the old planning doc file. Do you want to continue?", default = TRUE)}
@@ -45,7 +45,7 @@ upload_docs <- function(instr_team, info, comms = TRUE, planning = TRUE, debrief
       }
     }
 
-    if (debriefing = TRUE) {
+    if (debriefing == TRUE) {
 
       if (drv$get_item(paste0(info$slug, "/", info$slug, "-debriefing_doc.docx"))$type=="drive item") {
         overwrite_debrief <- askYesNo("You will overwrite the old debriefing doc file. Do you want to continue?", default = TRUE)}
