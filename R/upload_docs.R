@@ -32,7 +32,7 @@ upload_docs <- function(instr_team, info,
       overwrite_comms = TRUE
 
       if (paste0(info$slug, "_communication_doc.docx") %in% drv$get_item(paste0(info$slug))$list_files()$name) {
-        overwrite_comms <- askYesNo("You will overwrite the old communication doc file. Do you want to continue?", default = TRUE)
+        overwrite_comms <- askYesNo(paste0(info$slug, ": You will overwrite the old communication doc file. Do you want to continue?"), default = TRUE)
       }
 
       if (!paste0(info$slug, "_communication_doc.docx") %in% drv$get_item(paste0(info$slug))$list_files()$name | overwrite_comms == TRUE) {
@@ -48,7 +48,7 @@ upload_docs <- function(instr_team, info,
       overwrite_datafl = TRUE
 
       if ("data.csv" %in% drv$get_item(paste0(info$slug))$list_files()$name) {
-        overwrite_datafl <- askYesNo("You will overwrite the old data.csv file. Do you want to continue?", default = TRUE)
+        overwrite_datafl <- askYesNo(paste0(info$slug, ": You will overwrite the old data.csv file. Do you want to continue?"), default = TRUE)
       }
 
       if (!("data.csv" %in% drv$get_item(paste0(info$slug))$list_files()$name) | overwrite_datafl == TRUE) {
@@ -62,7 +62,7 @@ upload_docs <- function(instr_team, info,
       overwrite_plan = TRUE
 
       if (paste0(info$slug, "_planning_doc.docx") %in% drv$get_item(paste0(info$slug))$list_files()$name) {
-        overwrite_plan <- askYesNo("You will overwrite the old planning doc file. Do you want to continue?", default = TRUE)
+        overwrite_plan <- askYesNo(paste0(info$slug, ": You will overwrite the old planning doc file. Do you want to continue?"), default = TRUE)
       }
 
       if (!paste0(info$slug, "_planning_doc.docx") %in% drv$get_item(paste0(info$slug))$list_files()$name | overwrite_plan == TRUE) {
@@ -76,7 +76,7 @@ upload_docs <- function(instr_team, info,
       overwrite_debrief = TRUE
 
       if (paste0(info$slug, "_debriefing_doc.docx") %in% drv$get_item(paste0(info$slug))$list_files()$name) {
-        overwrite_debrief <- askYesNo("You will overwrite the old debriefing doc file. Do you want to continue?", default = TRUE)
+        overwrite_debrief <- askYesNo(paste0(info$slug, ": You will overwrite the old debriefing doc file. Do you want to continue?"), default = TRUE)
       }
 
       if (!paste0(info$slug, "_debriefing_doc.docx") %in% drv$get_item(paste0(info$slug))$list_files()$name | overwrite_debrief == TRUE) {
