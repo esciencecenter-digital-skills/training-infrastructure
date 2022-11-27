@@ -17,10 +17,10 @@ render_comms_doc = function(info,
 
   # check if workshop is online or in person, choose template accordingly
   if (stringr::str_detect(info$location, "online")) {
-    doctype = "communication_doc_online.Rmd"}
+    doctype = "communication_online_doc.Rmd"}
   else {
     warning(paste0(info$slug, ": address field is not set to *online*, assuming in-person workshop"))
-    doctype = "communication_doc_irl.Rmd"
+    doctype = "communication_irl_doc.Rmd"
   }
 
   comms_templ <- paste0(template_url, doctype) # URL to the Rmd template
