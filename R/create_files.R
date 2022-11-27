@@ -14,15 +14,22 @@ create_files <- function(workshop, data, comms = F, plan = F, debrief = F, folde
 
   wsdat <- get_workshop(data, workshop)
 
-  if(debrief){
-    debrief_doc_info <- get_debrief_doc_info(wsdat)
-    render_debrief_doc(debrief_doc_info)
+  if(comms){
+    comms_doc_info <- get_comms_doc_info(wsdat)
+    render_comms_doc(comms_doc_info, folder = folder)
   }
 
   if(plan){
     planning_doc_info <- get_planning_doc_info(wsdat)
-    render_planning_doc(planning_doc_info)
+    render_planning_doc(planning_doc_info, folder = folder)
   }
+
+  if(debrief){
+    debrief_doc_info <- get_debrief_doc_info(wsdat)
+    render_debrief_doc(debrief_doc_info, folder = folder)
+  }
+
+
 
 
 }
