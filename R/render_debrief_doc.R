@@ -7,7 +7,9 @@
 #'
 #' @export
 
-render_debrief_doc = function(info, template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
+render_debrief_doc = function(info,
+                              template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/",
+                              folder = ".") {
 
   doctype = "debriefing"
 
@@ -18,7 +20,7 @@ render_debrief_doc = function(info, template_url = "https://raw.githubuserconten
   rmarkdown::render(
     paste0(info$slug, "_", doctype, "_doc.Rmd"),
     params = info,
-    output_file = paste0(info$slug, "_", doctype, "_doc.docx") # render, save in current WD (for now) with proper name
+    output_file = paste0(folder,"/",info$slug, "_", doctype, "_doc.docx") # render, save in current WD (for now) with proper name
   )
 
 }

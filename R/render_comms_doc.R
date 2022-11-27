@@ -10,7 +10,10 @@
 #'
 #' @export
 
-render_comms_doc = function(info, outformat = "", template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
+render_comms_doc = function(info,
+                            outformat = "",
+                            template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/",
+                            folder = ".") {
 
   # check if workshop is online or in person, choose template accordingly
   if (stringr::str_detect(info$location, "online")) {
@@ -31,7 +34,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
       paste0(info$slug, doctype),
       params = info,
       output_format = "html_document",
-      output_file = paste0(info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
+      output_file = paste0(folder,"/",info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
     )
   }
 
@@ -40,7 +43,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
       paste0(info$slug, doctype),
       params = info,
       output_format = "word_document",
-      output_file = paste0(info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
+      output_file = paste0(folder,"/",info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
     )
   }
 
@@ -49,14 +52,14 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
       paste0(info$slug, "-", doctype),
       params = info,
       output_format = "html_document",
-      output_file = paste0(info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
+      output_file = paste0(folder,"/",info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
     )
 
     rmarkdown::render(
       paste0(info$slug, "-", doctype),
       params = info,
       output_format = "word_document",
-      output_file = paste0(info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
+      output_file = paste0(folder,"/",info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
     )
   }
 }
