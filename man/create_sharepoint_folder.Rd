@@ -4,12 +4,12 @@
 \alias{create_sharepoint_folder}
 \title{Create Sharepoint site}
 \usage{
-create_sharepoint_folder(drv, info)
+create_sharepoint_folder(info, drive = "Instructors")
 }
 \arguments{
-\item{drv}{the Sharepoint Drive to check}
-
 \item{info}{information about the workshop taken from the holy excel sheet}
+
+\item{drive}{the name of the Sharepoint drive where the folder will be created}
 }
 \description{
 Takes information about the workshop. Checks if a sharepoint folder for a workshop slug already exists.

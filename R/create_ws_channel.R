@@ -4,13 +4,13 @@
 #' Creates a channel if it does not exist yet. Throws an error if channels cannot be retrieved.
 #' (within the current workflow, this will most likely be from the "Instructors" channel)
 #'
-#' @param instr_team a teams Microsoft 365 object
 #' @param info information about the workshop taken from the holy excel sheet
+#' @param team the name of the team in Teams where the channel will be created
 #'
 #' @export
 #'
 
-create_ws_channel <- function(team = "Instructors", info) {
+create_ws_channel <- function(info, team = "Instructors") {
 
   instr_team <- Microsoft365R::get_team(team)  #make the retrieval of the team part of the function rather than part of the setup
 

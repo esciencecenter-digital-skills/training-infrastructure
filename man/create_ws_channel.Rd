@@ -4,12 +4,12 @@
 \alias{create_ws_channel}
 \title{Create Microsoft Teams Channel}
 \usage{
-create_ws_channel(instr_team, info)
+create_ws_channel(info, team = "Instructors")
 }
 \arguments{
-\item{instr_team}{a teams Microsoft 365 object}
-
 \item{info}{information about the workshop taken from the holy excel sheet}
+
+\item{team}{the name of the team in Teams where the channel will be created}
 }
 \description{
 Takes information about the workshop. Checks if a channel for a workshop slug already exists.
