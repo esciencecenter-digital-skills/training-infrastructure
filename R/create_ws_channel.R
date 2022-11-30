@@ -14,7 +14,8 @@ create_ws_channel <- function(team = "Instructors", info) {
 
   instr_team <- Microsoft365R::get_team(team)  #make the retrieval of the team part of the function rather than part of the setup
 
-  channelexist <- try(instr_team$get_channel(info$slug), silent=T)
+  slug <- info$slug
+  channelexist <- try(instr_team$get_channel(slug), silent=T)
   if (class(channelexist) == "try-error" && channelexist[1] == "Error : Invalid channel name\n") {  #if 404, the folder does not exist, create it
     instr_team$create_channel(info$slug)
     message <- paste("Channel", as.character(info$slug), "created")
