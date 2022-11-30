@@ -5,12 +5,12 @@ test_that("correct documents are created", {
   dir.create(tdir)
 
   load(file = "holytest.rda")
-  slug <- "2021-03-22-ds-rpackaging"
-  info <- get_workshop(holytest, slug)
+  rpack <- "2021-03-22-ds-rpackaging"
+  info <- dplyr::filter(holytest, slug==rpack)
 
-  comms <- paste0(slug, "-communication_doc.docx")
-  plan <- paste0(slug, "_planning_doc.docx")
-  debrief <- paste0(slug, "_debriefing_doc.docx")
+  comms <- paste0(rpack, "-communication_doc.docx")
+  plan <- paste0(rpack, "_planning_doc.docx")
+  debrief <- paste0(rpack, "_debriefing_doc.docx")
 
   # run function to create workshops, do tests on result
   create_files(info,
