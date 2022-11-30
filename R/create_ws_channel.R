@@ -26,6 +26,6 @@ create_ws_channel <- function(team = "Instructors", info) {
     }
   }
   else {
-    message <- (paste0("No new channel created, becauase the following channel already exists:", slug))# if retrieving the channel does not fail, no action is required.
+    message <- (paste0("No new channel created, because the following channel already exists:", slug))# if retrieving the channel does not fail, no action is required.
   }
 }
