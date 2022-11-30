@@ -19,7 +19,7 @@ render_comms_doc = function(info, outformat = "", template_url = "https://raw.gi
     loctype <- "_online"}
   else {
     warning(paste0(info$slug, ": address field is not set to *online*, assuming in-person workshop"))
-    loctype = "_irl"
+    loctype <- "_irl"
   }
 
   # download the correct template and give it the name of the slug plus the template name
