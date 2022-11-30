@@ -27,11 +27,16 @@ workshop_activate <- function(data){
   message(paste0("We are activating ", activews$slug, ". Please stand by!"))
 
   # make sharepoint
+  message("Making sharepoint folder...")
+  # TODO
 
   # make teams channel
+  message("Making Teams channel...")
+  # TODO
 
   # create documents
-
+  message("Creating documents...")
+  create_files(info = activews, comms = T, plan = T, debrief = T, folder = tempdir())
 }
 
 
