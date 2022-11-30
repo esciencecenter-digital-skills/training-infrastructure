@@ -35,4 +35,9 @@ test_that("correct documents are created", {
 
   # delete temporary directory and contents
   unlink(tdir,recursive=T)
+
+  rmds_left <- list.files(".")[stringr::str_detect(list.files("."), ".Rmd")]
+  for(r in rmds_left){
+    file.remove(r)
+  }
 })
