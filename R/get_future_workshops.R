@@ -20,7 +20,7 @@ get_future_workshops <- function(df, future = "today") {
                       "helper1", "helper2", "helper3",
                       "carpentry", "curriculum", "flavor", "host",
                       "venue", "address", "country",
-                      "eventbrite", "repository", "ready")
+                      "repository", "ready")
 
   for(c in columns_needed){
     if(!c %in% names(df)){
