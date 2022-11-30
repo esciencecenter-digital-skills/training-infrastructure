@@ -10,7 +10,13 @@
 #' @export
 #'
 
-create_sharepoint_folder <- function(drv, info) {
+create_sharepoint_folder <- function(drive = "Instructors", info) {
+
+  instr_site <- Microsoft365R::get_sharepoint_site(site_url=paste0("https://nlesc.sharepoint.com/sites/", drive)) #make the retrieval of the sharepoint site part of the function rather than part of the setup
+  drv        <- instr_site$get_drive()
+
+
+  #create_sharepoint_folder <- function(drv, info) {
   sharepointexist <- try(drv$get_item(info$slug), silent=T) # try to retrieve sharepoint site for slug and save error if it did not work
 
   if ("try-error" %in% class(sharepointexist) == "try-error" && stringr::str_detect(sharepointexist[1],"404")) { #if 404, the folder does not exist, make it
