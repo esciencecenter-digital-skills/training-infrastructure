@@ -1,35 +1,38 @@
 test_that("correct documents are created", {
-  # just in case a temp directory already exists: remove it
-  if(dir.exists("temp_docs")){
-    unlink("temp_docs", recursive=T)
-  }
+  tdir <- "temporary_docs"
 
   # create temporary directory
-  dir.create("temp_docs")
-  expect_true(dir.exists("temp_docs"))
+  dir.create(tdir)
 
   load(file = "holytest.rda")
+  slug <- "2021-03-22-ds-rpackaging"
+  info <- get_workshop(holytest, slug)
+
+  comms <- paste0(slug, "-communication_doc.docx")
+  plan <- paste0(slug, "_planning_doc.docx")
+  debrief <- paste0(slug, "_debriefing_doc.docx")
 
   # run function to create workshops, do tests on result
-  create_files(workshop = "2021-03-22-ds-rpackaging",
-               data = holytest,
+  create_files(info,
                comms = T,
                plan = T,
                debrief = F,
-               folder = "temp_docs")
-  files <- list.files("temp_docs")
-  expect_equal(length(files), 2)
+               folder = tdir)
+  files <- list.files(tdir)
+  expect_true(comms %in% files)
+  expect_true(plan %in% files)
+  expect_false(debrief %in% files)
 
-  create_files(workshop = "2021-03-22-ds-rpackaging",
-               data = holytest,
+  create_files(info,
                comms = F,
                plan = T,
                debrief = T,
-               folder = "temp_docs")
-  files <- list.files("temp_docs")
-  expect_equal(length(files), 3)
+               folder = tdir)
+  files <- list.files(tdir)
+  expect_true(debrief %in% files)
+  expect_length(files, 4)
+
 
   # delete temporary directory and contents
-  unlink("temp_docs",recursive=T)
-  expect_false(dir.exists("temp_docs"))
+  unlink(tdir,recursive=T)
 })
