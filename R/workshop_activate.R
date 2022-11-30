@@ -38,11 +38,3 @@ workshop_activate <- function(data){
   message("Creating documents...")
   create_files(info = activews, comms = T, plan = T, debrief = T, folder = tempdir())
 }
-
-
-
-get_workshop <- function(df, slug){
-  df <- df[!is.na(df$slug),] # in case there are NAs left in the df
-  selected_ws <- df[df$slug==slug,]
-  return(selected_ws)
-}
