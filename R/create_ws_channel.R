@@ -16,13 +16,13 @@ create_ws_channel <- function(team = "Instructors", info) {
 
   slug <- info$slug
   channelexist <- try(instr_team$get_channel(slug), silent=T)
-  if (class(channelexist) == "try-error" && channelexist[1] == "Error : Invalid channel name\n") {  #if 404, the folder does not exist, create it
-    instr_team$create_channel(info$slug)
-    message <- paste("Channel", as.character(info$slug), "created")
-    warning(message)
-  }
-  else if (class(channelexist) == "try-error") {
-    message <- "retrieving teams channels failed, please check your M365 login"
-    warning(message)
+  if ("try-error"%in%class(channelexist)){
+    if(stringr::str_detect(channelexist[1], "Invalid channel name")){
+      instr_team$create_channel(info$slug)
+      message <- paste("Channel", as.character(info$slug), "created")
+      print(message)
+    } else{
+      warning("retrieving teams channels failed, please check your M365 login")
+    }
   } # if retrieving the channel does not fail, no action is required.
 }
