@@ -6,14 +6,17 @@
 \usage{
 render_planning_doc(
   info,
- 
-    template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+  template_url =
+    "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/",
+  folder = "."
 )
 }
 \arguments{
 \item{info}{information about the workshop used to set up the planning document}
 
 \item{template_url}{the place where the template for the document is saved in Rmd format}
+
+\item{folder}{location for output document(s)}
 }
 \description{
 Take the markdown file and render a word planning doc for one workshop.

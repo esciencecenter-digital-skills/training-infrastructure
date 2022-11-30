@@ -7,8 +7,9 @@
 render_comms_doc(
   info,
   outformat = "",
- 
-    template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+  template_url =
+    "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/",
+  folder = "."
 )
 }
 \arguments{
@@ -17,6 +18,8 @@ render_comms_doc(
 \item{outformat}{if left empty, both html and docx are printed. otherwise, choose one with "html", or "docx".}
 
 \item{template_url}{the place where the template for the communication document is saved in Rmd format}
+
+\item{folder}{location for output document(s)}
 }
 \description{
 Checks if the upcoming workshop is online or in person. Takes the appropriate template Rmd document from the template

@@ -7,6 +7,7 @@
 #' @param info a dataframe with information about the upcoming workshop
 #' @param outformat if left empty, both html and docx are printed. otherwise, choose one with "html", or "docx".
 #' @param template_url the place where the template for the communication document is saved in Rmd format
+#' @param folder location for output document(s)
 #'
 #' @export
 

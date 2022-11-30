@@ -4,6 +4,7 @@
 #'
 #' @param info information about the workshop to be inserted into the debriefing document
 #' @param template_url the place where the template for the document is saved in Rmd format
+#' @param folder location for output document(s)
 #'
 #' @export
 
