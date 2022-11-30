@@ -5,6 +5,7 @@
 #' (within the current workflow, this will most likely be from the "Instructors" Sharepoint page)
 #'
 #' @param drv a microsoft 365 object that contains all the information about the Sharepoint Drive to check
+#' # created within this function by calling get_sharepoint_site and get_drive on the returned object
 #' @param info information about the workshop taken from the holy excel sheet
 #'
 #' @export
