@@ -13,19 +13,27 @@
 create_ws_channel <- function(info, team = "Instructors") {
 
   instr_team <- Microsoft365R::get_team(team)  #make the retrieval of the team part of the function rather than part of the setup
-
   slug <- info$slug
+
   channelexist <- try(instr_team$get_channel(slug), silent=T)
   if ("try-error"%in%class(channelexist)){
     if(stringr::str_detect(channelexist[1], "Invalid channel name")){
-      instr_team$create_channel(info$slug)
-      message <- paste("Channel", as.character(info$slug), "created")
-      print(message)
-    } else{
-      warning("retrieving teams channels failed, please check your M365 login")
+      instr_team$create_channel(slug)
+
+      # confirm that channel was correctly created
+      channelexist <- try(instr_team$get_channel(slug), silent=T)
+      if(!"try-error"%in%class(channelexist)){
+        print(paste("Channel", slug, "created"))
+      } else{
+        warning(paste("Something went wrong. Channel", slug, "was not created."))
+      }
+
+    } else {
+      warning("retrieving Teams channels failed, please check your M365 login")
     }
   }
   else {
-    message <- (paste0("No new channel created, because the following channel already exists:", slug))# if retrieving the channel does not fail, no action is required.
+    # if retrieving the channel does not fail, no action is required.
+    warning(paste("No new channel created:", info$slug, "already exists."))
   }
 }
