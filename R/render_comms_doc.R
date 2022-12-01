@@ -16,23 +16,29 @@ render_comms_doc = function(info,
                             template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/",
                             folder = ".") {
 
+  doctype = "communication"
+
   # check if workshop is online or in person, choose template accordingly
   if (stringr::str_detect(info$location, "online")) {
-    doctype = "communication_online_doc.Rmd"}
+    loctype <- "_online"}
   else {
     warning(paste0(info$slug, ": address field is not set to *online*, assuming in-person workshop"))
-    doctype = "communication_irl_doc.Rmd"
+    loctype <- "_irl"
   }
 
-  comms_templ <- paste0(template_url, doctype) # URL to the Rmd template
   # download the correct template and give it the name of the slug plus the template name
 
-  download.file(comms_templ, paste0(info$slug, "-", doctype))
+  doc_loc <- paste0("files/", info$slug, "/")
+  doc_name <- paste0(info$slug, "_", doctype, "_doc")
+
+  comms_templ <- paste0(template_url, doctype, loctype, "_doc.Rmd") # URL to the Rmd template
+  download_name <- paste0(doc_loc, doc_name, ".Rmd")
+  download.file(comms_templ, download_name)
 
   # update the downloaded Rmd file and knit to the desired file format, html, docx or both (this can probably be optimized (: )
   if (stringr::str_detect(outformat, "html")) {
     rmarkdown::render(
-      paste0(info$slug, doctype),
+      download_name,
       params = info,
       output_format = "html_document",
       output_file = paste0(folder,"/",info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
@@ -41,7 +47,7 @@ render_comms_doc = function(info,
 
   else if (stringr::str_detect(outformat, "docx"))  {
     rmarkdown::render(
-      paste0(info$slug, doctype),
+      download_name,
       params = info,
       output_format = "word_document",
       output_file = paste0(folder,"/",info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
@@ -50,14 +56,14 @@ render_comms_doc = function(info,
 
   else {
     rmarkdown::render(
-      paste0(info$slug, "-", doctype),
+      download_name,
       params = info,
       output_format = "html_document",
       output_file = paste0(folder,"/",info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
     )
 
     rmarkdown::render(
-      paste0(info$slug, "-", doctype),
+      download_name,
       params = info,
       output_format = "word_document",
       output_file = paste0(folder,"/",info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
