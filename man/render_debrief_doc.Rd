@@ -6,8 +6,8 @@
 \usage{
 render_debrief_doc(
   info,
- 
-    template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+  template_url =
+    "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
 )
 }
 \arguments{
