@@ -31,7 +31,7 @@ create_sharepoint_folder <- function(info, drive = "Instructors") {
     warning("retrieving Sharepoint folders failed, please check your M365 login")
   } # if no error, no action is needed.
   else(
-    warning(paste("the folder", info$slug, "already exists"))
+    warning(paste("No new Sharepoint folder created:", info$slug, "already exists."))
   )
 
 
