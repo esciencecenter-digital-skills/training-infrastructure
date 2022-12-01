@@ -7,8 +7,8 @@
 render_comms_doc(
   info,
   outformat = "",
- 
-    template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+  template_url =
+    "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
 )
 }
 \arguments{

@@ -10,7 +10,8 @@
 #' @importFrom dplyr select
 #' @importFrom purrr `%>%`
 #' @export
-save_viable_data <- function(dat_struct) {
+#'
+save_data_csv <- function(dat_struct) {
 
   viable_slugs  <- dat_struct[!is.na(dat_struct$slug), ]
   viable_slugs <- viable_slugs$slug #only bother with slugs longer than 10 characters
