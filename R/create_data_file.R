@@ -2,7 +2,7 @@
 #'
 #' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
 #'
-#' @param dat_struct a dataframe created based on the digital skills programme excel file
+#' @param info a dataframe created based on the digital skills programme excel file
 #'
 #' @return data.csv files saved in folders with the slug name
 #'

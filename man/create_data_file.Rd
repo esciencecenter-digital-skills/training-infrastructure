@@ -7,7 +7,7 @@
 create_data_file(info)
 }
 \arguments{
-\item{dat_struct}{a dataframe created based on the digital skills programme excel file}
+\item{info}{a dataframe created based on the digital skills programme excel file}
 }
 \value{
 data.csv files saved in folders with the slug name
