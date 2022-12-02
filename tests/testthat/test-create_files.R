@@ -32,10 +32,8 @@ test_that("correct documents are created", {
   expect_true(debrief %in% files)
   expect_length(files, 4)
 
-
-  # delete temporary directory and contents
+  # delete temporary directory and leftover contents
   unlink(tdir,recursive=T)
-
   rmds_left <- list.files(".")[stringr::str_detect(list.files("."), ".Rmd")]
   for(r in rmds_left){
     file.remove(r)

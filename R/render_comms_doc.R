@@ -28,11 +28,10 @@ render_comms_doc = function(info,
 
   # download the correct template and give it the name of the slug plus the template name
 
-  doc_loc <- paste0("files/", info$slug, "/")
   doc_name <- paste0(info$slug, "_", doctype, "_doc")
 
   comms_templ <- paste0(template_url, doctype, loctype, "_doc.Rmd") # URL to the Rmd template
-  download_name <- paste0(doc_loc, doc_name, ".Rmd")
+  download_name <- paste0(doc_name, ".Rmd")
   download.file(comms_templ, download_name)
 
   # update the downloaded Rmd file and knit to the desired file format, html, docx or both (this can probably be optimized (: )
