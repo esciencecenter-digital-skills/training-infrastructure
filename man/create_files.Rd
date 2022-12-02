@@ -4,16 +4,12 @@
 \alias{create_files}
 \title{Create files}
 \usage{
-create_files(ws_dat, meta_fld)
+create_files(info)
 }
 \arguments{
-\item{ws_dat}{workshop data: information about the workshop to be inserted into the different documents}
-
-\item{meta_fld}{the URL of the meta folder}
-}
-\value{
-no output, just saving files within the project directory
+\item{info}{named vector with workshop information}
 }
 \description{
-Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
+Take the template word documents and save them with specific information
+for the upcoming workshop.
 }

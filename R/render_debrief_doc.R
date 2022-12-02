@@ -7,7 +7,8 @@
 #'
 #' @export
 
-render_debrief_doc = function(info, template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
+render_debrief_doc = function(info,
+                              template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
 
   doctype = "debriefing"
 
