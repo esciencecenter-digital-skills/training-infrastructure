@@ -5,10 +5,10 @@
 \title{Create local folders
 create folders inside a local folder called "files", folder names are future workshop slugs.}
 \usage{
-create_local_folders(dat_struct)
+create_local_folders(df)
 }
 \arguments{
-\item{dat_struct}{a dataframe created based on the digital skills programme excel file}
+\item{df}{a dataframe created based on the digital skills programme excel file}
 }
 \description{
 Create local folders
