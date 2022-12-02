@@ -7,14 +7,12 @@
 #' @param info a dataframe with information about the upcoming workshop
 #' @param outformat if left empty, both html and docx are printed. otherwise, choose one with "html", or "docx".
 #' @param template_url the place where the template for the communication document is saved in Rmd format
-#' @param folder location for output document(s)
 #'
 #' @export
 
 render_comms_doc = function(info,
                             outformat = "",
-                            template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/",
-                            folder = ".") {
+                            template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
 
   doctype = "communication"
 
@@ -40,7 +38,7 @@ render_comms_doc = function(info,
       download_name,
       params = info,
       output_format = "html_document",
-      output_file = paste0(folder,"/",info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
+      output_file = paste0(info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
     )
   }
 
@@ -49,7 +47,7 @@ render_comms_doc = function(info,
       download_name,
       params = info,
       output_format = "word_document",
-      output_file = paste0(folder,"/",info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
+      output_file = paste0(info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
     )
   }
 
@@ -58,14 +56,14 @@ render_comms_doc = function(info,
       download_name,
       params = info,
       output_format = "html_document",
-      output_file = paste0(folder,"/",info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
+      output_file = paste0(info$slug, "-communication_doc.html") # render, save in current WD (for now) with proper name
     )
 
     rmarkdown::render(
       download_name,
       params = info,
       output_format = "word_document",
-      output_file = paste0(folder,"/",info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
+      output_file = paste0(info$slug, "-communication_doc.docx") # render, save in current WD (for now) with proper name
     )
   }
 }

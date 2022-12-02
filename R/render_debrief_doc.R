@@ -4,13 +4,11 @@
 #'
 #' @param info information about the workshop to be inserted into the debriefing document
 #' @param template_url the place where the template for the document is saved in Rmd format
-#' @param folder location for output document(s)
 #'
 #' @export
 
 render_debrief_doc = function(info,
-                              template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/",
-                              folder = ".") {
+                              template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
 
   doctype = "debriefing"
 
@@ -21,7 +19,7 @@ render_debrief_doc = function(info,
   rmarkdown::render(
     paste0(info$slug, "_", doctype, "_doc.Rmd"),
     params = info,
-    output_file = paste0(folder,"/",info$slug, "_", doctype, "_doc.docx") # render, save in current WD (for now) with proper name
+    output_file = paste0(info$slug, "_", doctype, "_doc.docx") # render, save in current WD (for now) with proper name
   )
 
 }

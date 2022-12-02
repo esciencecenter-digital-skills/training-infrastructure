@@ -4,13 +4,11 @@
 #'
 #' @param info information about the workshop used to set up the planning document
 #' @param template_url the place where the template for the document is saved in Rmd format
-#' @param folder location for output document(s)
 #'
 #' @export
 
 render_planning_doc <- function(info,
-                                template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/",
-                                folder = ".") {
+                                template_url = "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/") {
 
   doctype = "planning"
 
@@ -21,7 +19,7 @@ render_planning_doc <- function(info,
   rmarkdown::render(
     paste0(info$slug, "_", doctype, "_doc.Rmd"),
     params = info,
-    output_file = paste0(folder,"/",info$slug, "_", doctype, "_doc.docx")
+    output_file = paste0(info$slug, "_", doctype, "_doc.docx")
   )
 
 }
