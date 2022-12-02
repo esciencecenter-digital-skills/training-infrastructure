@@ -1,20 +1,15 @@
 #' Create files
 #'
-#' Take the template word documents and save them with specific information for the upcoming workshop in the corresponding Sharepoint channel
+#' Take the template word documents and save them with specific information
+#' for the upcoming workshop.
 #'
-#' @param ws_dat workshop data: information about the workshop to be inserted into the different documents
-#' @param meta_fld the URL of the meta folder
-#'
-#' @return no output, just saving files within the project directory
-#'
+#' @param info named vector with workshop information
 #' @export
-#'
-create_files <- function(ws_dat, meta_fld) {
-
-  debrief_doc_info <- get_debrief_doc_info(wsdat)
-  planning_doc_info <- get_planning_doc_info(wsdat)
-
-  render_debrief_doc(debrief_doc_info)
+create_files <- function(info){
+  comms_doc_info <- get_comms_doc_info(info)
+  render_comms_doc(comms_doc_info)
+  planning_doc_info <- get_planning_doc_info(info)
   render_planning_doc(planning_doc_info)
-
+  debrief_doc_info <- get_debrief_doc_info(info)
+  render_debrief_doc(debrief_doc_info)
 }
