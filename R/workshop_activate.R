@@ -52,7 +52,7 @@ Please enter a single number corresponding to the workshop you wish to activate.
 
   # create documents
   message("Creating documents...")
-  create_files(info = activews, comms = T, plan = T, debrief = T)
+  create_files(info = activews)
 }
 
 
