@@ -44,11 +44,11 @@ Please enter a single number corresponding to the workshop you wish to activate.
 
   # make sharepoint
   message("Making sharepoint folder...")
-  # TODO
+  create_sharepoint_folder(info = activews)
 
   # make teams channel
   message("Making Teams channel...")
-  # TODO
+  create_ws_channel(info = activews)
 
   # create documents
   message("Creating documents...")
