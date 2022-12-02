@@ -12,17 +12,15 @@ render_planning_doc <- function(info,
 
   doctype = "planning"
 
-  doc_loc <- paste0("files/", info$slug, "/")
   doc_name <- paste0(info$slug, "_", doctype, "_doc")
 
   planning_templ <- paste0(template_url, doctype, "_doc.Rmd") # URL to the Rmd template
-  download.file(planning_templ, paste0(doc_loc, doc_name, ".Rmd")) # download and save in current WD (for now)
+  download.file(planning_templ, paste0(doc_name, ".Rmd")) # download and save in current WD (for now)
 
   # update the downloaded Rmd file and knit to the desired file format
   rmarkdown::render(
-    paste0(doc_loc, doc_name, ".Rmd"),
+    paste0(doc_name, ".Rmd"),
     params = info,
-    output_dir = doc_loc,
     output_file = paste0(doc_name, ".docx") # render, save in current WD (for now) with proper name  )
   )
 }

@@ -38,7 +38,6 @@ render_comms_doc = function(info,
       download_name,
       params = info,
       output_format = "html_document",
-      output_dir = doc_loc,
       output_file = paste0(doc_name, ".html") # render, save in current WD (for now) with proper name
     )
   }
@@ -48,7 +47,6 @@ render_comms_doc = function(info,
       download_name,
       params = info,
       output_format = "word_document",
-      output_dir = doc_loc,
       output_file = paste0(doc_name, ".docx") # render, save in current WD (for now) with proper name
     )
   }
@@ -58,7 +56,6 @@ render_comms_doc = function(info,
       download_name,
       params = info,
       output_format = "html_document",
-      output_dir = doc_loc,
       output_file = paste0(doc_name, ".html") # render, save in current WD (for now) with proper name
     )
 
@@ -66,7 +63,6 @@ render_comms_doc = function(info,
       download_name,
       params = info,
       output_format = "word_document",
-      output_dir = doc_loc,
       output_file = paste0(doc_name, ".docx") # render, save in current WD (for now) with proper name
     )
   }

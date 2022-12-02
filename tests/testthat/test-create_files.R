@@ -3,7 +3,7 @@ test_that("correct documents are created", {
   rpack <- "2021-03-22-ds-rpackaging"
   info <- dplyr::filter(holytest, slug==rpack)
 
-  comms <- paste0(rpack, "-communication_doc.docx")
+  comms <- paste0(rpack, "_communication_doc.docx")
   plan <- paste0(rpack, "_planning_doc.docx")
   debrief <- paste0(rpack, "_debriefing_doc.docx")
 
