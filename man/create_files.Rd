@@ -4,18 +4,10 @@
 \alias{create_files}
 \title{Create files}
 \usage{
-create_files(info, comms = F, plan = F, debrief = F, folder = ".")
+create_files(info)
 }
 \arguments{
 \item{info}{named vector with workshop information}
-
-\item{comms}{boolean indicating whether the comms doc should be created}
-
-\item{plan}{boolean indicating whether the plan doc should be created}
-
-\item{debrief}{boolean indicating whether the debrief doc should be created}
-
-\item{folder}{location where the files should be saved}
 }
 \description{
 Take the template word documents and save them with specific information
