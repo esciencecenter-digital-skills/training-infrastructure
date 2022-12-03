@@ -10,7 +10,8 @@
 #' @export
 #'
 
-create_sharepoint_folder <- function(info, drive = "Instructors") {
+create_sharepoint_folder <- function(info, drive = "instructors") {
+  verify_info(info)
 
   instr_site <- Microsoft365R::get_sharepoint_site(site_url=paste0("https://nlesc.sharepoint.com/sites/", drive)) #make the retrieval of the sharepoint site part of the function rather than part of the setup
   drv        <- instr_site$get_drive()

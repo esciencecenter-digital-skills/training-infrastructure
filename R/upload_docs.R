@@ -1,5 +1,6 @@
 upload_docs <- function(info,
                         drive = "instructors") {
+  verify_info(info)
 
   siteloc <- paste0("https://nlesc.sharepoint.com/sites/", drive)
 

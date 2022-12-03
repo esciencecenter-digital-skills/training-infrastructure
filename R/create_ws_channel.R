@@ -11,6 +11,7 @@
 #'
 
 create_ws_channel <- function(info, team = "Instructors") {
+  verify_info(info)
 
   instr_team <- Microsoft365R::get_team(team)  #make the retrieval of the team part of the function rather than part of the setup
   slug <- info$slug
