@@ -29,7 +29,7 @@ render_doc <- function(info, type){
   template_local <- paste0(doc_name, ".Rmd")
   rendered_local <- paste0(doc_name, ".docx")
 
-  download.file(url = templ_online,
+  download.file(url = template_online,
                 destfile = template_local)
 
   rmarkdown::render(
