@@ -42,4 +42,5 @@ get_comms_doc_info <- function(info) {
                         repo                  = paste0("https://github.com/esciencecenter-digital-skills/", info$slug),
                         repo_ref              = paste0("[workshop repository](","https://github.com/esciencecenter-digital-skills/", info$slug, "/files" ,")"),
                         show_text             = TRUE)
+  return(comm_doc_info)
 }
