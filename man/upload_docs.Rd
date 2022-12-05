@@ -4,10 +4,12 @@
 \alias{upload_docs}
 \title{Upload documents to sharepoint}
 \usage{
-upload_docs(info, drive = "instructors", folder)
+upload_docs(info, folder = ".", drive = "instructors")
 }
 \arguments{
 \item{info}{information about the workshop taken from the holy excel sheet}
+
+\item{folder}{the directory of the files that need to be uploaded}
 
 \item{drive}{the name of the Sharepoint drive where the workshop folder lives}
 }

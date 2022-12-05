@@ -1,12 +1,13 @@
 #' Upload documents to sharepoint
 #'
 #' @param info information about the workshop taken from the holy excel sheet
+#' @param folder the directory of the files that need to be uploaded
 #' @param drive the name of the Sharepoint drive where the workshop folder lives
 #'
 #' @export
 upload_docs <- function(info,
-                        drive = "instructors",
-                        folder) {
+                        folder = ".",
+                        drive = "instructors") {
   verify_info(info)
   slug <- info$slug
 
@@ -22,19 +23,19 @@ upload_docs <- function(info,
 
   drv_content <- drv$get_item(slug)$list_files()$name
 
-  # list of files that contain the slug
-  flist <- list.files()
-  flist <- flist[grep(slug, flist)]
+  # list of files in the workshop folder
+  flist <- list.files(folder)
 
   for(file in flist){
     if(!file %in% drv_content){
       destname <- paste0(slug, "/", file)
-      drv$upload_file(src = file, dest = destname)
+      srcname <- paste0(folder,"/", file)
+      drv$upload_file(src = srcname, dest = destname)
+      message(paste("Uploading to", destname))
     } else{
-      warning(paste(file, "already exist in the sharepoint drive."))
+      warning(paste(file, "already exists in the sharepoint drive."))
     }
   }
-
 }
 
 check_drive <- function(drive, slug){
