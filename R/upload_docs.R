@@ -1,18 +1,21 @@
+#' Upload documents to sharepoint
+#'
+#' @param info information about the workshop taken from the holy excel sheet
+#' @param drive the name of the Sharepoint drive where the workshop folder lives
+#'
+#' @export
 upload_docs <- function(info,
                         drive = "instructors") {
   verify_info(info)
 
-  siteloc <- paste0("https://nlesc.sharepoint.com/sites/", drive)
-
-  instr_site <- Microsoft365R::get_sharepoint_site(siteloc)
+  spsite <- paste0("https://nlesc.sharepoint.com/sites/", drive)
+  instr_site <- Microsoft365R::get_sharepoint_site(site_url=spsite)
   drv        <- instr_site$get_drive()
-
-  #instr_team <- Microsoft365R::get_team(drive)
-  #drv <- instr_team$get_drive()
 
   drv_check <- check_drive(drv, info$slug)
   if ("try-error" %in% drv_check) {
-    stop("retrieving Sharepoint folders failed, please check your M365 login. \nNo documents have been uploaded.")
+    stop("retrieving Sharepoint folders failed, please check your M365 login.
+    \nNo documents have been uploaded.")
   }
 
   drv_content <- drv$get_item(info$slug)$list_files()$name
