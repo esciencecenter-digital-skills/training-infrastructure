@@ -18,21 +18,24 @@ create_files <- function(info){
 render_doc <- function(info, type){
   doc_types <- c("planning", "comms", "debriefing")
   if(!type %in% doc_types){
-    stop("Only `planning`, `comms` and `debriefing` docs can be rendered.")
+    stop("Wrong `type`: only `planning`, `comms` and `debriefing` docs can be rendered.")
   }
 
   template_url <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+
   slug <- info$slug
   doc_name <- paste0(slug, "_", type, "_doc")
+  template_online <- paste0(template_url, type, "_doc.Rmd")
+  template_local <- paste0(doc_name, ".Rmd")
+  rendered_local <- paste0(doc_name, ".docx")
 
-  templ <- paste0(template_url, type, "_doc.Rmd")
-  download.file(templ, paste0(doc_name, ".Rmd"))
+  download.file(url = templ_online,
+                destfile = template_local)
 
   rmarkdown::render(
-    paste0(doc_name, ".Rmd"),
+    input = template_local,
     params = info,
-    output_file = paste0(doc_name, ".docx")
-  )
+    output_file = rendered_local)
 }
 
 
