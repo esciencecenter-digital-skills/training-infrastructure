@@ -8,10 +8,13 @@
 create_files <- function(info){
   comms_doc_info <- get_comms_doc_info(info)
   render_doc(comms_doc_info, "communication")
+
   planning_doc_info <- get_planning_doc_info(info)
   render_doc(planning_doc_info, "planning")
+
   debrief_doc_info <- get_debrief_doc_info(info)
   render_doc(debrief_doc_info, "debriefing")
+  return(invisible(NULL)) # otherwise the function returns TRUE to console
 }
 
 
@@ -43,13 +46,16 @@ render_doc <- function(info, type){
   rendered_local <- paste0(doc_name, ".docx")
 
   download.file(url = template_online,
-                destfile = template_local)
+                destfile = template_local,
+                quiet = TRUE)
 
+  message(paste("Generating",type,"document(s) for", slug))
   rmarkdown::render(
     input = template_local,
     params = info,
     output_format = "word_document",
-    output_file = rendered_local)
+    output_file = rendered_local,
+    quiet = TRUE)
 
   if(type == "communication"){ # communication also requires a HTML
     rendered_local <- paste0(doc_name, ".html")
@@ -57,6 +63,10 @@ render_doc <- function(info, type){
       input = template_local,
       params = info,
       output_format = "html_document",
-      output_file = rendered_local)
+      output_file = rendered_local,
+      quiet = TRUE)
   }
+
+  # remove template Rmd file
+  file.remove(template_local)
 }
