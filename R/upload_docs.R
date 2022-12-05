@@ -7,25 +7,27 @@
 upload_docs <- function(info,
                         drive = "instructors") {
   verify_info(info)
+  slug <- info$slug
 
   spsite <- paste0("https://nlesc.sharepoint.com/sites/", drive)
   instr_site <- Microsoft365R::get_sharepoint_site(site_url=spsite)
   drv        <- instr_site$get_drive()
 
-  drv_check <- check_drive(drv, info$slug)
+  drv_check <- check_drive(drv, slug)
   if ("try-error" %in% drv_check) {
     stop("retrieving Sharepoint folders failed, please check your M365 login.
     \nNo documents have been uploaded.")
   }
 
-  drv_content <- drv$get_item(info$slug)$list_files()$name
+  drv_content <- drv$get_item(slug)$list_files()$name
 
-  # list of files that are created
-  flist <- paste0(info$slug, "_planning_doc.docx")
+  # list of files that contain the slug
+  flist <- list.files()
+  flist <- flist[grep(slug, flist)]
 
   for(file in flist){
     if(!file %in% drv_content){
-      destname <- paste0(info$slug, "/", file)
+      destname <- paste0(slug, "/", file)
       drv$upload_file(src = file, dest = destname)
     } else{
       warning(paste(file, "already exist in the sharepoint drive."))

@@ -53,6 +53,10 @@ Please enter a single number corresponding to the workshop you wish to activate.
   # create documents
   message("Creating documents...")
   create_files(info = activews)
+
+  # upload documents
+  message("Uploading documents...")
+  upload_docs(info = activews)
 }
 
 
