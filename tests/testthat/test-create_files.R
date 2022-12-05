@@ -3,6 +3,7 @@ test_that("correct documents are created", {
 
   slug <- infotest$slug
   comms <- paste0(slug, "_communication_doc.docx")
+  commshtml <- paste0(slug, "_communication_doc.html")
   plan <- paste0(slug, "_planning_doc.docx")
   debrief <- paste0(slug, "_debriefing_doc.docx")
   datacsv <- "data.csv"
@@ -11,6 +12,7 @@ test_that("correct documents are created", {
   create_files(infotest)
   files <- list.files(".")
   expect_true(comms %in% files)
+  expect_true(commshtml %in% files)
   expect_true(plan %in% files)
   expect_true(debrief %in% files)
   expect_true(datacsv %in% files)
@@ -21,4 +23,9 @@ test_that("correct documents are created", {
     file.remove(r)
   }
   file.remove(datacsv)
+})
+
+test_that("files cannot be created to nonexisting folder", {
+  load(file = "infotest.rda")
+  expect_error(create_files(infotest, folder = "nonexisting"))
 })
