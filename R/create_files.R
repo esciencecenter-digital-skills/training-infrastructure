@@ -20,7 +20,6 @@ create_files <- function(info, folder = "."){
   render_doc(debrief_doc_info, "debriefing", folder)
 
   create_data_file(info, folder)
-  #return(invisible(NULL)) # otherwise the function returns TRUE to console
 }
 
 
@@ -51,7 +50,7 @@ render_doc <- function(info, type, folder){
   template_local <- paste0(doc_name, ".Rmd")
   rendered_local <- paste0(doc_name, ".docx")
 
-  download.file(url = template_online,
+  utils::download.file(url = template_online,
                 destfile = template_local,
                 quiet = TRUE)
 
