@@ -16,3 +16,9 @@ verify_info <- function(info){
     stop("Input does not match the required format.")
   }
 }
+
+verify_folder <- function(dirname){
+  if(!dir.exists(dirname)){
+    stop(paste("Folder", dirname,"does not exist."))
+  }
+}

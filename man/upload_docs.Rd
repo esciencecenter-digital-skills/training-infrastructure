@@ -4,7 +4,7 @@
 \alias{upload_docs}
 \title{Upload documents to sharepoint}
 \usage{
-upload_docs(info, drive = "instructors")
+upload_docs(info, drive = "instructors", folder)
 }
 \arguments{
 \item{info}{information about the workshop taken from the holy excel sheet}

@@ -5,7 +5,8 @@
 #'
 #' @export
 upload_docs <- function(info,
-                        drive = "instructors") {
+                        drive = "instructors",
+                        folder) {
   verify_info(info)
   slug <- info$slug
 
