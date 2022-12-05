@@ -9,6 +9,8 @@ upload_docs <- function(info,
                         folder = ".",
                         drive = "instructors") {
   verify_info(info)
+  verify_folder(folder)
+
   slug <- info$slug
 
   spsite <- paste0("https://nlesc.sharepoint.com/sites/", drive)
