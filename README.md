@@ -30,8 +30,12 @@ library(training-infrastructure)
 
 Step 1: Download the Holy Excel Sheet:
 ```
-data <- read_from_drive(path = "General/Digital Skills Workshops 2023.xlsx")
+data <- read_from_drive(year = "2023")
 ```
+In case this fails: the path to the actual file is hardcoded in
+`inst/extdata/rawinfo.csv`. If the Holy Excel file cannot be found
+in the location indicate there, this file should be updated.
+
 
 Step 2: Select future workshops:
 ```
@@ -57,9 +61,10 @@ You can now enter 1 or 2, based on the workshop you want to activate.
 
 The package will now:
 - create a folder in the Instructors sharepoint drive
-- create a workshop-specific team in the Instructors Team
+- create a workshop-specific channel in the Instructors Teams channel
 - create communication documents, a debriefing and a planning document and upload them to the folder
 - create a data.csv file with workshop data necessary for the website, and upload this too
+- write a post in the newly created channel that alerts all helpers and instructors (and Sven)
 
 ### Troubleshooting
 
