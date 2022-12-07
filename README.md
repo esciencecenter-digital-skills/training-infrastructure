@@ -10,7 +10,17 @@ This package automates the generation of those documents.
 
 ## Use
 
-The package is used in [esciencecenter-digital-skills/setup_training_infra](https://github.com/esciencecenter-digital-skills/setup_training_infra).
+This package depends on the R language. Install it [via CRAN](https://cran.r-project.org/).
+
+We recommend using the package with RStudio. Install it [via posit](https://posit.co/downloads/).
+
+Inside RStudio, install this package as follows:
+```
+install.packages("devtools")
+devtools::install_github("esciencecenter-digital-skills/training-infrastructure")
+```
+
+
 
 ## Want to contribute?
 Please contact our maintainer [Lieke de Boer](https://github.com/liekelotte).
