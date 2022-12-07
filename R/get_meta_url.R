@@ -16,6 +16,7 @@ get_meta_url <- function(slug) {
   deep_learning_meta    <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-dl-intro/"
   coderefine_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-cr/" #TODO: implement this
   astronomy_meta        <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/dc-astronomy/"
+  geospatial_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/dc-geospatial-python/"
 
 
   # TODO: consider storing this as a table. Slugs in one column, URLs in the other
@@ -43,6 +44,9 @@ get_meta_url <- function(slug) {
   }
   else if (stringr::str_detect(slug, "dc-astronomy")) {
     meta_url <- astronomy_meta
+  }
+  else if (stringr::str_detect(slug, "dc-geospatial")) {
+    meta_url <- geospatial_meta
   }
   else {
     errMsg <- sprintf("The slug %s is not linked to any URL. Perhaps you mispelled it?", slug)

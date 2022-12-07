@@ -52,7 +52,15 @@ Please enter a single number corresponding to the workshop you wish to activate.
 
   # create documents
   message("Creating documents...")
-  create_files(info = activews)
+  tempname <- (paste0("tempdir_", activews$slug))
+  dir.create(tempname)
+  create_files(info = activews, folder = tempname)
+
+  # upload documents
+  message("Uploading documents...")
+  upload_docs(info = activews, folder = tempname)
+
+  unlink(tempname, recursive=T)
 }
 
 

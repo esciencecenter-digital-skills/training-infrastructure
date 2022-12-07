@@ -85,3 +85,4 @@ data.csv
 *.docx
 .Rproj.user
 *.xlsx
+*.html

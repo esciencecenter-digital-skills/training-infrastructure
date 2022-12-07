@@ -4,7 +4,7 @@
 \alias{create_sharepoint_folder}
 \title{Create Sharepoint site}
 \usage{
-create_sharepoint_folder(info, drive = "Instructors")
+create_sharepoint_folder(info, drive = "instructors")
 }
 \arguments{
 \item{info}{information about the workshop taken from the holy excel sheet}

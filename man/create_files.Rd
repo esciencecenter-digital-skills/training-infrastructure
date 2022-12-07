@@ -4,12 +4,14 @@
 \alias{create_files}
 \title{Create files}
 \usage{
-create_files(info)
+create_files(info, folder = ".")
 }
 \arguments{
 \item{info}{named vector with workshop information}
+
+\item{folder}{location where files should be stored}
 }
 \description{
-Take the template word documents and save them with specific information
-for the upcoming workshop.
+Take the template Rmd documents and save them with specific information
+for the upcoming workshop. Write the workshop info to a data.csv file.
 }
