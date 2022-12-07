@@ -10,9 +10,12 @@ get_meta_url <- function(slug) {
   # delete date from the slug
   slug <- stringr::str_remove(slug, "^\\d{4}-\\d{2}-\\d{2}-")
 
-  # only metadata URL that is different from its slug
+  # some metadata URLs that are different from their slug
   if(slug == "dc-geospatial"){
     slug <- "dc-geospatial-python"
+  }
+  if(slug == "dc-astronomy-python"){
+    slug <- "dc-astronomy"
   }
 
   ghraw <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/"
