@@ -7,6 +7,9 @@
 #'
 #' @return url to the folder containing workshop metadata
 get_meta_url <- function(slug) {
+  # delete date from the slug
+  slug <- stringr::str_remove(slug, "^\\d{4}-\\d{2}-\\d{2}-")
+
   # only metadata URL that is different from its slug
   if(slug == "dc-geospatial"){
     slug <- "dc-geospatial-python"
