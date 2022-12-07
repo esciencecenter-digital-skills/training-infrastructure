@@ -9,12 +9,12 @@
 #' digital skills workshops (a.k.a. the "Holy Excel Sheet").
 #'
 #' @param path Path of the file inside the sharepoint drive
-#' @param drive URL of the sharepoint drive
+#' @param drive name of the NLeSC sharepoint drive
 #'
 #' @return an imported R object
 #' @export
 read_from_drive <- function(path = "General/Digital Skills Workshops 2022.xlsx",
-                            drive = "https://nlesc.sharepoint.com/sites/instructors"){
+                            drive = "instructors"){
 
   #TODO validate path and drive arguments
   # e.g. path needs to have an extension
@@ -43,7 +43,8 @@ read_from_drive <- function(path = "General/Digital Skills Workshops 2022.xlsx",
 }
 
 
-connect_drive <- function(url="https://nlesc.sharepoint.com/sites/instructors"){
+connect_drive <- function(drive="instructors"){
+  url <- paste0("https://nlesc.sharepoint.com/sites/", drive)
   instr_site <- Microsoft365R::get_sharepoint_site(site_url=url)
   drv        <- instr_site$get_drive()
   return(drv)
