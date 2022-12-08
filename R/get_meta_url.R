@@ -11,8 +11,8 @@ get_meta_url <- function(slug) {
   slug <- stringr::str_remove(slug, "^\\d{4}-\\d{2}-\\d{2}-")
 
   # some metadata URLs that are different from their slug
-  if(slug == "dc-geospatial"){
-    slug <- "dc-geospatial-python"
+  if(slug == "ds-geospatial"){
+    slug <- "ds-geospatial-python"
   }
   if(slug == "dc-astronomy-python"){
     slug <- "dc-astronomy"
