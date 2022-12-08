@@ -25,7 +25,7 @@ devtools::install_github("esciencecenter-digital-skills/training-infrastructure"
 
 Step 0: load the package
 ```
-library(training-infrastructure)
+library(traininginfrastructure)
 ```
 
 Step 1: Download the Holy Excel Sheet:
