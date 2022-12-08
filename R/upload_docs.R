@@ -13,9 +13,7 @@ upload_docs <- function(info,
 
   slug <- info$slug
 
-  spsite <- paste0("https://nlesc.sharepoint.com/sites/", drive)
-  instr_site <- Microsoft365R::get_sharepoint_site(site_url=spsite)
-  drv        <- instr_site$get_drive()
+  drv <- connect_drive(drive) # function source in read_from_drive.R
 
   drv_check <- check_drive(drv, slug)
   if ("try-error" %in% drv_check) {

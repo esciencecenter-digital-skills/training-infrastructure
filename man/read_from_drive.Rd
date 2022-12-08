@@ -4,25 +4,21 @@
 \alias{read_from_drive}
 \title{Read a file from the SharePoint drive into R}
 \usage{
-read_from_drive(
-  path = "General/Digital Skills Workshops 2022.xlsx",
-  drive = "https://nlesc.sharepoint.com/sites/instructors"
-)
+read_from_drive(year = "2023", drive = "instructors")
 }
 \arguments{
-\item{path}{Path of the file inside the sharepoint drive}
+\item{year}{The year for which the Holy Excel Sheet will be read}
 
-\item{drive}{URL of the sharepoint drive}
+\item{drive}{name of the NLeSC sharepoint drive (default is 'instructors')}
 }
 \value{
 an imported R object
 }
 \description{
-This function combines the \code{Microsoft365R::get_sharepoint_site()} function
-and the \verb{rio::import()`` functions to connect to a sharepoint drive and download a file, then open it in R. Because it uses }rio::import()`,
-the function is able to open a large number of different filetypes.
-}
-\details{
-The defaults are set to open the main excel sheet for the eScience Center
+This function opens the main excel sheet for the eScience Center
 digital skills workshops (a.k.a. the "Holy Excel Sheet").
+In the 'year' argument, indicate the year for which the file should be read.
+If the file path no longer matches, e.g.,
+\verb{General/Digital Skills Workshops 2023.xlsx}, please fix this information in
+the csv file in \code{inst/extdata/rawinfo.csv}.
 }
