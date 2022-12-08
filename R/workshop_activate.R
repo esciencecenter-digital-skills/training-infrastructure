@@ -46,9 +46,12 @@ Please enter a single number corresponding to the workshop you wish to activate.
   message("Making sharepoint folder...")
   create_sharepoint_folder(info = activews)
 
-  # make teams channel
+  # make teams channel and post to members
   message("Making Teams channel...")
   create_ws_channel(info = activews)
+
+  message("Alerting team members to the new channel...")
+  save_post_sharepoint(info = activews)
 
   # create documents
   message("Creating documents...")
