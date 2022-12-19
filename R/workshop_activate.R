@@ -4,6 +4,12 @@
 #'
 #' @export
 workshop_activate <- function(df){
+  if(!verify_post_gfw(df)){
+    message("The dataset is incomplete. Please use `get_future_workshops()` first!")
+    message("Applying `get_future_workshops()` to fix data...")
+    df <- get_future_workshops(df)
+  }
+
   df <- df[!is.na(df$slug),]
 
   if(!"ready" %in% names(df)){

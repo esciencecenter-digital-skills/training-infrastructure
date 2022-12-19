@@ -22,3 +22,14 @@ verify_folder <- function(dirname){
     stop(paste("Folder", dirname,"does not exist."))
   }
 }
+
+
+#' Verify that the dataset has been obtained after `get_future_workshops()`
+#'
+#' @param df
+verify_post_gfw <- function(df){
+  if("instructor" %in% names(df) | "longitude" %in% names(df)){
+    return(TRUE)
+  }
+  return(FALSE)
+}
