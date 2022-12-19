@@ -13,7 +13,7 @@
 #'
 get_comms_doc_info <- function(info) {
 
-  meta_url <- get_meta_url(info$slug)
+  meta_url <- get_meta_url(info)
 
   comm_doc_info <- list(YYYYMMDD              = as.character(info$startdate),
                         slug                  = info$slug,
