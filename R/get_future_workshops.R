@@ -59,10 +59,10 @@ get_future_workshops <- function(df, future = "today") {
   )
 
   # add latitude/longitude
-  df <- dplyr::mutate(df,
-                        latitude = ifelse(address=="online",NA, nominatimlite::geo_lite(address)$lat),
-                        longitude = ifelse(address=="online",NA, nominatimlite::geo_lite(address)$lon)
-  )
+  all_addresses <- unique(df$address)
+  latlon <- retrieve_latlon(all_addresses)
+  df <- dplyr::left_join(df, latlon, by="address")
+
   return(df)
 }
 
@@ -86,4 +86,24 @@ list_people <- function(p1,p2,p3){
   listed_people <- paste(p1,p2,p3, sep = ", ")
   listed_people <- gsub(", NA", "", listed_people)
   gsub("NA", "", listed_people)
+}
+
+retrieve_latlon <- function(addresses){
+  latlon <- data.frame(matrix(nrow = 0, ncol = 2))
+  for(address in addresses){
+    if(address == "online" | is.na(address)){
+      latlon <- rbind(latlon, c(NA,NA))
+    } else{
+      suppressMessages(address_loc <- nominatimlite::geo_lite(address))
+      if(is.na(address_loc$lat)){
+        warning(paste0("The coordinates for '", address, "' could not be found.
+  Please make sure to enter the complete address into the Holy Excel sheet."))
+      }
+      latlon <- rbind(latlon, c(address_loc$lat, address_loc$lon))
+    }
+  }
+  colnames(latlon) <- c("latitude", "longitude")
+  latlon$address <- addresses
+
+  return(latlon)
 }
