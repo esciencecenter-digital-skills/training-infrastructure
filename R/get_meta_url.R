@@ -11,28 +11,28 @@ get_meta_url <- function(info) {
   slug <- info$curriculum
   meta_url <- check_slug(slug)
 
-  if(class(meta_url) == "character"){
+  if(inherits(meta_url, "character")){
     return(meta_url)
   }
 
   slug <- make_slug_option1(info)
   meta_url <- check_slug(slug)
 
-  if(class(meta_url) == "character"){
+  if(inherits(meta_url, "character")){
     return(meta_url)
   }
 
   slug <- make_slug_option2(info)
   meta_url <- check_slug(slug)
 
-  if(class(meta_url) == "character"){
+  if(inherits(meta_url, "character")){
     return(meta_url)
   }
 
   slug <- make_slug_option3(info)
   meta_url <- check_slug(slug)
 
-  if(class(meta_url) == "character"){
+  if(inherits(meta_url, "character")){
     return(meta_url)
   }
 

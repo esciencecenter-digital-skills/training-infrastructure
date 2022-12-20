@@ -4,15 +4,15 @@
 \alias{get_meta_url}
 \title{Get meta folder}
 \usage{
-get_meta_url(slug)
+get_meta_url(info)
 }
 \arguments{
-\item{slug}{workshop slug}
+\item{info}{workshop information named vector}
 }
 \value{
 url to the folder containing workshop metadata
 }
 \description{
-Take the slug and return the corresponding URL where the meta files live for
-the workshop in question.
+Take the workshop info and return the corresponding URL where the meta files
+live for the workshop in question.
 }

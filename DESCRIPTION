@@ -1,12 +1,16 @@
 Package: traininginfrastructure
 Title: Automates the generation of our workshop's trainings
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     c(
       person(given = "Lieke",
            family = "de Boer",
            role = c("aut", "cre"),
            email = "l.deboer@esciencecenter.nl"),
+      person(given = "Barbara",
+            family = "Vreede",
+            role = c("aut"),
+            email = "b.vreede@esciencecenter.nl"),
       person(given = "Pablo",
            family = "Rodríguez-Sánchez",
            role = c("aut"),
