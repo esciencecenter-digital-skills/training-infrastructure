@@ -1,8 +1,6 @@
 #' Write message to Channel
 #'
-#' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
-#'
-#' @param info a dataframe created based on the digital skills programme excel file
+#' @param info a named vector with workshop information based on the digital skills programme excel file
 #' @param alert any other people that need to be alerted
 #'
 #' @export
@@ -14,9 +12,13 @@ save_post_sharepoint <- function(info, alert = "Sven van der Burg") {
 
   workshop_channel<-instr_team$get_channel(info$slug)
 
-  workshop_channel$send_message(body = paste("Hello all, this is the channel for", info$slug),
-                                 mentions = team_members,
-                                 content_type = 'html')
+  workshop_channel$send_message(
+    body = paste0(
+      "Hello all, this is the channel for ", info$slug,
+      ". (FYI: this is an automated message, and duplicates sometimes happen. ",
+      "Sorry about that.)<br /><br />Alerting "),
+    mentions = team_members,
+    content_type = 'html')
 
   return(invisible(NULL))
 }

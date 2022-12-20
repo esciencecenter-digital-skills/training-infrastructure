@@ -2,16 +2,15 @@
 % Please edit documentation in R/save_post_sharepoint.R
 \name{save_post_sharepoint}
 \alias{save_post_sharepoint}
-\title{Save to Sharepoint}
+\title{Write message to Channel}
 \usage{
-save_post_sharepoint(ws_dat)
+save_post_sharepoint(info, alert = "Sven van der Burg")
 }
 \arguments{
-\item{ws_dat}{a dataframe created based on the digital skills programme excel file}
-}
-\value{
-a dataframe that should be saved as data.csv in the workshop folder in SharePoint
+\item{info}{a named vector with workshop information based on the digital skills programme excel file}
+
+\item{alert}{any other people that need to be alerted}
 }
 \description{
-Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
+Write message to Channel
 }
