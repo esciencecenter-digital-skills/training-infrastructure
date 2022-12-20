@@ -31,4 +31,8 @@ test_that("Locations are found with Open Street Map", {
   holyselect <- get_future_workshops(holytest, future="none")
   expect_equal(round(holyselect$latitude[3], 1), 52.4)
   expect_equal(round(holyselect$longitude[3], 1), 5.0)
+
+  load(file = "wageningen_data.rda")
+  expect_warning(get_future_workshops(wageningen_data),
+                 regexp = "Please enter the complete address")
 })
