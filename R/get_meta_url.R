@@ -1,58 +1,70 @@
 #' Get meta folder
 #'
-#' Take the slug and return the corresponding URL where the meta files live for the workshop in question
+#' Take the workshop info and return the corresponding URL where the meta files
+#' live for the workshop in question.
 #'
-#' @param slug workshop slug
+#' @param info workshop information named vector
 #'
 #' @return url to the folder containing workshop metadata
-#'
-#'
-get_meta_url <- function(slug) {
-  parallel_python_meta  <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-parallel/"
-  containers_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-docker/"
-  rpackaging_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-rpackaging/"
-  gpu_meta              <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-gpu/"
-  dc_python_socsci_meta <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/dc-socsci-python/"
-  deep_learning_meta    <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-dl-intro/"
-  coderefine_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-cr/" #TODO: implement this
-  astronomy_meta        <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/dc-astronomy/"
-  geospatial_meta       <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/dc-geospatial-python/"
+get_meta_url <- function(info) {
 
+  slug <- info$curriculum
+  meta_url <- check_slug(slug)
 
-  # TODO: consider storing this as a table. Slugs in one column, URLs in the other
-
-  if (stringr::str_detect(slug, "ds-parallel")) { #TODO: consider using slug == "ds-parallel" and dropping stringi::str_detect dependence
-    meta_url <- parallel_python_meta
-  }
-  else if (stringr::str_detect(slug, "ds-dl-intro")) {
-    meta_url <- deep_learning_meta
-  }
-  else if (stringr::str_detect(slug, "ds-docker")) {
-    meta_url <- containers_meta
-  }
-  else if (stringr::str_detect(slug, "ds-rpackaging")) {
-    meta_url <- rpackaging_meta
-  }
-  else if (stringr::str_detect(slug, "ds-gpu")) {
-    meta_url <- gpu_meta
-  }
-  else if (stringr::str_detect(slug, "ds-cr")) {
-    meta_url <- coderefine_meta
-  }
-  else if (stringr::str_detect(slug, "dc-socsci-python")) {
-    meta_url <- dc_python_socsci_meta
-  }
-  else if (stringr::str_detect(slug, "dc-astronomy")) {
-    meta_url <- astronomy_meta
-  }
-  else if (stringr::str_detect(slug, "dc-geospatial")) {
-    meta_url <- geospatial_meta
-  }
-  else {
-    errMsg <- sprintf("The slug %s is not linked to any URL. Perhaps you mispelled it?", slug)
-    stop(errMsg)
+  if(class(meta_url) == "character"){
+    return(meta_url)
   }
 
-  return(meta_url)
+  slug <- make_slug_option1(info)
+  meta_url <- check_slug(slug)
 
+  if(class(meta_url) == "character"){
+    return(meta_url)
+  }
+
+  slug <- make_slug_option2(info)
+  meta_url <- check_slug(slug)
+
+  if(class(meta_url) == "character"){
+    return(meta_url)
+  }
+
+  slug <- make_slug_option3(info)
+  meta_url <- check_slug(slug)
+
+  if(class(meta_url) == "character"){
+    return(meta_url)
+  }
+
+  stop(paste("The information for workshop", info$slug, "is not linked to any meta URL."))
+}
+
+make_slug_option1 <- function(info){
+  slug <- paste(info$curriculum, info$flavor, sep = "-")
+  return(slug)
+}
+
+make_slug_option2 <- function(info){
+  slug <- stringr::str_remove(info$slug, "^\\d{4}-\\d{2}-\\d{2}-")
+  return(slug)
+}
+
+make_slug_option3 <- function(info){
+  # this should not be necessary!
+  # the flavor argument 'python' is added, because the holyexcel did not include it
+  slug <- paste(info$curriculum, "python", sep = "-")
+  return(slug)
+}
+
+
+
+check_slug <- function(slug){
+  ghraw <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/"
+  meta_url <- paste0(ghraw,slug,"/")
+  title <- paste0(meta_url, "title.md")
+  if(!RCurl::url.exists(title)){
+    return(FALSE)
+  } else{
+    return(meta_url)
+  }
 }

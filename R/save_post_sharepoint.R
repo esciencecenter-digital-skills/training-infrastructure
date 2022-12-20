@@ -1,36 +1,46 @@
-#' Save to Sharepoint
+#' Write message to Channel
 #'
-#' Take information from the master spreadsheet with all future workshops, and extract the relevant information for GitHub pages
+#' @param info a named vector with workshop information based on the digital skills programme excel file
+#' @param alert any other people that need to be alerted
 #'
-#' @param ws_dat a dataframe created based on the digital skills programme excel file
-#'
-#' @return a dataframe that should be saved as data.csv in the workshop folder in SharePoint
-#'
-#' @importFrom Microsoft365R get_sharepoint_site get_team list_teams
 #' @export
-#'
-save_post_sharepoint <- function(ws_dat) {
+save_post_sharepoint <- function(info, alert = "Sven van der Burg") {
 
-  site <- list_teams()
-  Mateusz <- instr_team$get_member("Mateusz Kuzak")
-  Lieke <- instr_team$get_member("Lieke de Boer")
+  instr_team <- Microsoft365R::get_team("Instructors")
 
-  Lead_instructor = tryCatch({instr_team$get_member(ws_dat$lead_instructor)}, error = function(e) NULL)
-  Supp_instr1 = tryCatch({instr_team$get_member(ws_dat$supporting_instructor1)}, error = function(e) NULL)
-  Supp_instr2 = tryCatch({instr_team$get_member(ws_dat$supporting_instructor2)}, error = function(e) NULL)
-  Helper1 = tryCatch({instr_team$get_member(ws_dat$helper1)}, error = function(e) NULL)
-  Helper2 = tryCatch({instr_team$get_member(ws_dat$helper2)}, error = function(e) NULL)
-  Helper3 = tryCatch({instr_team$get_member(ws_dat$helper3)}, error = function(e) NULL)
+  team_members <- get_people(info, alert, instr_team)
 
-  instr_team<-get_team("Instructors")
-  workshop_channel<-instr_team$get_channel(ws_dat$slug)
+  workshop_channel<-instr_team$get_channel(info$slug)
 
-  workshop_channel$send_message(body = paste("Hello all, this is the channel for", slug),
-                                mentions = c(Lead_instructor, Supp_instr1, Supp_instr2, Helper1, Helper2, Helper3, Mateusz, Lieke),
-                                content_type = 'html')
+  workshop_channel$send_message(
+    body = paste0(
+      "Hello all, this is the channel for ", info$slug,
+      ". (FYI: this is an automated message, and duplicates sometimes happen. ",
+      "Sorry about that.)<br /><br />Alerting "),
+    mentions = team_members,
+    content_type = 'html')
 
-  instr_site <-get_sharepoint_site(site_url="https://nlesc.sharepoint.com/sites/instructors")
-  drv <- instr_site$get_drive()
-  drv$upload_file(src=paste0("files/", ws_dat$slug, "/data.csv"), dest=paste0(ws_dat$slug, "/data.csv"))
+  return(invisible(NULL))
+}
 
+
+get_people <- function(info, alert, instr_team){
+  people <- c(info$lead_instructor,
+              info$supporting_instructor1,
+              info$supporting_instructor2,
+              info$helper1,
+              info$helper2,
+              info$helper3,
+              alert)
+
+  people <- unique(people)
+
+  team_members <- NULL
+
+  for(person in people){
+    person <- tryCatch({instr_team$get_member(person)}, error = function(e) NULL)
+    team_members <- c(team_members, person)
+  }
+
+  return(team_members)
 }

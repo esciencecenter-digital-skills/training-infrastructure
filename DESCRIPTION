@@ -28,7 +28,6 @@ Imports:
     lubridate,
     tidyr,
     readr,
-    purrr,
     dplyr,
     rio,
     stringr,

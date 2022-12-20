@@ -13,5 +13,6 @@ get_meta_url(slug)
 url to the folder containing workshop metadata
 }
 \description{
-Take the slug and return the corresponding URL where the meta files live for the workshop in question
+Take the slug and return the corresponding URL where the meta files live for
+the workshop in question.
 }

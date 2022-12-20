@@ -4,6 +4,12 @@
 #'
 #' @export
 workshop_activate <- function(df){
+  if(!verify_post_gfw(df)){
+    message("The dataset is incomplete. Please use `get_future_workshops()` first next time!")
+    message("Applying `get_future_workshops()` to fix data...")
+    df <- get_future_workshops(df)
+  }
+
   df <- df[!is.na(df$slug),]
 
   if(!"ready" %in% names(df)){
@@ -46,9 +52,12 @@ Please enter a single number corresponding to the workshop you wish to activate.
   message("Making sharepoint folder...")
   create_sharepoint_folder(info = activews)
 
-  # make teams channel
+  # make teams channel and post to members
   message("Making Teams channel...")
   create_ws_channel(info = activews)
+
+  message("Alerting team members to the new channel...")
+  save_post_sharepoint(info = activews)
 
   # create documents
   message("Creating documents...")
