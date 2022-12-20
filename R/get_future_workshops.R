@@ -58,17 +58,10 @@ get_future_workshops <- function(df, future = "today") {
                       helper = list_people(helper1, helper2, helper3)
   )
 
-  # make a global address dictionary to prevent extra nominatim calls
-  address_dict <<- data.frame(address = "", lat = "", lon = "")
-
   # add latitude/longitude
-  latlon <- sapply(df$address, retrieve_latlon)
-  latlon <- data.frame(do.call("rbind", latlon))
-  names(latlon) <- c("lat", "lon")
+  latlon <- retrieve_latlon_db(df$address)
   df$latitude <- latlon$lat
   df$longitude <- latlon$lon
-
-  rm(address_dict, envir = .GlobalEnv)
 
   return(df)
 }
@@ -106,4 +99,16 @@ retrieve_latlon <- function(address){
   # add the address to the global dictionary so info can be reused
   address_dict <<- rbind(address_dict, c(address, c(address_loc$lat, address_loc$lon)))
   return(c(address_loc$lat, address_loc$lon))
+}
+
+retrieve_latlon_db <- function(addresscol){
+  # make a global address dictionary to prevent extra nominatim calls
+  address_dict <<- data.frame(address = "", lat = "", lon = "")
+
+  latlon <- sapply(addresscol, retrieve_latlon)
+  latlon <- data.frame(do.call("rbind", latlon))
+  names(latlon) <- c("lat", "lon")
+
+  rm(address_dict, envir = .GlobalEnv)
+  return(latlon)
 }
