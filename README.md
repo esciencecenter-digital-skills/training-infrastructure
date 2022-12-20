@@ -66,8 +66,23 @@ The package will now:
 - create a data.csv file with workshop data necessary for the website, and upload this too
 - write a post in the newly created channel that alerts all helpers and instructors (and Sven)
 
+
 ### Troubleshooting
 
+#### Something went wrong! Ack!
+It is good to know that you can repeat the `workshop_activate()` workflow (step 3)
+as often as necessary. Once a channel exists it will not be recreated, and existing
+files will not be overwritten.
+
+That does mean that if there is a problem with a file, you will need to manually
+remove it from the sharepoint drive if you want to recreate it with the package.
+
+The exception to this is the final step: every time you run the workflow to activate
+a workshop, a post will be made in the sharepoint channel. It does mention that
+it is automatically created, so hopefully your colleagues won't be too upset with you.
+
+
+#### Microsoft365
 The package depends heavily on Microsoft 365 infrastructure. You must be logged
 in to Office Online with an eScience Center account for it to work. When
 encountering any issues, first always check your login.
