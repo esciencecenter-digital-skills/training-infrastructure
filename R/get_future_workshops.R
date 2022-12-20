@@ -23,7 +23,7 @@ get_future_workshops <- function(df, future = "today") {
 
   for(c in columns_needed){
     if(!c %in% names(df)){
-      e <- paste("Column", c, "is not present in the data.\
+      e <- paste0("Column '", c, "' is not present in the data.\
                  Please verify whether the data is complete, and column names are correct.")
       stop(e)
     }

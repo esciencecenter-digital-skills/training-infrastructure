@@ -5,7 +5,7 @@
 #' @export
 workshop_activate <- function(df){
   if(!verify_post_gfw(df)){
-    message("The dataset is incomplete. Please use `get_future_workshops()` first!")
+    message("The dataset is incomplete. Please use `get_future_workshops()` first next time!")
     message("Applying `get_future_workshops()` to fix data...")
     df <- get_future_workshops(df)
   }

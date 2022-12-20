@@ -26,7 +26,7 @@ verify_folder <- function(dirname){
 
 #' Verify that the dataset has been obtained after `get_future_workshops()`
 #'
-#' @param df
+#' @param df dataframe with workshops
 verify_post_gfw <- function(df){
   if("instructor" %in% names(df) | "longitude" %in% names(df)){
     return(TRUE)
