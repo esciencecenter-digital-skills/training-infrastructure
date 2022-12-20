@@ -33,6 +33,6 @@ test_that("Locations are found with Open Street Map", {
   expect_equal(round(holyselect$longitude[3], 1), 5.0)
 
   load(file = "wageningen_data.rda")
-  expect_warning(get_future_workshops(wageningen_data),
-                 regexp = "Please enter the complete address")
+  expect_warning(get_future_workshops(wageningen_data, future="none"),
+                 regexp = "enter the complete address")
 })

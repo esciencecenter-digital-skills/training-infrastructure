@@ -94,7 +94,11 @@ retrieve_latlon <- function(addresses){
     if(address == "online" | is.na(address)){
       latlon <- rbind(latlon, c(NA,NA))
     } else{
-      address_loc <- nominatimlite::geo_lite(address)
+      suppressMessages(address_loc <- nominatimlite::geo_lite(address))
+      if(is.na(address_loc$lat)){
+        warning(paste0("The coordinates for '", address, "' could not be found.
+  Please make sure to enter the complete address into the Holy Excel sheet."))
+      }
       latlon <- rbind(latlon, c(address_loc$lat, address_loc$lon))
     }
   }
