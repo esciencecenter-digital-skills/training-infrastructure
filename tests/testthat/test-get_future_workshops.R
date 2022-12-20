@@ -9,6 +9,11 @@ test_that("Workshop sheet is parsed correctly", {
   expect_equal(c("Holiday and conflicts","humandate","helper")%in%names(holyselect), c(FALSE,TRUE,TRUE))
   expect_false(is.na(holyselect$instructor))
   expect_equal(holyselect[1,"humandate"], "October 22 - March 24, 2075")
+
+  # if the data is empty, function still runs
+  holytest <- holytest[-c(1:nrow(holytest)),]
+  holyselect <- get_future_workshops(holytest)
+  expect_equal(dim(holyselect), c(0,27))
 })
 
 test_that("Date selections are made using future argument", {
