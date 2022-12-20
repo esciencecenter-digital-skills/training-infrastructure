@@ -16,7 +16,7 @@ save_post_sharepoint <- function(info, alert = "Sven van der Burg") {
     body = paste0(
       "Hello all, this is the channel for ", info$slug,
       ". (FYI: this is an automated message, and duplicates sometimes happen. ",
-      "Sorry about that.)"),
+      "Sorry about that.)<br /><br />Alerting "),
     mentions = team_members,
     content_type = 'html')
 
