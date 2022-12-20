@@ -59,9 +59,9 @@ get_future_workshops <- function(df, future = "today") {
   )
 
   # add latitude/longitude
-  latlon <- retrieve_latlon_db(df$address)
-  df$latitude <- latlon$lat
-  df$longitude <- latlon$lon
+  all_addresses <- unique(df$address)
+  latlon <- retrieve_latlon(all_addresses)
+  df <- dplyr::left_join(df, latlon, by="address")
 
   return(df)
 }
@@ -88,27 +88,18 @@ list_people <- function(p1,p2,p3){
   gsub("NA", "", listed_people)
 }
 
-retrieve_latlon <- function(address){
-  if(address == "online"){
-    return(NA)
+retrieve_latlon <- function(addresses){
+  latlon <- data.frame(matrix(nrow = 0, ncol = 2))
+  for(address in addresses){
+    if(address == "online" | is.na(address)){
+      latlon <- rbind(latlon, c(NA,NA))
+    } else{
+      address_loc <- nominatimlite::geo_lite(address)
+      latlon <- rbind(latlon, c(address_loc$lat, address_loc$lon))
+    }
   }
-  if(address %in% address_dict$address){ # check the global dictionary, this saves time!
-    return(address_dict[address_dict$address == address,c("lat","lon")])
-  }
-  address_loc <- nominatimlite::geo_lite(address)
-  # add the address to the global dictionary so info can be reused
-  address_dict <<- rbind(address_dict, c(address, c(address_loc$lat, address_loc$lon)))
-  return(c(address_loc$lat, address_loc$lon))
-}
+  colnames(latlon) <- c("latitude", "longitude")
+  latlon$address <- addresses
 
-retrieve_latlon_db <- function(addresscol){
-  # make a global address dictionary to prevent extra nominatim calls
-  address_dict <<- data.frame(address = "", lat = "", lon = "")
-
-  latlon <- sapply(addresscol, retrieve_latlon)
-  latlon <- data.frame(do.call("rbind", latlon))
-  names(latlon) <- c("lat", "lon")
-
-  rm(address_dict, envir = .GlobalEnv)
   return(latlon)
 }
