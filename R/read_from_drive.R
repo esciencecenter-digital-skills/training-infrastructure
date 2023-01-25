@@ -22,9 +22,7 @@ read_from_drive <- function(year = "2023",
   drv <- connect_drive(drive)
 
   # setup temporary directory
-  tempdir <- paste0("temp", Sys.time())
-  tempdir <- stringr::str_replace_all(tempdir,"[:punct:]|[:blank:]","")
-  dir.create(tempdir)
+  tempdir <- create_tempdir()
 
   # download and open excel sheet
   extension <- stringr::str_match(path, "\\..{1,}$")[1]
@@ -53,4 +51,12 @@ look_up_info <- function(item, id){
   rawinfo <- utils::read.csv(rawinfo)
   information <- rawinfo[rawinfo$item == item & rawinfo$id == id,"information"]
   return(information)
+}
+
+
+create_tempdir <- function(){
+  tempdir <- paste0("temp", Sys.time())
+  tempdir <- stringr::str_replace_all(tempdir,"[:punct:]|[:blank:]","")
+  dir.create(tempdir)
+  return(tempdir)
 }
