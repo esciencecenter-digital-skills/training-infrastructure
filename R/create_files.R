@@ -29,7 +29,6 @@ render_doc <- function(info, type, folder){
     stop("Wrong `type`: only `planning`, `communication` and `debriefing` docs can be rendered.")
   }
 
-  template_url <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
   template_type <- type
 
   # communication doc checks
@@ -45,37 +44,30 @@ render_doc <- function(info, type, folder){
 
   # define names
   slug <- info$slug
-  doc_name <- paste0(slug, "_", type, "_doc")
-  template_online <- paste0(template_url, template_type, "_doc.Rmd")
-  template_local <- paste0(doc_name, ".Rmd")
-  rendered_local <- paste0(doc_name, ".docx")
-
-  utils::download.file(url = template_online,
-                destfile = template_local,
-                quiet = TRUE)
+  template_name <- paste0(template_type, "_doc.Rmd")
+  template <- system.file("extdata", template_name, package = "traininginfrastructure")
+  doc_name <- paste0(slug, "_", type, "_doc.docx")
+  html_name <- paste0(slug, "_", type, "_doc.html")
 
   message(paste("Generating",type,"document(s) for", slug))
   rmarkdown::render(
-    input = template_local,
+    input = template,
     params = info,
     output_format = "word_document",
-    output_file = rendered_local,
+    output_file = doc_name,
     output_dir = folder,
     quiet = TRUE)
 
   if(type == "communication"){ # communication also requires a HTML
-    rendered_local <- paste0(doc_name, ".html")
     rmarkdown::render(
-      input = template_local,
+      input = template,
       params = info,
       output_format = "html_document",
-      output_file = rendered_local,
+      output_file = html_name,
       output_dir = folder,
       quiet = TRUE)
   }
 
-  # remove template Rmd file
-  file.remove(template_local)
 }
 
 
