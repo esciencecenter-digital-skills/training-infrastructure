@@ -46,5 +46,18 @@ get_people <- function(info, alert, instr_team){
     team_members <- c(team_members, team_member)
   }
 
+  # ## It is possible to see all members with
+  # instr_team$list_members()
+  #
+  # ## Then on an individual member, e.g.:
+  # mbr <- instr_team$list_members()[[6]]
+  #
+  # ## You can call properties
+  # mbr$properties
+  #
+  # ## Such as id, or screen name
+  # mbr$properties$displayName
+
+
   return(team_members)
 }
