@@ -34,12 +34,16 @@ get_people <- function(info, alert, instr_team){
               alert)
 
   people <- unique(people)
+  people <- people[!is.na(people)]
 
   team_members <- NULL
 
   for(person in people){
-    person <- tryCatch({instr_team$get_member(person)}, error = function(e) NULL)
-    team_members <- c(team_members, person)
+    team_member <- tryCatch(instr_team$get_member(person),
+                            error = function(e) {
+                              message(paste0("Cannot find team member ", person, ". This person will not be notified automatically."))
+                              })
+    team_members <- c(team_members, team_member)
   }
 
   return(team_members)
