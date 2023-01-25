@@ -151,11 +151,11 @@ If you haven’t already, please be sure to complete our (post-workshop survey)[
 
 You will shortly be able to find all the notebooks and collaborative documents from the workshop in [the files directory of the workshop repository](`r paste0(params$repo, "/tree/main/files")`) [2]. All the lesson material used in the lesson can be found `r params$lesson_url_ref` [3].
   
-If you have any other feedback about the workshop, or would like to get involved in organising workshops, please contact the eScience Center training team at [training@esciencecenter.nl](mailto:training@esciencecenter.nl).  
+If you have any other feedback about the workshop, or would like to get involved in organizing workshops, please contact the eScience Center training team at [training@esciencecenter.nl](mailto:training@esciencecenter.nl).  
   
-You can also follow us on [Twitter](https://twitter.com/esciencecenter) [4]. We are continuously organising training events. You can find the list of upcoming events on the Center’s [website](https://www.esciencecenter.nl/events/?f-workshops/) [5].  
+You can also follow us on [Twitter](https://twitter.com/esciencecenter) [4]. We are continuously organizing training events. You can find the list of upcoming events on the Center’s [website](https://www.esciencecenter.nl/events/?f-workshops/) [5].  
   
-We would also like to encourage you to subscribe to our [newsletter](http://eepurl.com/dtjzwP) [6] and select an Invitation for Workshops option to get invited to training and related events organised by the Netherlands eScience Center.
+We would also like to encourage you to subscribe to our [newsletter](http://eepurl.com/dtjzwP) [6] and select an Invitation for Workshops option to get invited to training and related events organized by the Netherlands eScience Center.
 
 On behalf of the eScience Center Training Team,
 
