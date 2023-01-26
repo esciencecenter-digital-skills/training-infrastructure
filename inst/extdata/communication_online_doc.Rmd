@@ -90,7 +90,7 @@ If you won’t be able to attend, please cancel your registration (by following 
 
 Make sure to keep the `r params$workshop_website` [4] with all the necessary details handy.  
 
-Join the workshop session with the following (Zoom link)[zoom link] [5]. Please make sure to log-in with the name you have used for the registration. For safety reasons, people who cannot be recognised by the zoom user name will not be let into the workshop.
+Join the workshop session with the following (Zoom link)[zoom link] [5]. Please make sure to log-in with the name you have used for the registration. For safety reasons, people who cannot be recognized by the zoom user name will not be let into the workshop.
 
 Let us know if you have any questions by emailing training@esciencecenter.nl. Otherwise, we will see you on `r params$day_of_workshop` from `r params$start_time`! 
 
@@ -125,7 +125,7 @@ On the workshop days (`r params$date`), please join the call 15 minutes earlier 
 
 Make sure to keep the `r params$workshop_website` [3] with all the necessary details handy.  
 
-Join the workshop session with the following (Zoom link)[zoom link] [4]. Please make sure to log-in with the name you have used for the registration. For safety reasons, people who cannot be recognised by the zoom user name will not be let into the workshop.
+Join the workshop session with the following (Zoom link)[zoom link] [4]. Please make sure to log-in with the name you have used for the registration. For safety reasons, people who cannot be recognized by the zoom user name will not be let into the workshop.
 
 Looking forward to seeing you on `r params$day_of_workshop`!
 
