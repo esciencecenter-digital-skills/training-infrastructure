@@ -61,3 +61,16 @@ get_people <- function(info, alert, instr_team){
 
   return(team_members)
 }
+
+get_team <- function(instr_team){
+  team_env <- instr_team$list_members()
+  team <- NULL
+  for(m in team_env){
+    name <- m$properties$displayName
+    id <- m$properties$id
+    team <- rbind(team, c(name, id))
+  }
+  team <- as.data.frame(team)
+  names(team) <- c("Member", "ID")
+  return(team)
+}
