@@ -64,7 +64,13 @@ The package will now:
 - create a workshop-specific channel in the Instructors Teams channel
 - create communication documents, a debriefing and a planning document and upload them to the folder
 - create a data.csv file with workshop data necessary for the website, and upload this too
-- write a post in the newly created channel that alerts all helpers and instructors (and Sven)
+- write a post in the newly created channel that alerts all helpers and instructors (and Fenne).
+
+In case you want to alert anyone other than Fenne, use their Microsoft name specifically:
+
+```
+workshop_activate(data, alert="Lieke de Boer")
+```
 
 
 ### Troubleshooting

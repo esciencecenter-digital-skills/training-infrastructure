@@ -4,10 +4,13 @@
 \alias{workshop_activate}
 \title{Choose workshops and activate them}
 \usage{
-workshop_activate(df)
+workshop_activate(df, alert = "default")
 }
 \arguments{
 \item{df}{data frame with future workshops (use \code{get_future_workshops()})}
+
+\item{alert}{name of the training coordinator who should be alerted automatically in every created channel.
+the default \code{alert = "default"} alerts the person who is named as coordinator in \code{save_post_sharepoint()}.}
 }
 \description{
 Choose workshops and activate them
