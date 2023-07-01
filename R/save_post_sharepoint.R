@@ -4,7 +4,7 @@
 #' @param alert any other people that need to be alerted
 #'
 #' @export
-save_post_sharepoint <- function(info, alert = "Sven van der Burg") {
+save_post_sharepoint <- function(info, alert = "Fenne Riemslagh") {
 
   instr_team <- Microsoft365R::get_team("Instructors")
 

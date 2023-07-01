@@ -4,7 +4,7 @@
 \alias{save_post_sharepoint}
 \title{Write message to Channel}
 \usage{
-save_post_sharepoint(info, alert = "Sven van der Burg")
+save_post_sharepoint(info, alert = "Fenne Riemslagh")
 }
 \arguments{
 \item{info}{a named vector with workshop information based on the digital skills programme excel file}
