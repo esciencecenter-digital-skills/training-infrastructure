@@ -21,7 +21,7 @@ License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Imports: 
     Microsoft365R (>= 2.3.4),
     RCurl,
@@ -36,6 +36,7 @@ Imports:
     utils,
     httpuv
 Suggests: 
+    roxygen2,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Depends: 
