@@ -2,10 +2,9 @@
 #'
 #' @param df data frame with future workshops (use `get_future_workshops()`)
 #' @param alert name of the training coordinator who should be alerted automatically in every created channel.
-#' the default `alert = "default"` alerts the person who is named as coordinator in `save_post_sharepoint()`.
 #'
 #' @export
-workshop_activate <- function(df, alert="default"){
+workshop_activate <- function(df, alert="Fenne Riemslagh"){
   if(!verify_post_gfw(df)){
     message("The dataset is incomplete. Please use `get_future_workshops()` first next time!")
     message("Applying `get_future_workshops()` to fix data...")
@@ -59,12 +58,7 @@ Please enter a single number corresponding to the workshop you wish to activate.
   create_ws_channel(info = activews)
 
   message("Alerting team members to the new channel...")
-  if(alert == "default"){
-    save_post_sharepoint(info = activews)
-  }
-  else{
-    save_post_sharepoint(info = activews, alert = alert)
-  }
+  save_post_sharepoint(info = activews, alert = alert)
 
   # create documents
   message("Creating documents...")

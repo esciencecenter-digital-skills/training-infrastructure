@@ -1,10 +1,10 @@
 #' Write message to Channel
 #'
 #' @param info a named vector with workshop information based on the digital skills programme excel file
-#' @param alert any other people that need to be alerted
+#' @param alert the Teams name of any other people that need to be alerted (likely the Training Coordinator)
 #'
 #' @export
-save_post_sharepoint <- function(info, alert = "Fenne Riemslagh") {
+save_post_sharepoint <- function(info, alert = NULL) {
 
   instr_team <- Microsoft365R::get_team("Instructors")
 
