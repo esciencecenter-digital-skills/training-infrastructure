@@ -23,7 +23,6 @@ save_post_sharepoint <- function(info, alert = "Sven van der Burg") {
   return(invisible(NULL))
 }
 
-
 get_people <- function(info, alert, instr_team){
   people <- c(info$lead_instructor,
               info$supporting_instructor1,
@@ -37,27 +36,13 @@ get_people <- function(info, alert, instr_team){
   people <- people[!is.na(people)]
 
   team_members <- NULL
+  whole_team <- get_team(instr_team)
 
   for(person in people){
-    team_member <- tryCatch(instr_team$get_member(person),
-                            error = function(e) {
-                              message(paste0("Cannot find team member ", person, ". This person will not be notified automatically."))
-                              })
+    team_member <- return_closest_member(person, whole_team)
+    team_member <- tryCatch({instr_team$get_member(team_member)}, error = function(e) NULL)
     team_members <- c(team_members, team_member)
   }
-
-  # ## It is possible to see all members with
-  # instr_team$list_members()
-  #
-  # ## Then on an individual member, e.g.:
-  # mbr <- instr_team$list_members()[[6]]
-  #
-  # ## You can call properties
-  # mbr$properties
-  #
-  # ## Such as id, or screen name
-  # mbr$properties$displayName
-
 
   return(team_members)
 }
@@ -67,10 +52,27 @@ get_team <- function(instr_team){
   team <- NULL
   for(m in team_env){
     name <- m$properties$displayName
-    id <- m$properties$id
-    team <- rbind(team, c(name, id))
+    team <- c(team, name)
   }
-  team <- as.data.frame(team)
-  names(team) <- c("Member", "ID")
   return(team)
+}
+
+return_closest_member <- function(name, team){
+  # return the name directly if it is part of the team as is
+  if(name %in% team){
+    return(name)
+  }
+  # try to find a close match, but only return it if one match is found
+  index <- agrep(name, team, max.distance = 4, ignore.case = TRUE)
+  found <- team[index]
+  if(length(index) == 1){
+    message(paste0("The Microsoft user name '", name,
+                   "' was not found, but close match '",
+                   found, "' will be notified."))
+    return(found)
+  }
+  # if none or more than one name matches, throw a warning and do not return any
+  warning(paste0("Cannot find team member ", name,
+                 ". This person won't be notified automatically."))
+  return(NULL)
 }

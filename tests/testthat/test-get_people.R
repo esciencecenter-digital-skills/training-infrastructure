@@ -8,14 +8,14 @@ test_that("People are identified as Instructors team members", {
                              instr_team)
 
   expect_true(is.list(team_members))
-  expect_equal(length(team_members), 4)
+  expect_equal(length(team_members), 4) ## 2 teachers in infotest + 2 people in alert
   expect_true("ms_team_member" %in% class(team_members[[1]]))
 })
 
 test_that("When people cannot be identified, the program reports this.", {
   errorps <- "Person Notemployed"
 
-  expect_message(get_people(infotest,
+  expect_warning(get_people(infotest,
                             alert = errorps,
                             instr_team),
                  regexp = "Cannot find team member Person Notemployed")
@@ -23,20 +23,19 @@ test_that("When people cannot be identified, the program reports this.", {
 })
 
 test_that("Some people who were not alerted in the past are identified correctly.",{
-  infotest$lead_instructor <- "Sarah Alidoost"
-  infotest$supporting_instructor1 <- "Giulia Crocioni"
-  infotest$supporting_instructor2 <- "Laura Ootes"
-  infotest$helper1 <- "Fakhereh (Sarah) Alidoost"
-  infotest$helper2 <- "Barbara Vreede"
-  infotest$helper3 <- NA
 
   team_members <- get_people(infotest,
-                             alert = NA,
+                             alert = c("Heli Jarvenpaa",
+                                       "Giulia Crocioni",
+                                       "Laura Ootes",
+                                       "Thijs van Lankeveld",
+                                       "Pablo Rodríguez-Sánchez",
+                                       "Carlos Murilo Rocha"),
                              instr_team)
 
   expect_true(is.list(team_members))
-  expect_equal(length(team_members), 3)
   expect_true("ms_team_member" %in% class(team_members[[1]]))
+  expect_equal(length(team_members), 8) # 2 people in infotest + 6 names in alert
 
 })
 
