@@ -72,6 +72,11 @@ In case you want to alert anyone other than Fenne, use their Microsoft name spec
 workshop_activate(data, alert="Lieke de Boer")
 ```
 
+Note that doing this **removes the alert for the current default**, meaning that the workshop coordinator (Fenne) will no longer be alerted. If you want to alert someone in addition to Fenne, use both their names:
+```
+workshop_activate(data, alert=c("Lieke de Boer","Fenne Riemslagh"))
+```
+
 
 ### Troubleshooting
 
