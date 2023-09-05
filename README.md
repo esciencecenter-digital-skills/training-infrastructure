@@ -116,6 +116,13 @@ This should give you the following return:
     list_channels, list_drives, list_members, sync_fields, update
 ```
 
+Unfortunately, Microsoft365R can be buggy, and may not authenticate well or otherwise
+deny you access. It can help to uninstall the package, and reinstall it again:
+
+```
+remove.packages("Microsoft365R")
+install.packages("Microsoft365R")
+```
 
 ## Want to contribute?
 Please contact our maintainer [Lieke de Boer](https://github.com/liekelotte).
