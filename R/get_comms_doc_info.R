@@ -12,6 +12,8 @@
 #' @export
 #'
 get_comms_doc_info <- function(info) {
+  check_location_setting()
+
 
   meta_url <- get_meta_url(info)
 
@@ -43,4 +45,10 @@ get_comms_doc_info <- function(info) {
                         repo_ref              = paste0("[workshop repository](","https://github.com/esciencecenter-digital-skills/", info$slug, "/files" ,")"),
                         show_text             = TRUE)
   return(comm_doc_info)
+}
+
+check_location_setting <- function(){
+  location <- Sys.getlocale()
+  #grepl("en", location)
+  #"en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8"
 }
