@@ -13,6 +13,8 @@
 #'
 get_planning_doc_info <- function(info) {
 
+  meta_url <- get_meta_url(info)
+
   plan_doc_info <- list(
     slug = info$slug,
     YYYYMMDD = as.character(info$startdate),
@@ -23,10 +25,21 @@ get_planning_doc_info <- function(info) {
       info$slug,
       ")"
     ),
+    workshop_website_source  = paste0(
+       "[workshop website source](",
+       "https://github.com/esciencecenter-digital-skills/",
+       info$slug,
+       ")"
+    ),
     registration_page = paste0(
       "[registration page](",
       "https://www.eventbrite.co.uk/e/",
       info$eventbrite,
+      ")"
+    ),
+    lesson_content = paste0(
+      "[lesson content](",
+      RCurl::getURL(paste0(meta_url, "lesson-url.md"), .encoding = "UTF-8"),
       ")"
     ),
     set_title = paste(info$slug, "planning document"),
