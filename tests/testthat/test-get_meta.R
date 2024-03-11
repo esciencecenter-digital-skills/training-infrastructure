@@ -1,5 +1,5 @@
 test_that("get_meta_url", {
-  load("infotest.rda")
+  infotest = readRDS(file = "infotest.rda")
   expect_equal(get_meta_url(infotest),
                "https://raw.githubusercontent.com/esciencecenter-digital-skills/workshop-metadata/main/ds-dl-intro/")
 

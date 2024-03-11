@@ -1,5 +1,5 @@
 test_that("Workshop sheet is parsed correctly", {
-  load(file = "holytest.rda")
+  holytest = readRDS(file = "holytest.rda")
   # verify the contents of the test file
   expect_equal(dim(holytest), c(20,26))
   expect_true("Holiday and conflicts"%in%names(holytest))
@@ -17,7 +17,7 @@ test_that("Workshop sheet is parsed correctly", {
 })
 
 test_that("Date selections are made using future argument", {
-  load(file = "holytest.rda")
+  holytest = readRDS(file = "holytest.rda")
   holyselect <- get_future_workshops(holytest, future="2021-03-10")
   expect_equal(dim(holyselect), c(3,27))
   holyselect<- get_future_workshops(holytest, future="today")
@@ -27,7 +27,7 @@ test_that("Date selections are made using future argument", {
 })
 
 test_that("Locations are found with Open Street Map", {
-  load(file = "holytest.rda")
+  holytest = readRDS(file = "holytest.rda")
   holyselect <- get_future_workshops(holytest, future="none")
   expect_equal(round(holyselect$latitude[3], 1), 52.4)
   expect_equal(round(holyselect$longitude[3], 1), 5.0)

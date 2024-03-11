@@ -1,7 +1,7 @@
 skip_on_ci()
 
 test_that("People are identified as Instructors team members", {
-  load("infotest.rda")
+  intotest = readRDS(file = "infotest.rda")
   instr_team <- Microsoft365R::get_team("Instructors")
   team_members <- get_people(infotest,
                              alert = c("Dani Bodor", "Mateusz Kuzak"),
