@@ -39,6 +39,8 @@ get_comms_doc_info <- function(info) {
                         lesson_url_ref        = paste0("[here](", RCurl::getURL(paste0(meta_url, "lesson-url.md"), .encoding = "UTF-8"), ")"),
                         lesson_url            = RCurl::getURL(paste0(meta_url, "lesson-url.md"), .encoding = "UTF-8"),
                         set_title             = paste(info$slug, "communication document"),
+                        normal_price          = info$normal_price,
+                        industry_price        = info$industry_price,
                         repo                  = paste0("https://github.com/esciencecenter-digital-skills/", info$slug),
                         repo_ref              = paste0("[workshop repository](","https://github.com/esciencecenter-digital-skills/", info$slug, "/files" ,")"),
                         show_text             = TRUE)

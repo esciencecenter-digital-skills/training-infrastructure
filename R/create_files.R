@@ -29,7 +29,7 @@ render_doc <- function(info, type, folder){
     stop("Wrong `type`: only `planning`, `communication` and `debriefing` docs can be rendered.")
   }
 
-  template_url <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/master/"
+  template_url <- "https://raw.githubusercontent.com/esciencecenter-digital-skills/template-docs-coordination/automated-prices/"
   template_type <- type
 
   # communication doc checks
