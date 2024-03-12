@@ -1,5 +1,5 @@
 test_that("correct documents are created", {
-  load(file = "infotest.rda")
+  infotest =readRDS(file = "infotest.rda")
 
   slug <- infotest$slug
   comms <- paste0(slug, "_communication_doc.docx")
@@ -26,6 +26,6 @@ test_that("correct documents are created", {
 })
 
 test_that("files cannot be created to nonexisting folder", {
-  load(file = "infotest.rda")
+  infotest = readRDS(file = "infotest.rda")
   expect_error(create_files(infotest, folder = "nonexisting"))
 })

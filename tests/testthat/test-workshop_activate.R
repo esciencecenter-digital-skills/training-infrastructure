@@ -1,5 +1,5 @@
 test_that("Error messages are called if data is wrong for workshop_activate", {
-  load(file = "holytest.rda")
+  holytest = readRDS(file = "holytest.rda")
 
   ht_nocountry <- holytest
 
