@@ -1,0 +1,7 @@
+---
+event:
+  name: # Title
+    html: "This is again a new title"
+  description: # short description
+    html: "<p>This is again updated</p>"
+
