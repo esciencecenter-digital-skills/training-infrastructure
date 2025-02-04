@@ -42,6 +42,11 @@ get_planning_doc_info <- function(info) {
       RCurl::getURL(paste0(meta_url, "lesson-url.md"), .encoding = "UTF-8"),
       ")"
     ),
+    slides_url = paste0(
+      "[slides_url](",
+      RCurl::getURL(paste0(meta_url, "slides-url.md"), .encoding = "UTF-8"),
+      ")"
+    ),
     set_title = paste(info$slug, "planning document"),
     lead_instructor = info$lead_instructor,
     instructor = info$instructor,
