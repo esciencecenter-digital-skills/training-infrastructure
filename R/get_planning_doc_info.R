@@ -18,7 +18,12 @@ get_planning_doc_info <- function(info) {
   plan_doc_info <- list(
     slug = info$slug,
     YYYYMMDD = as.character(info$startdate),
-    sharepoint = paste0("[Sharepoint](", info$newch, ")"),
+    sharepoint = paste0(
+      "[Sharepoint](", 
+      "https://nlesc.sharepoint.com/sites/instructors/Shared Documents/", 
+      info$slug,
+      ")"
+    ),
     workshop_website = paste0(
       "[workshop website](",
       "https://esciencecenter-digital-skills.github.io/",
