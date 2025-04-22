@@ -5,8 +5,15 @@
 
 ## Description
 
-Each of our workshops requires some documents to work with.
-This package automates the generation of those documents.
+Automates generation of the workshop folder, with in it the planning document, communication document, debriefing document, and `data.csv` as well as generation of the workshop channel in Teams and automatic adding of instructors to it. 
+
+This needs: 
+
+    That year’s holy excel sheet 
+
+    Workshop metadata 
+
+    Template docs coordination 
 
 ## Use
 
